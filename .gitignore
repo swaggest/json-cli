@@ -1,0 +1,7 @@
+/vendor
+/.idea
+/json-diff
+/json-diff.tar.gz
+/composer.lock
+/composer.phar
+/clover.xml
