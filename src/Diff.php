@@ -31,9 +31,10 @@ class Diff extends Base
 
         $this->out = $this->diff->getPatch();
 
-        if ($this->prettyShort && !empty($this->out->jsonSerialize())) {
+        $outJson = $this->out->jsonSerialize();
+        if ($this->prettyShort && !empty($outJson)) {
             $out = '[';
-            foreach ($this->out->jsonSerialize() as $item) {
+            foreach ($outJson as $item) {
                 $out .= "\n    " . json_encode($item, JSON_UNESCAPED_SLASHES) . ',';
             }
             $out = substr($out, 0, -1);
