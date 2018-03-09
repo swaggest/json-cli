@@ -1,6 +1,6 @@
 <?php
 
-namespace Swaggest\JsonDiffCli;
+namespace Swaggest\JsonCli;
 
 use Yaoi\Command;
 use Yaoi\Command\Definition;
@@ -12,6 +12,7 @@ class App extends Command\Application
     public $rearrange;
     public $info;
     public $prettyPrint;
+    public $minify;
 
     /**
      * @param Definition $definition
@@ -19,14 +20,15 @@ class App extends Command\Application
      */
     static function setUpCommands(Definition $definition, $commandDefinitions)
     {
-        $definition->name = 'json-diff';
-        $definition->version = 'v1.0.0';
-        $definition->description = 'JSON diff and apply tool for PHP, https://github.com/swaggest/json-diff-cli';
+        $definition->name = 'json-cli';
+        $definition->version = 'v1.1.0';
+        $definition->description = 'JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli';
 
         $commandDefinitions->diff = Diff::definition();
         $commandDefinitions->apply = Apply::definition();
         $commandDefinitions->rearrange = Rearrange::definition();
         $commandDefinitions->info = Info::definition();
         $commandDefinitions->prettyPrint = PrettyPrint::definition();
+        $commandDefinitions->minify = Minify::definition();
     }
 }

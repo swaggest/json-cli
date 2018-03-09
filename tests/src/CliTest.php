@@ -1,12 +1,12 @@
 <?php
 
-namespace Swaggest\JsonDiffCli\Tests;
+namespace Swaggest\JsonCli\Tests;
 
-use Swaggest\JsonDiffCli\App;
-use Swaggest\JsonDiffCli\Apply;
-use Swaggest\JsonDiffCli\Diff;
-use Swaggest\JsonDiffCli\Info;
-use Swaggest\JsonDiffCli\Rearrange;
+use Swaggest\JsonCli\App;
+use Swaggest\JsonCli\Apply;
+use Swaggest\JsonCli\Diff;
+use Swaggest\JsonCli\Info;
+use Swaggest\JsonCli\Rearrange;
 use Yaoi\Cli\Command\Application\Runner;
 use Yaoi\Cli\Response;
 

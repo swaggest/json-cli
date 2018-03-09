@@ -1,6 +1,6 @@
 <?php
 
-namespace Swaggest\JsonDiffCli;
+namespace Swaggest\JsonCli;
 
 use Swaggest\JsonDiff\Exception;
 use Swaggest\JsonDiff\JsonPatch;

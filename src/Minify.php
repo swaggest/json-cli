@@ -6,10 +6,9 @@ use Symfony\Component\Yaml\Yaml;
 use Yaoi\Command;
 use Yaoi\Command\Definition;
 
-class PrettyPrint extends Command
+class Minify extends Command
 {
     public $path;
-    public $toYaml;
 
     /**
      * @param Definition $definition
@@ -19,8 +18,7 @@ class PrettyPrint extends Command
     {
         $options->path = Command\Option::create()->setIsUnnamed()->setIsRequired()
             ->setDescription('Path to JSON/YAML file');
-        $options->toYaml = Command\Option::create()->setDescription('Output in YAML format');
-        $definition->description = 'Pretty print JSON document';
+        $definition->description = 'Minify JSON document';
     }
 
     public function performAction()
@@ -36,11 +34,7 @@ class PrettyPrint extends Command
             $jsonData = json_decode($fileData);
         }
 
-        if ($this->toYaml) {
-            echo Yaml::dump($jsonData, 2, 4, false, true);
-        } else {
-            echo json_encode($jsonData, JSON_PRETTY_PRINT + JSON_UNESCAPED_SLASHES);
-        }
+        echo json_encode($jsonData, JSON_UNESCAPED_SLASHES);
     }
 
 }

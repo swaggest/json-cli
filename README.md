@@ -1,11 +1,11 @@
 # JSON diff and rearrange tool for PHP
 
-A CLI for finding unordered diff between two `JSON` documents (based on [`swaggest/json-diff`](https://github.com/swaggest/json-diff)).
+A CLI for finding unordered diff between two `JSON` documents (based on [`swaggest/json-cli`](https://github.com/swaggest/json-cli)).
 
-[![Build Status](https://travis-ci.org/swaggest/json-diff-cli.svg?branch=master)](https://travis-ci.org/swaggest/json-diff-cli)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/swaggest/json-diff-cli/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-diff-cli/?branch=master)
-[![Code Climate](https://codeclimate.com/github/swaggest/json-diff-cli/badges/gpa.svg)](https://codeclimate.com/github/swaggest/json-diff-cli)
-[![Code Coverage](https://scrutinizer-ci.com/g/swaggest/json-diff-cli/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-diff-cli/code-structure/master/code-coverage)
+[![Build Status](https://travis-ci.org/swaggest/json-cli-cli.svg?branch=master)](https://travis-ci.org/swaggest/json-cli-cli)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/swaggest/json-cli-cli/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-cli-cli/?branch=master)
+[![Code Climate](https://codeclimate.com/github/swaggest/json-cli-cli/badges/gpa.svg)](https://codeclimate.com/github/swaggest/json-cli-cli)
+[![Code Coverage](https://scrutinizer-ci.com/g/swaggest/json-cli-cli/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-cli-cli/code-structure/master/code-coverage)
 
 ## Purpose
 
@@ -21,7 +21,7 @@ A CLI for finding unordered diff between two `JSON` documents (based on [`swagge
 [Install PHP Composer](https://getcomposer.org/doc/00-intro.md)
 
 ```bash
-composer require swaggest/json-diff-cli
+composer require swaggest/json-cli-cli
 ```
 
 ## CLI tool
@@ -29,22 +29,22 @@ composer require swaggest/json-diff-cli
 ### Usage
 
 ```
-json-diff --help
-v1.0.0 json-diff
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-diff-cli
+json-cli --help
+v1.0.0 json-cli
+JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli-cli
 Usage: 
-   json-diff <action>
+   json-cli <action>
    action   Action name
             Allowed values: diff, apply, rearrange, info, pretty-print
 ```
 
 ```
-json-diff diff --help
-v1.0.0 json-diff diff
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-diff-cli
+json-cli diff --help
+v1.0.0 json-cli diff
+JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli
 Make patch from two json documents, output to STDOUT
 Usage:
-   json-diff diff <originalPath> <newPath>
+   json-cli diff <originalPath> <newPath>
    originalPath   Path to old (original) json file
    newPath        Path to new json file
 
@@ -54,12 +54,12 @@ Options:
 ```
 
 ```
-json-diff apply --help
-v1.0.0 json-diff apply
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-diff-cli
+json-cli apply --help
+v1.0.0 json-cli apply
+JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli-cli
 Apply patch to base json document, output to STDOUT
 Usage:
-   json-diff apply [patchPath] [basePath]
+   json-cli apply [patchPath] [basePath]
    patchPath   Path to JSON patch file
    basePath    Path to JSON base file
 
@@ -69,12 +69,12 @@ Options:
 ```
 
 ```
-json-diff rearrange --help
-v1.0.0 json-diff rearrange
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-diff-cli
+json-cli rearrange --help
+v1.0.0 json-cli rearrange
+JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli-cli
 Rearrange json document in the order of another (original) json document
 Usage:
-   json-diff rearrange <originalPath> <newPath>
+   json-cli rearrange <originalPath> <newPath>
    originalPath   Path to old (original) json file
    newPath        Path to new json file
 
@@ -84,12 +84,12 @@ Options:
 ```
 
 ```
-json-diff info --help
-v1.0.0 json-diff info
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-diff-cli
+json-cli info --help
+v1.0.0 json-cli info
+JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli-cli
 Show diff info for two JSON documents
 Usage:
-   json-diff info <originalPath> <newPath>
+   json-cli info <originalPath> <newPath>
    originalPath   Path to old (original) json file
    newPath        Path to new json file
 
@@ -105,7 +105,7 @@ Options:
 Making `JSON Patch`
 
 ```
-json-diff diff tests/assets/original.json tests/assets/new.json --rearrange-arrays --pretty-short
+json-cli diff tests/assets/original.json tests/assets/new.json --rearrange-arrays --pretty-short
 [
     {"value":4,"op":"test","path":"/key1/0"},
     {"value":5,"op":"replace","path":"/key1/0"},
@@ -126,7 +126,7 @@ json-diff diff tests/assets/original.json tests/assets/new.json --rearrange-arra
 Using with standard `diff`
 
 ```
-json-diff rearrange tests/assets/original.json tests/assets/new.json --rearrange-arrays --pretty | diff <(json-diff pretty-print ./tests/assets/original.json) -
+json-cli rearrange tests/assets/original.json tests/assets/new.json --rearrange-arrays --pretty | diff <(json-cli pretty-print ./tests/assets/original.json) -
 3c3
 <         4,
 ---
@@ -160,7 +160,7 @@ json-diff rearrange tests/assets/original.json tests/assets/new.json --rearrange
 Showing differences in `JSON` mode
 
 ```
-json-diff info tests/assets/original.json tests/assets/new.json --with-paths --pretty
+json-cli info tests/assets/original.json tests/assets/new.json --with-paths --pretty
 {
     "addedCnt": 4,
     "modifiedCnt": 4,
