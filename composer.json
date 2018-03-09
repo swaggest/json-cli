@@ -1,5 +1,5 @@
 {
-  "name": "swaggest/json-diff-cli",
+  "name": "swaggest/json-cli",
   "description": "JSON diff and rearrange CLI tool for PHP",
   "type": "tool",
   "license": "MIT",
