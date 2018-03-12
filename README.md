@@ -2,10 +2,10 @@
 
 A CLI for finding unordered diff between two `JSON` documents (based on [`swaggest/json-cli`](https://github.com/swaggest/json-cli)), pretty print, minify, yaml convert, etc....
 
-[![Build Status](https://travis-ci.org/swaggest/json-cli-cli.svg?branch=master)](https://travis-ci.org/swaggest/json-cli-cli)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/swaggest/json-cli-cli/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-cli-cli/?branch=master)
-[![Code Climate](https://codeclimate.com/github/swaggest/json-cli-cli/badges/gpa.svg)](https://codeclimate.com/github/swaggest/json-cli-cli)
-[![Code Coverage](https://scrutinizer-ci.com/g/swaggest/json-cli-cli/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-cli-cli/code-structure/master/code-coverage)
+[![Build Status](https://travis-ci.org/swaggest/json-cli.svg?branch=master)](https://travis-ci.org/swaggest/json-cli)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/swaggest/json-cli/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-cli/?branch=master)
+[![Code Climate](https://codeclimate.com/github/swaggest/json-cli/badges/gpa.svg)](https://codeclimate.com/github/swaggest/json-cli)
+[![Code Coverage](https://scrutinizer-ci.com/g/swaggest/json-cli/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-cli/code-structure/master/code-coverage)
 
 ## Purpose
 
@@ -22,7 +22,7 @@ A CLI for finding unordered diff between two `JSON` documents (based on [`swagge
 [Install PHP Composer](https://getcomposer.org/doc/00-intro.md)
 
 ```bash
-composer require swaggest/json-cli-cli
+composer require swaggest/json-cli
 ```
 
 ## CLI tool
@@ -32,7 +32,7 @@ composer require swaggest/json-cli-cli
 ```
 json-cli --help
 v1.0.0 json-cli
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli-cli
+JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli
 Usage: 
    json-cli <action>
    action   Action name
@@ -57,7 +57,7 @@ Options:
 ```
 json-cli apply --help
 v1.0.0 json-cli apply
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli-cli
+JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli
 Apply patch to base json document, output to STDOUT
 Usage:
    json-cli apply [patchPath] [basePath]
@@ -72,7 +72,7 @@ Options:
 ```
 json-cli rearrange --help
 v1.0.0 json-cli rearrange
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli-cli
+JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli
 Rearrange json document in the order of another (original) json document
 Usage:
    json-cli rearrange <originalPath> <newPath>
@@ -87,7 +87,7 @@ Options:
 ```
 json-cli info --help
 v1.0.0 json-cli info
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli-cli
+JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli
 Show diff info for two JSON documents
 Usage:
    json-cli info <originalPath> <newPath>
