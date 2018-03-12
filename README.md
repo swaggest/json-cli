@@ -1,6 +1,6 @@
 # JSON CLI tool
 
-A CLI for finding unordered diff between two `JSON` documents (based on [`swaggest/json-cli`](https://github.com/swaggest/json-cli)), pretty print, minify, yaml convert, etc....
+A CLI for finding unordered diff between two `JSON` documents (based on [`swaggest/json-diff`](https://github.com/swaggest/json-diff)), pretty print, minify, yaml convert, etc....
 
 [![Build Status](https://travis-ci.org/swaggest/json-cli.svg?branch=master)](https://travis-ci.org/swaggest/json-cli)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/swaggest/json-cli/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-cli/?branch=master)
