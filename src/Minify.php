@@ -29,7 +29,7 @@ class Minify extends Command
             return;
         }
         if (substr($this->path, -5) === '.yaml' || substr($this->path, -4) === '.yml') {
-            $jsonData = Yaml::parse($fileData, false, true, true);
+            $jsonData = Yaml::parse($fileData, Yaml::PARSE_OBJECT);
         } else {
             $jsonData = json_decode($fileData);
         }

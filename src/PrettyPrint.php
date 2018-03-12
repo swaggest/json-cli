@@ -31,13 +31,13 @@ class PrettyPrint extends Command
             return;
         }
         if (substr($this->path, -5) === '.yaml' || substr($this->path, -4) === '.yml') {
-            $jsonData = Yaml::parse($fileData, false, true, true);
+            $jsonData = Yaml::parse($fileData, Yaml::PARSE_OBJECT);
         } else {
             $jsonData = json_decode($fileData);
         }
 
         if ($this->toYaml) {
-            echo Yaml::dump($jsonData, 2, 4, false, true);
+            echo Yaml::dump($jsonData, 2, 2, Yaml::DUMP_OBJECT_AS_MAP);
         } else {
             echo json_encode($jsonData, JSON_PRETTY_PRINT + JSON_UNESCAPED_SLASHES);
         }

@@ -5,7 +5,7 @@ namespace Swaggest\JsonCli\Tests;
 use Swaggest\JsonCli\App;
 use Swaggest\JsonCli\Apply;
 use Swaggest\JsonCli\Diff;
-use Swaggest\JsonCli\Info;
+use Swaggest\JsonCli\DiffInfo;
 use Swaggest\JsonCli\Rearrange;
 use Yaoi\Cli\Command\Application\Runner;
 use Yaoi\Cli\Response;
@@ -66,7 +66,7 @@ class CliTest extends \PHPUnit_Framework_TestCase
 
     public function testInfo()
     {
-        $d = new Info();
+        $d = new DiffInfo();
         $d->pretty = true;
         $d->rearrangeArrays = true;
         $d->withContents = true;
@@ -142,7 +142,6 @@ class CliTest extends \PHPUnit_Framework_TestCase
         }
     }
 }
-
 JSON
             , str_replace("\r", '', $res));
     }

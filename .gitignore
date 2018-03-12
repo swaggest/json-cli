@@ -1,7 +1,6 @@
 /vendor
 /.idea
-/json-diff
-/json-diff.tar.gz
-/composer.lock
+/json-cli
+/json-cli.tar.gz
 /composer.phar
 /clover.xml

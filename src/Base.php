@@ -5,6 +5,7 @@ namespace Swaggest\JsonCli;
 
 use Swaggest\JsonDiff\Exception;
 use Swaggest\JsonDiff\JsonDiff;
+use Symfony\Component\Yaml\Yaml;
 use Yaoi\Command;
 
 abstract class Base extends Command
@@ -13,6 +14,7 @@ abstract class Base extends Command
     public $newPath;
     public $pretty;
     public $rearrangeArrays;
+    public $toYaml;
 
     static function setUpDefinition(Command\Definition $definition, $options)
     {
@@ -24,6 +26,7 @@ abstract class Base extends Command
             ->setDescription('Pretty-print result JSON');
         $options->rearrangeArrays = Command\Option::create()
             ->setDescription('Rearrange arrays to match original');
+        $options->toYaml = Command\Option::create()->setDescription('Output in YAML format');
     }
 
 
@@ -66,7 +69,10 @@ abstract class Base extends Command
             $options += JSON_PRETTY_PRINT;
         }
 
-        $outJson = json_encode($this->out, $options);
-        $this->response->addContent($outJson);
+        if ($this->toYaml) {
+            echo Yaml::dump($this->out, 2, 2, Yaml::DUMP_OBJECT_AS_MAP);
+        } else {
+            echo json_encode($this->out, $options);
+        }
     }
 }

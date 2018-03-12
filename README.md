@@ -1,6 +1,6 @@
-# JSON diff and rearrange tool for PHP
+# JSON CLI tool
 
-A CLI for finding unordered diff between two `JSON` documents (based on [`swaggest/json-cli`](https://github.com/swaggest/json-cli)).
+A CLI for finding unordered diff between two `JSON` documents (based on [`swaggest/json-cli`](https://github.com/swaggest/json-cli)), pretty print, minify, yaml convert, etc....
 
 [![Build Status](https://travis-ci.org/swaggest/json-cli-cli.svg?branch=master)](https://travis-ci.org/swaggest/json-cli-cli)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/swaggest/json-cli-cli/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-cli-cli/?branch=master)
@@ -13,6 +13,7 @@ A CLI for finding unordered diff between two `JSON` documents (based on [`swagge
  * To detect breaking changes by analyzing removals and changes from original `JSON`.
  * To keep original order of object sets (for example `swagger.json` [parameters](https://swagger.io/docs/specification/describing-parameters/) list).
  * To make and apply JSON Patches, specified in [RFC 6902](http://tools.ietf.org/html/rfc6902) from the IETF.
+ * To convert YAML to JSON and vice versa.
 
 ## Installation
 

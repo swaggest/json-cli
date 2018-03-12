@@ -10,7 +10,7 @@ class App extends Command\Application
     public $diff;
     public $apply;
     public $rearrange;
-    public $info;
+    public $diffInfo;
     public $prettyPrint;
     public $minify;
 
@@ -27,7 +27,7 @@ class App extends Command\Application
         $commandDefinitions->diff = Diff::definition();
         $commandDefinitions->apply = Apply::definition();
         $commandDefinitions->rearrange = Rearrange::definition();
-        $commandDefinitions->info = Info::definition();
+        $commandDefinitions->diffInfo = DiffInfo::definition();
         $commandDefinitions->prettyPrint = PrettyPrint::definition();
         $commandDefinitions->minify = Minify::definition();
     }

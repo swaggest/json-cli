@@ -4,7 +4,7 @@ namespace Swaggest\JsonCli;
 
 use Yaoi\Command;
 
-class Info extends Base
+class DiffInfo extends Base
 {
     public $withContents;
     public $withPaths;
