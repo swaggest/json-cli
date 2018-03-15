@@ -13,6 +13,7 @@ class App extends Command\Application
     public $diffInfo;
     public $prettyPrint;
     public $minify;
+    public $replace;
 
     /**
      * @param Definition $definition
@@ -21,8 +22,8 @@ class App extends Command\Application
     static function setUpCommands(Definition $definition, $commandDefinitions)
     {
         $definition->name = 'json-cli';
-        $definition->version = 'v1.1.0';
-        $definition->description = 'JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli';
+        $definition->version = 'v1.2.0';
+        $definition->description = 'JSON CLI tool, https://github.com/swaggest/json-cli';
 
         $commandDefinitions->diff = Diff::definition();
         $commandDefinitions->apply = Apply::definition();
@@ -30,5 +31,6 @@ class App extends Command\Application
         $commandDefinitions->diffInfo = DiffInfo::definition();
         $commandDefinitions->prettyPrint = PrettyPrint::definition();
         $commandDefinitions->minify = Minify::definition();
+        $commandDefinitions->replace = Replace::definition();
     }
 }

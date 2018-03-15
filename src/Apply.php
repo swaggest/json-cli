@@ -33,6 +33,15 @@ class Apply extends Base
 
     public function performAction()
     {
+        if (!file_exists($this->patchPath)) {
+            $this->response->error('File not found: ' . $this->patchPath);
+            return;
+        }
+        if (!file_exists($this->basePath)) {
+            $this->response->error('File not found: ' . $this->basePath);
+            return;
+        }
+
         $patchJson = file_get_contents($this->patchPath);
         if (!$patchJson) {
             $this->response->error('Unable to read ' . $this->patchPath);

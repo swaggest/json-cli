@@ -9,6 +9,7 @@ use Yaoi\Command\Definition;
 class Minify extends Command
 {
     public $path;
+    public $output;
 
     /**
      * @param Definition $definition
@@ -18,6 +19,8 @@ class Minify extends Command
     {
         $options->path = Command\Option::create()->setIsUnnamed()->setIsRequired()
             ->setDescription('Path to JSON/YAML file');
+        $options->output = Command\Option::create()->setType()
+            ->setDescription('Path to output, default STDOUT');
         $definition->description = 'Minify JSON document';
     }
 
@@ -34,7 +37,13 @@ class Minify extends Command
             $jsonData = json_decode($fileData);
         }
 
-        echo json_encode($jsonData, JSON_UNESCAPED_SLASHES);
+        $result = json_encode($jsonData, JSON_UNESCAPED_SLASHES);
+
+        if ($this->output) {
+            file_put_contents($this->output, $result);
+        } else {
+            $this->response->addContent($result);
+        }
     }
 
 }

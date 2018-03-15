@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "swaggest/json-diff": "^3",
+    "swaggest/json-diff": "^3.2.1",
     "php-yaoi/php-yaoi": "^1",
     "symfony/yaml": "^3"
   },
