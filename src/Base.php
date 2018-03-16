@@ -15,6 +15,7 @@ abstract class Base extends Command
     public $pretty;
     public $rearrangeArrays;
     public $toYaml;
+    public $output;
 
     static function setUpDefinition(Command\Definition $definition, $options)
     {
@@ -26,6 +27,8 @@ abstract class Base extends Command
             ->setDescription('Pretty-print result JSON');
         $options->rearrangeArrays = Command\Option::create()
             ->setDescription('Rearrange arrays to match original');
+        $options->output = Command\Option::create()
+            ->setDescription('Path to output result, default STDOUT');
         $options->toYaml = Command\Option::create()->setDescription('Output in YAML format');
     }
 
@@ -70,9 +73,15 @@ abstract class Base extends Command
         }
 
         if ($this->toYaml) {
-            echo Yaml::dump($this->out, 2, 2, Yaml::DUMP_OBJECT_AS_MAP);
+            $result = Yaml::dump($this->out, 2, 2, Yaml::DUMP_OBJECT_AS_MAP);
         } else {
-            echo json_encode($this->out, $options);
+            $result = json_encode($this->out, $options);
+        }
+
+        if ($this->output) {
+            file_put_contents($this->output, $result);
+        } else {
+            echo $result;
         }
     }
 }
