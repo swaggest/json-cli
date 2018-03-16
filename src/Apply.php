@@ -23,11 +23,10 @@ class Apply extends Base
             ->setDescription('Path to JSON patch file');
         $options->basePath = Command\Option::create()->setType()->setIsUnnamed()
             ->setDescription('Path to JSON base file');
-        $options->pretty = Command\Option::create()
-            ->setDescription('Pretty-print result JSON');
-        $options->rearrangeArrays = Command\Option::create()
-            ->setDescription('Rearrange arrays to match original');
+        parent::setUpDefinition($definition, $options);
         $definition->description = 'Apply patch to base json document, output to STDOUT';
+        unset($options->originalPath);
+        unset($options->newPath);
 
     }
 
