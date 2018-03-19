@@ -27,7 +27,7 @@ abstract class Base extends Command
             ->setDescription('Pretty-print result JSON');
         $options->rearrangeArrays = Command\Option::create()
             ->setDescription('Rearrange arrays to match original');
-        $options->output = Command\Option::create()
+        $options->output = Command\Option::create()->setType()
             ->setDescription('Path to output result, default STDOUT');
         $options->toYaml = Command\Option::create()->setDescription('Output in YAML format');
     }

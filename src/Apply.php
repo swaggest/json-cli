@@ -12,6 +12,7 @@ class Apply extends Base
     public $patchPath;
     public $basePath;
     public $isURIFragmentId = false;
+    public $tolerateErrors;
 
     /**
      * @param Definition $definition
@@ -25,6 +26,8 @@ class Apply extends Base
             ->setDescription('Path to JSON base file');
         parent::setUpDefinition($definition, $options);
         $definition->description = 'Apply patch to base json document, output to STDOUT';
+        $options->tolerateErrors = Command\Option::create()
+            ->setDescription('Continue on error');
         unset($options->originalPath);
         unset($options->newPath);
 
@@ -56,10 +59,14 @@ class Apply extends Base
         try {
             $patch = JsonPatch::import(json_decode($patchJson));
             $base = json_decode($baseJson);
-            $patch->apply($base);
+            $errors = $patch->apply($base, !$this->tolerateErrors);
+            foreach ($errors as $error) {
+                $this->response->error($error->getMessage());
+            }
             $this->out = $base;
         } catch (Exception $e) {
             $this->response->error($e->getMessage());
+            die(1);
         }
 
         $this->postPerform();

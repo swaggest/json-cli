@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4cc1d77d31f70b151e77d413744c1b6f",
+    "content-hash": "7ed8c57810ce55a53f0748c9ab63335c",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -53,16 +53,16 @@
         },
         {
             "name": "swaggest/json-diff",
-            "version": "v3.2.1",
+            "version": "v3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-diff.git",
-                "reference": "67f2acf347ad6da6892d537da001835ca5a840c1"
+                "reference": "44b7078bea6057ff66d05108720505a89c027a81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/67f2acf347ad6da6892d537da001835ca5a840c1",
-                "reference": "67f2acf347ad6da6892d537da001835ca5a840c1",
+                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/44b7078bea6057ff66d05108720505a89c027a81",
+                "reference": "44b7078bea6057ff66d05108720505a89c027a81",
                 "shasum": ""
             },
             "require-dev": {
@@ -87,7 +87,7 @@
                 }
             ],
             "description": "JSON diff/rearrange/patch/pointer library for PHP",
-            "time": "2018-03-15T11:13:39+00:00"
+            "time": "2018-03-19T10:38:57+00:00"
         },
         {
             "name": "symfony/yaml",

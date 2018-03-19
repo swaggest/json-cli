@@ -10,6 +10,7 @@ class PrettyPrint extends Command
 {
     public $path;
     public $toYaml;
+    public $output;
 
     /**
      * @param Definition $definition
@@ -20,6 +21,8 @@ class PrettyPrint extends Command
         $options->path = Command\Option::create()->setIsUnnamed()->setIsRequired()
             ->setDescription('Path to JSON/YAML file');
         $options->toYaml = Command\Option::create()->setDescription('Output in YAML format');
+        $options->output = Command\Option::create()->setType()
+            ->setDescription('Path to output result, default STDOUT');
         $definition->description = 'Pretty print JSON document';
     }
 
@@ -37,9 +40,15 @@ class PrettyPrint extends Command
         }
 
         if ($this->toYaml) {
-            echo Yaml::dump($jsonData, 2, 2, Yaml::DUMP_OBJECT_AS_MAP);
+            $result = Yaml::dump($jsonData, 2, 2, Yaml::DUMP_OBJECT_AS_MAP);
         } else {
-            echo json_encode($jsonData, JSON_PRETTY_PRINT + JSON_UNESCAPED_SLASHES);
+            $result = json_encode($jsonData, JSON_PRETTY_PRINT + JSON_UNESCAPED_SLASHES);
+        }
+
+        if ($this->output) {
+            file_put_contents($this->output, $result);
+        } else {
+            echo $result;
         }
     }
 
