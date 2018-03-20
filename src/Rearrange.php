@@ -4,7 +4,7 @@ namespace Swaggest\JsonCli;
 
 use Yaoi\Command;
 
-class Rearrange extends Base
+class Rearrange extends BaseDiff
 {
     public static function setUpDefinition(Command\Definition $definition, $options)
     {

@@ -3,66 +3,45 @@
 namespace Swaggest\JsonCli;
 
 
-use Swaggest\JsonDiff\Exception;
-use Swaggest\JsonDiff\JsonDiff;
 use Symfony\Component\Yaml\Yaml;
 use Yaoi\Command;
 
 abstract class Base extends Command
 {
-    public $originalPath;
-    public $newPath;
     public $pretty;
-    public $rearrangeArrays;
     public $toYaml;
     public $output;
 
     static function setUpDefinition(Command\Definition $definition, $options)
     {
-        $options->originalPath = Command\Option::create()->setIsUnnamed()->setIsRequired()
-            ->setDescription('Path to old (original) json file');
-        $options->newPath = Command\Option::create()->setIsUnnamed()->setIsRequired()
-            ->setDescription('Path to new json file');
         $options->pretty = Command\Option::create()
             ->setDescription('Pretty-print result JSON');
-        $options->rearrangeArrays = Command\Option::create()
-            ->setDescription('Rearrange arrays to match original');
         $options->output = Command\Option::create()->setType()
             ->setDescription('Path to output result, default STDOUT');
         $options->toYaml = Command\Option::create()->setDescription('Output in YAML format');
     }
 
 
-    /** @var JsonDiff */
-    protected $diff;
     protected $out;
 
-    protected function prePerform()
+    protected function readData($path)
     {
-        $originalJson = file_get_contents($this->originalPath);
-        if (!$originalJson) {
-            $this->response->error('Unable to read ' . $this->originalPath);
-            return;
+        if (!file_exists($path)) {
+            $this->response->error('Unable to find ' . $path);
+            die(1);
+        }
+        $fileData = file_get_contents($path);
+        if (!$fileData) {
+            $this->response->error('Unable to read ' . $path);
+            die(1);
+        }
+        if (substr($path, -5) === '.yaml' || substr($path, -4) === '.yml') {
+            $jsonData = Yaml::parse($fileData, Yaml::PARSE_OBJECT);
+        } else {
+            $jsonData = json_decode($fileData);
         }
 
-        $newJson = file_get_contents($this->newPath);
-        if (!$newJson) {
-            $this->response->error('Unable to read ' . $this->newPath);
-            return;
-        }
-
-        $options = 0;
-        if ($this->rearrangeArrays) {
-            $options += JsonDiff::REARRANGE_ARRAYS;
-        }
-        try {
-            $this->diff = new JsonDiff(json_decode($originalJson), json_decode($newJson), $options);
-        } catch (Exception $e) {
-            $this->response->error($e->getMessage());
-            return;
-        }
-
-        $this->out = '';
+        return $jsonData;
     }
 
     protected function postPerform()

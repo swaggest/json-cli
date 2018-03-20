@@ -2,14 +2,12 @@
 
 namespace Swaggest\JsonCli;
 
-use Symfony\Component\Yaml\Yaml;
 use Yaoi\Command;
 use Yaoi\Command\Definition;
 
-class Minify extends Command
+class Minify extends Base
 {
     public $path;
-    public $output;
 
     /**
      * @param Definition $definition
@@ -19,31 +17,16 @@ class Minify extends Command
     {
         $options->path = Command\Option::create()->setIsUnnamed()->setIsRequired()
             ->setDescription('Path to JSON/YAML file');
-        $options->output = Command\Option::create()->setType()
-            ->setDescription('Path to output, default STDOUT');
+        parent::setUpDefinition($definition, $options);
+        unset($options->pretty);
+        unset($options->toYaml);
         $definition->description = 'Minify JSON document';
     }
 
     public function performAction()
     {
-        $fileData = file_get_contents($this->path);
-        if (!$fileData) {
-            $this->response->error('Unable to read ' . $this->path);
-            return;
-        }
-        if (substr($this->path, -5) === '.yaml' || substr($this->path, -4) === '.yml') {
-            $jsonData = Yaml::parse($fileData, Yaml::PARSE_OBJECT);
-        } else {
-            $jsonData = json_decode($fileData);
-        }
-
-        $result = json_encode($jsonData, JSON_UNESCAPED_SLASHES);
-
-        if ($this->output) {
-            file_put_contents($this->output, $result);
-        } else {
-            $this->response->addContent($result);
-        }
+        $this->out = $this->readData($this->path);
+        $this->postPerform();
     }
 
 }

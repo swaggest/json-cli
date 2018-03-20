@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ed8c57810ce55a53f0748c9ab63335c",
+    "content-hash": "997c79f308b4061fb6559a1247740065",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -52,17 +52,74 @@
             "time": "2017-06-13T09:10:15+00:00"
         },
         {
-            "name": "swaggest/json-diff",
-            "version": "v3.3.1",
+            "name": "salsify/json-streaming-parser",
+            "version": "v6.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/swaggest/json-diff.git",
-                "reference": "44b7078bea6057ff66d05108720505a89c027a81"
+                "url": "https://github.com/salsify/jsonstreamingparser.git",
+                "reference": "0b6403c8a2b1fc4c5af77b5c0174c11bd958a9d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/44b7078bea6057ff66d05108720505a89c027a81",
-                "reference": "44b7078bea6057ff66d05108720505a89c027a81",
+                "url": "https://api.github.com/repos/salsify/jsonstreamingparser/zipball/0b6403c8a2b1fc4c5af77b5c0174c11bd958a9d2",
+                "reference": "0b6403c8a2b1fc4c5af77b5c0174c11bd958a9d2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JsonStreamingParser\\": "src",
+                    "JsonStreamingParser\\Test\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxim Gnatenko",
+                    "email": "mgnatenko@gmail.com"
+                },
+                {
+                    "name": "Rob Gonzalez",
+                    "email": "rob@salsify.com",
+                    "homepage": "http://salsify.com/"
+                },
+                {
+                    "name": "Max Grigorian",
+                    "email": "maxakawizard@gmail.com",
+                    "homepage": "http://wizardcat.com/"
+                }
+            ],
+            "description": "A streaming parser for JSON in PHP.",
+            "homepage": "https://github.com/salsify/jsonstreamingparser",
+            "keywords": [
+                "json",
+                "parser",
+                "streaming"
+            ],
+            "time": "2017-09-02T14:02:01+00:00"
+        },
+        {
+            "name": "swaggest/json-diff",
+            "version": "v3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swaggest/json-diff.git",
+                "reference": "94925ea69db5ca696364e35fc8b5c7afb43bc6d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/94925ea69db5ca696364e35fc8b5c7afb43bc6d9",
+                "reference": "94925ea69db5ca696364e35fc8b5c7afb43bc6d9",
                 "shasum": ""
             },
             "require-dev": {
@@ -87,7 +144,7 @@
                 }
             ],
             "description": "JSON diff/rearrange/patch/pointer library for PHP",
-            "time": "2018-03-19T10:38:57+00:00"
+            "time": "2018-03-20T08:21:01+00:00"
         },
         {
             "name": "symfony/yaml",

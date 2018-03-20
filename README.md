@@ -14,6 +14,8 @@ A CLI for finding unordered diff between two `JSON` documents (based on [`swagge
  * To keep original order of object sets (for example `swagger.json` [parameters](https://swagger.io/docs/specification/describing-parameters/) list).
  * To make and apply JSON Patches, specified in [RFC 6902](http://tools.ietf.org/html/rfc6902) from the IETF.
  * To convert YAML to JSON and vice versa.
+ * To resolve `JSON Pointer` to data.
+ * To resolve `JSON Pointer` to file position.
 
 ## Installation
 
@@ -30,19 +32,20 @@ composer require swaggest/json-cli
 ### Usage
 
 ```
-json-cli --help
-v1.0.0 json-cli
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli
-Usage: 
+v1.3.0 json-cli
+JSON CLI tool, https://github.com/swaggest/json-cli
+Usage:
    json-cli <action>
    action   Action name
-            Allowed values: diff, apply, rearrange, info, pretty-print
+            Allowed values: diff, apply, rearrange, diff-info, pretty-print, minify, replace, resolve,
+            resolve-pos
 ```
 
+#### Diff, make `JSON Patch` from two documents
+
 ```
-json-cli diff --help
-v1.0.0 json-cli diff
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli
+v1.3.0 json-cli diff
+JSON CLI tool, https://github.com/swaggest/json-cli
 Make patch from two json documents, output to STDOUT
 Usage:
    json-cli diff <originalPath> <newPath>
@@ -50,58 +53,14 @@ Usage:
    newPath        Path to new json file
 
 Options:
-   --pretty              Pretty-print result JSON
    --rearrange-arrays    Rearrange arrays to match original
-```
-
-```
-json-cli apply --help
-v1.0.0 json-cli apply
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli
-Apply patch to base json document, output to STDOUT
-Usage:
-   json-cli apply [patchPath] [basePath]
-   patchPath   Path to JSON patch file
-   basePath    Path to JSON base file
-
-Options:
    --pretty              Pretty-print result JSON
-   --rearrange-arrays    Rearrange arrays to match original
+   --output <output>     Path to output result, default STDOUT
+   --to-yaml             Output in YAML format
+   --pretty-short        Pretty short format
 ```
 
-```
-json-cli rearrange --help
-v1.0.0 json-cli rearrange
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli
-Rearrange json document in the order of another (original) json document
-Usage:
-   json-cli rearrange <originalPath> <newPath>
-   originalPath   Path to old (original) json file
-   newPath        Path to new json file
-
-Options:
-   --pretty              Pretty-print result JSON
-   --rearrange-arrays    Rearrange arrays to match original
-```
-
-```
-json-cli info --help
-v1.0.0 json-cli info
-JSON diff and apply tool for PHP, https://github.com/swaggest/json-cli
-Show diff info for two JSON documents
-Usage:
-   json-cli info <originalPath> <newPath>
-   originalPath   Path to old (original) json file
-   newPath        Path to new json file
-
-Options:
-   --pretty              Pretty-print result JSON
-   --rearrange-arrays    Rearrange arrays to match original
-   --with-contents       Add content to output
-   --with-paths          Add paths to output
-```
-
-### Examples
+Example:
 
 Making `JSON Patch`
 
@@ -123,6 +82,44 @@ json-cli diff tests/assets/original.json tests/assets/new.json --rearrange-array
     {"value":"wat","op":"add","path":"/key5"}
 ]
 ```
+
+#### Apply `JSON Patch` to document
+
+```
+v1.3.0 json-cli apply
+JSON CLI tool, https://github.com/swaggest/json-cli
+Apply patch to base json document, output to STDOUT
+Usage:
+   json-cli apply [patchPath] [basePath]
+   patchPath   Path to JSON patch file
+   basePath    Path to JSON base file
+
+Options:
+   --pretty             Pretty-print result JSON
+   --output <output>    Path to output result, default STDOUT
+   --to-yaml            Output in YAML format
+   --tolerate-errors    Continue on error
+```
+
+#### Rearrange JSON document to keep original order
+
+```
+v1.3.0 json-cli rearrange
+JSON CLI tool, https://github.com/swaggest/json-cli
+Rearrange json document in the order of another (original) json document
+Usage:
+   json-cli rearrange <originalPath> <newPath>
+   originalPath   Path to old (original) json file
+   newPath        Path to new json file
+
+Options:
+   --rearrange-arrays    Rearrange arrays to match original
+   --pretty              Pretty-print result JSON
+   --output <output>     Path to output result, default STDOUT
+   --to-yaml             Output in YAML format
+```
+
+Example:
 
 Using with standard `diff`
 
@@ -158,10 +155,34 @@ json-cli rearrange tests/assets/original.json tests/assets/new.json --rearrange-
 >     "key5": "wat"
 ```
 
+
+#### Show difference between two JSON documents
+
+```
+json-cli diff-info --help
+v1.3.0 json-cli diff-info
+JSON CLI tool, https://github.com/swaggest/json-cli
+Show diff info for two JSON documents
+Usage:
+   json-cli diff-info <originalPath> <newPath>
+   originalPath   Path to old (original) json file
+   newPath        Path to new json file
+
+Options:
+   --rearrange-arrays    Rearrange arrays to match original
+   --pretty              Pretty-print result JSON
+   --output <output>     Path to output result, default STDOUT
+   --to-yaml             Output in YAML format
+   --with-contents       Add content to output
+   --with-paths          Add paths to output
+```
+
+Example:
+
 Showing differences in `JSON` mode
 
 ```
-json-cli info tests/assets/original.json tests/assets/new.json --with-paths --pretty
+json-cli diff-info tests/assets/original.json tests/assets/new.json --with-paths --pretty
 {
     "addedCnt": 4,
     "modifiedCnt": 4,
@@ -186,4 +207,99 @@ json-cli info tests/assets/original.json tests/assets/new.json --with-paths --pr
         "/key4/0/b"
     ]
 }
+```
+
+#### Pretty-print JSON document
+
+```
+json-cli pretty-print --help
+v1.3.0 json-cli pretty-print
+JSON CLI tool, https://github.com/swaggest/json-cli
+Pretty print JSON document
+Usage:
+   json-cli pretty-print <path>
+   path   Path to JSON/YAML file
+
+Options:
+   --output <output>   Path to output result, default STDOUT
+   --to-yaml           Output in YAML format
+```
+
+#### Minify JSON document
+
+```
+json-cli minify --help
+v1.3.0 json-cli minify
+JSON CLI tool, https://github.com/swaggest/json-cli
+Minify JSON document
+Usage:
+   json-cli minify <path>
+   path   Path to JSON/YAML file
+
+Options:
+   --output <output>   Path to output result, default STDOUT
+```
+
+#### Replace values in JSON document
+
+```
+json-cli replace --help
+v1.3.0 json-cli replace
+JSON CLI tool, https://github.com/swaggest/json-cli
+Minify JSON document
+Usage:
+   json-cli replace <path> <search> <replace>
+   path      Path to JSON/YAML file
+   search    Search JSON value
+   replace   Replace JSON value
+
+Options:
+   --path-filter <pathFilter>   JSON path filter regex, example "/definitions/.*/properties/deletedAt"
+```
+
+Example:
+
+```
+json-cli replace swagger.json '{"type": "string","format": "date-time"}' '{"type": "string","format": "date-time","x-nullable":true}' --path-filter '/definitions/.*/properties/deletedAt' --output swagger-fixed.json
+```
+
+#### Resolve `JSON Pointer` to a value from document
+
+```
+json-cli resolve --help
+v1.3.0 json-cli resolve
+JSON CLI tool, https://github.com/swaggest/json-cli
+Usage:
+   json-cli resolve [path] [pointer]
+   path      Path to JSON/YAML file
+   pointer   JSON Pointer, example /key4/1/a
+```
+
+Example:
+
+```
+json-cli resolve tests/assets/original.json /key4/1
+{"a":2,"b":false}
+```
+
+#### Resolve `JSON Pointer` to a position in JSON file (line:col)
+
+```
+json-cli resolve-pos --help
+v1.3.0 json-cli resolve-pos
+JSON CLI tool, https://github.com/swaggest/json-cli
+Usage:
+   json-cli resolve-pos [path] [pointer]
+   path      Path to JSON file
+   pointer   JSON Pointer, example /key4/1/a
+
+Options:
+   --dump-all    Dump all pointer positions from JSON
+```
+
+Example:
+
+```
+json-cli resolve-pos tests/assets/original.json /key4/1
+19:9
 ```

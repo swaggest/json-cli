@@ -5,7 +5,7 @@ namespace Swaggest\JsonCli;
 
 use Yaoi\Command;
 
-class Diff extends Base
+class Diff extends BaseDiff
 {
     public $prettyShort;
 

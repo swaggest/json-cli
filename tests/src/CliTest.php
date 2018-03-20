@@ -16,7 +16,6 @@ class CliTest extends \PHPUnit_Framework_TestCase
     {
         $d = new Apply();
         $d->pretty = true;
-        $d->rearrangeArrays = true;
         $d->basePath = __DIR__ . '/../../tests/assets/original.json';
         $d->patchPath = __DIR__ . '/../../tests/assets/patch.json';
         $d->setResponse(new Response());

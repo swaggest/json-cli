@@ -24,41 +24,21 @@ class Apply extends Base
             ->setDescription('Path to JSON patch file');
         $options->basePath = Command\Option::create()->setType()->setIsUnnamed()
             ->setDescription('Path to JSON base file');
+
         parent::setUpDefinition($definition, $options);
+
         $definition->description = 'Apply patch to base json document, output to STDOUT';
         $options->tolerateErrors = Command\Option::create()
             ->setDescription('Continue on error');
-        unset($options->originalPath);
-        unset($options->newPath);
-
     }
 
     public function performAction()
     {
-        if (!file_exists($this->patchPath)) {
-            $this->response->error('File not found: ' . $this->patchPath);
-            return;
-        }
-        if (!file_exists($this->basePath)) {
-            $this->response->error('File not found: ' . $this->basePath);
-            return;
-        }
-
-        $patchJson = file_get_contents($this->patchPath);
-        if (!$patchJson) {
-            $this->response->error('Unable to read ' . $this->patchPath);
-            return;
-        }
-
-        $baseJson = file_get_contents($this->basePath);
-        if (!$baseJson) {
-            $this->response->error('Unable to read ' . $this->basePath);
-            return;
-        }
+        $patchJson = $this->readData($this->patchPath);
+        $base = $this->readData($this->basePath);
 
         try {
-            $patch = JsonPatch::import(json_decode($patchJson));
-            $base = json_decode($baseJson);
+            $patch = JsonPatch::import($patchJson);
             $errors = $patch->apply($base, !$this->tolerateErrors);
             foreach ($errors as $error) {
                 $this->response->error($error->getMessage());

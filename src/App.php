@@ -14,6 +14,8 @@ class App extends Command\Application
     public $prettyPrint;
     public $minify;
     public $replace;
+    public $resolve;
+    public $resolvePos;
 
     /**
      * @param Definition $definition
@@ -22,7 +24,7 @@ class App extends Command\Application
     static function setUpCommands(Definition $definition, $commandDefinitions)
     {
         $definition->name = 'json-cli';
-        $definition->version = 'v1.2.3';
+        $definition->version = 'v1.3.0';
         $definition->description = 'JSON CLI tool, https://github.com/swaggest/json-cli';
 
         $commandDefinitions->diff = Diff::definition();
@@ -32,5 +34,7 @@ class App extends Command\Application
         $commandDefinitions->prettyPrint = PrettyPrint::definition();
         $commandDefinitions->minify = Minify::definition();
         $commandDefinitions->replace = Replace::definition();
+        $commandDefinitions->resolve = Resolve::definition();
+        $commandDefinitions->resolvePos = ResolvePos::definition();
     }
 }
