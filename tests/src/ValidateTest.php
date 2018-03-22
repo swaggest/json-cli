@@ -18,8 +18,8 @@ class ValidateTest extends \PHPUnit_Framework_TestCase
         $d->performAction();
         $res = ob_get_clean();
 
-        $this->assertSame(
-            'Data is valid' . "\n",
+        $this->assertContains(
+            'Data is valid',
             $res
         );
 
