@@ -16,6 +16,7 @@ class App extends Command\Application
     public $replace;
     public $resolve;
     public $resolvePos;
+    public $validateSchema;
 
     /**
      * @param Definition $definition
@@ -24,7 +25,7 @@ class App extends Command\Application
     static function setUpCommands(Definition $definition, $commandDefinitions)
     {
         $definition->name = 'json-cli';
-        $definition->version = 'v1.3.0';
+        $definition->version = 'v1.4.0';
         $definition->description = 'JSON CLI tool, https://github.com/swaggest/json-cli';
 
         $commandDefinitions->diff = Diff::definition();
@@ -36,5 +37,6 @@ class App extends Command\Application
         $commandDefinitions->replace = Replace::definition();
         $commandDefinitions->resolve = Resolve::definition();
         $commandDefinitions->resolvePos = ResolvePos::definition();
+        $commandDefinitions->validateSchema = ValidateSchema::definition();
     }
 }

@@ -12,6 +12,10 @@ abstract class Base extends Command
     public $toYaml;
     public $output;
 
+    /**
+     * @param Command\Definition $definition
+     * @param \stdClass|static $options
+     */
     static function setUpDefinition(Command\Definition $definition, $options)
     {
         $options->pretty = Command\Option::create()
@@ -36,7 +40,7 @@ abstract class Base extends Command
             die(1);
         }
         if (substr($path, -5) === '.yaml' || substr($path, -4) === '.yml') {
-            $jsonData = Yaml::parse($fileData, Yaml::PARSE_OBJECT);
+            $jsonData = Yaml::parse($fileData, Yaml::PARSE_OBJECT + Yaml::PARSE_OBJECT_FOR_MAP);
         } else {
             $jsonData = json_decode($fileData);
         }

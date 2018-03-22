@@ -16,6 +16,7 @@ A CLI for finding unordered diff between two `JSON` documents (based on [`swagge
  * To convert YAML to JSON and vice versa.
  * To resolve `JSON Pointer` to data.
  * To resolve `JSON Pointer` to file position.
+ * To validate JSON data against [`JSON Schema`](http://json-schema.org/)
 
 ## Installation
 
@@ -302,4 +303,26 @@ Example:
 ```
 json-cli resolve-pos tests/assets/original.json /key4/1
 19:9
+```
+
+#### Validate JSON document against `JSON Schema`
+
+```
+json-cli validate-schema --help
+v1.4.0 json-cli validate-schema
+JSON CLI tool, https://github.com/swaggest/json-cli
+Usage:
+   json-cli validate-schema <data> [schema]
+   data     Path to data (JSON/YAML)
+   schema   Path to schema, default JSON Schema
+```
+
+Example:
+```
+json-cli validate-schema tests/assets/sample-data.json tests/assets/sample-schema.json
+Data is invalid
+No valid results for oneOf {
+ 0: String expected, 5 received at #->oneOf[0]
+ 1: Value more than 10 expected, 5 received at #->oneOf[1]->$ref[#/definitions/int10plus]
+}
 ```

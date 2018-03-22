@@ -13,7 +13,8 @@
     "swaggest/json-diff": "^3.4.0",
     "php-yaoi/php-yaoi": "^1",
     "symfony/yaml": "^3",
-    "salsify/json-streaming-parser": "^6.0"
+    "salsify/json-streaming-parser": "^6.0",
+    "swaggest/json-schema": "^0.11.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.8.35",
