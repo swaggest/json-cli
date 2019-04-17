@@ -29,6 +29,24 @@ class CliTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testApplyMerge()
+    {
+        $d = new Apply();
+        $d->pretty = true;
+        $d->basePath = __DIR__ . '/../../tests/assets/original.json';
+        $d->patchPath = __DIR__ . '/../../tests/assets/merge-patch.json';
+        $d->merge = true;
+        $d->setResponse(new Response());
+        ob_start();
+        $d->performAction();
+        $res = ob_get_clean();
+        $this->assertSame(
+            file_get_contents(__DIR__ . '/../../tests/assets/rearranged.json'),
+            str_replace("\r", '', $res)
+        );
+
+    }
+
     public function testDiff()
     {
         $d = new Diff();
@@ -42,6 +60,24 @@ class CliTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
         $this->assertSame(
             file_get_contents(__DIR__ . '/../../tests/assets/patch.json'),
+            str_replace("\r", '', $res)
+        );
+    }
+
+    public function testDiffMerge()
+    {
+        $d = new Diff();
+        $d->pretty = true;
+        $d->rearrangeArrays = true;
+        $d->merge = true;
+        $d->originalPath = __DIR__ . '/../../tests/assets/original.json';
+        $d->newPath = __DIR__ . '/../../tests/assets/new.json';
+        $d->setResponse(new Response());
+        ob_start();
+        $d->performAction();
+        $res = ob_get_clean();
+        $this->assertSame(
+            file_get_contents(__DIR__ . '/../../tests/assets/merge-patch.json'),
             str_replace("\r", '', $res)
         );
     }

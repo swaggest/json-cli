@@ -1,0 +1,22 @@
+{
+    "key1": [
+        5
+    ],
+    "key2": null,
+    "key3": {
+        "sub0": null,
+        "sub1": "c",
+        "sub2": false,
+        "sub3": 0
+    },
+    "key4": {
+        "1": {
+            "b": null,
+            "c": false
+        },
+        "2": {
+            "c": 1
+        }
+    },
+    "key5": "wat"
+}

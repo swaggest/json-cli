@@ -3,6 +3,7 @@
 namespace Swaggest\JsonCli;
 
 use Swaggest\JsonDiff\Exception;
+use Swaggest\JsonDiff\JsonMergePatch;
 use Swaggest\JsonDiff\JsonPatch;
 use Yaoi\Command;
 use Yaoi\Command\Definition;
@@ -13,6 +14,7 @@ class Apply extends Base
     public $basePath;
     public $isURIFragmentId = false;
     public $tolerateErrors;
+    public $merge;
 
     /**
      * @param Definition $definition
@@ -24,6 +26,8 @@ class Apply extends Base
             ->setDescription('Path to JSON patch file');
         $options->basePath = Command\Option::create()->setType()->setIsUnnamed()
             ->setDescription('Path to JSON base file');
+        $options->merge = Command\Option::create()
+            ->setDescription('Apply JSON merge patch (RFC 7386), by default JSON patch (RFC 6902) is expected');
 
         parent::setUpDefinition($definition, $options);
 
@@ -38,10 +42,14 @@ class Apply extends Base
         $base = $this->readData($this->basePath);
 
         try {
-            $patch = JsonPatch::import($patchJson);
-            $errors = $patch->apply($base, !$this->tolerateErrors);
-            foreach ($errors as $error) {
-                $this->response->error($error->getMessage());
+            if ($this->merge) {
+                JsonMergePatch::apply($base, $patchJson);
+            } else {
+                $patch = JsonPatch::import($patchJson);
+                $errors = $patch->apply($base, !$this->tolerateErrors);
+                foreach ($errors as $error) {
+                    $this->response->error($error->getMessage());
+                }
             }
             $this->out = $base;
         } catch (Exception $e) {

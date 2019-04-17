@@ -8,6 +8,7 @@ use Yaoi\Command;
 class Diff extends BaseDiff
 {
     public $prettyShort;
+    public $merge;
 
     /**
      * @param Command\Definition $definition
@@ -17,6 +18,8 @@ class Diff extends BaseDiff
     {
         parent::setUpDefinition($definition, $options);
         $definition->description = 'Make patch from two json documents, output to STDOUT';
+        $options->merge = Command\Option::create()
+            ->setDescription('Make JSON merge patch (RFC 7386), by default JSON patch (RFC 6902) is created');
         $options->prettyShort = Command\Option::create()
             ->setDescription('Pretty short format');
     }
@@ -29,9 +32,13 @@ class Diff extends BaseDiff
             return;
         }
 
-        $this->out = $this->diff->getPatch();
+        if ($this->merge) {
+            $this->out = $outJson = $this->diff->getMergePatch();
+        } else {
+            $this->out = $this->diff->getPatch();
+            $outJson = $this->out->jsonSerialize();
+        }
 
-        $outJson = $this->out->jsonSerialize();
         if ($this->prettyShort && !empty($outJson)) {
             $out = '[';
             foreach ($outJson as $item) {
