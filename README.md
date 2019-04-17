@@ -13,7 +13,7 @@ A CLI for finding unordered diff between two `JSON` documents (based on [`swagge
  * To detect breaking changes by analyzing removals and changes from original `JSON`.
  * To keep original order of object sets (for example `swagger.json` [parameters](https://swagger.io/docs/specification/describing-parameters/) list).
  * To make and apply JSON Patches, specified in [RFC 6902](http://tools.ietf.org/html/rfc6902) from the IETF.
- * To convert YAML to JSON and vice versa.
+ * To convert between YAML/JSON/PHP serialization.
  * To resolve `JSON Pointer` to data.
  * To resolve `JSON Pointer` to file position.
  * To validate JSON data against [`JSON Schema`](http://json-schema.org/)
@@ -41,6 +41,11 @@ Usage:
             Allowed values: diff, apply, rearrange, diff-info, pretty-print, minify, replace, resolve,
             resolve-pos
 ```
+
+Input paths can be .json/.yaml/.yml/.serialized files, file format is detected by file extension:
+* `.json` JSON
+* `.yaml`, `.yml` YAML
+* `.serialized` PHP serialization format
 
 #### Diff, make `JSON Patch` from two documents
 
@@ -210,20 +215,21 @@ json-cli diff-info tests/assets/original.json tests/assets/new.json --with-paths
 }
 ```
 
-#### Pretty-print JSON document
+#### Pretty-print JSON document or convert between formats
 
 ```
 json-cli pretty-print --help
-v1.3.0 json-cli pretty-print
+v1.4.1 json-cli pretty-print
 JSON CLI tool, https://github.com/swaggest/json-cli
 Pretty print JSON document
-Usage:
+Usage: 
    json-cli pretty-print <path>
    path   Path to JSON/YAML file
 
-Options:
+Options: 
    --output <output>   Path to output result, default STDOUT
    --to-yaml           Output in YAML format
+   --to-serialized     Output in PHP serialized format
 ```
 
 #### Minify JSON document

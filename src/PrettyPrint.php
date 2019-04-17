@@ -17,9 +17,9 @@ class PrettyPrint extends Base
     static function setUpDefinition(Definition $definition, $options)
     {
         $options->path = Command\Option::create()->setIsUnnamed()->setIsRequired()
-            ->setDescription('Path to JSON/YAML file');
+            ->setDescription('Path to .json/.yaml/.yml/.serialized file');
         parent::setUpDefinition($definition, $options);
-        $definition->description = 'Pretty print JSON document';
+        $definition->description = 'Pretty print/convert document';
         unset($options->pretty);
     }
 

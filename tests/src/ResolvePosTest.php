@@ -19,8 +19,8 @@ class ResolvePosTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
 
         $this->assertSame(
-            "20:15\n",
-            $res
+            "20:15",
+            trim($res)
         );
     }
 }
