@@ -219,7 +219,7 @@ json-cli diff-info tests/assets/original.json tests/assets/new.json --with-paths
 
 ```
 json-cli pretty-print --help
-v1.4.1 json-cli pretty-print
+v1.4.2 json-cli pretty-print
 JSON CLI tool, https://github.com/swaggest/json-cli
 Pretty print JSON document
 Usage: 

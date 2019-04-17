@@ -25,7 +25,7 @@ class App extends Command\Application
     static function setUpCommands(Definition $definition, $commandDefinitions)
     {
         $definition->name = 'json-cli';
-        $definition->version = 'v1.4.1';
+        $definition->version = 'v1.4.2';
         $definition->description = 'JSON CLI tool, https://github.com/swaggest/json-cli';
 
         $commandDefinitions->diff = Diff::definition();
