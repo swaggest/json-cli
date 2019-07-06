@@ -15,7 +15,7 @@ type ComponentsSchemasMessagingReaderReads struct {
 	Reads          []ComponentsSchemasReadRead `json:"reads,omitempty"`
 	Country        string                      `json:"country,omitempty"`         // Country
 	ReaderID       int64                       `json:"reader_id,omitempty"`
-	HfWeek         string                      `json:"hf_week,omitempty"`         // Week
+	Week           string                      `json:"week,omitempty"`            // Week
 	SubscriptionID int64                       `json:"subscription_id,omitempty"`
 }
 

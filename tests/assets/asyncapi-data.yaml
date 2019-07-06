@@ -77,7 +77,7 @@ components:
         reader_id:
           format: int32
           type: integer
-        hf_week:
+        week:
           $ref: '#/components/schemas/Week'
         subscription_id:
           format: int32
