@@ -16,13 +16,13 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
 
         $this->assertSame(
-            file_get_contents(__DIR__ . '/../../tests/assets/go/swagger-default/entities.go'),
+            file_get_contents(__DIR__ . '/../../tests/assets/go/swagger/entities.go'),
             $res
         );
 
     }
 
-    public function testAdvanced() {
+    public function testSwagger() {
         $d = new GenGo();
         $d->schema = __DIR__ . '/../../tests/assets/swagger-schema.json';
         $d->ptrInSchema = '#/definitions/info';
@@ -35,7 +35,7 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
 
         $this->assertSame(
-            file_get_contents(__DIR__ . '/../../tests/assets/go/swagger-advanced/entities.go'),
+            file_get_contents(__DIR__ . '/../../tests/assets/go/swagger/entities.go'),
             $res
         );
 
@@ -54,7 +54,7 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
 
         $this->assertSame(
-            file_get_contents(__DIR__ . '/../../tests/assets/go/swagger-advanced/entities.go'),
+            file_get_contents(__DIR__ . '/../../tests/assets/go/asyncapi/entities.go'),
             $res
         );
 
