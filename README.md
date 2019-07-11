@@ -355,7 +355,8 @@ Options:
    --keep-parent-in-property-names    Keep parent prefix in property name, removed by default               
 ```
 
-Examples:
+Example:
+
 ```
 json-cli gen-go http://json-schema.org/learn/examples/address.schema.json
 ```
@@ -381,6 +382,7 @@ type Structure struct {
 }
 ```
 
+Advanced example: 
 
 ```
 json-cli gen-go "https://raw.githubusercontent.com/asyncapi/asyncapi/2.0.0-rc1/examples/1.2.0/streetlights.yml" \
