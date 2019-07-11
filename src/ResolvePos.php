@@ -3,6 +3,7 @@
 namespace Swaggest\JsonCli;
 
 
+use JsonStreamingParser\Parser;
 use Swaggest\JsonDiff\Exception;
 use Swaggest\JsonDiff\JsonPointer;
 use Yaoi\Command;
@@ -32,10 +33,16 @@ class ResolvePos extends Command
     {
         $listener = new FilePosition\PositionResolver();
         $stream = fopen($this->path, 'r');
+        if ($stream === false) {
+            $this->response->error('Failed to open ' . $this->path);
+            die(1);
+        }
         try {
-            $parser = new \JsonStreamingParser\Parser($stream, $listener);
-            $parser->parse();
-            fclose($stream);
+            if ($stream !== false) {
+                $parser = new Parser($stream, $listener);
+                $parser->parse();
+                fclose($stream);
+            }
         } catch (\Exception $e) {
             fclose($stream);
             $this->response->error($e->getMessage());

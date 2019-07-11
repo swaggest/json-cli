@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b08ffad489be4382e01c137104fe0dab",
+    "content-hash": "225edfd56aae8072fcb7f70ab6ee5734",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -96,6 +96,53 @@
             "time": "2016-09-17T00:15:18+00:00"
         },
         {
+            "name": "psr/log",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2018-11-20T15:27:04+00:00"
+        },
+        {
             "name": "salsify/json-streaming-parser",
             "version": "v7.0",
             "source": {
@@ -153,17 +200,112 @@
             "time": "2018-03-29T00:35:18+00:00"
         },
         {
-            "name": "swaggest/json-diff",
-            "version": "v3.5.0",
+            "name": "swaggest/code-builder",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/swaggest/json-diff.git",
-                "reference": "dadb65fbc6888c9066c9eb167a98a721eb0f63a1"
+                "url": "https://github.com/swaggest/code-builder.git",
+                "reference": "08fd7f2d8b4e7c52a37153abd31c014dab12351b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/dadb65fbc6888c9066c9eb167a98a721eb0f63a1",
-                "reference": "dadb65fbc6888c9066c9eb167a98a721eb0f63a1",
+                "url": "https://api.github.com/repos/swaggest/code-builder/zipball/08fd7f2d8b4e7c52a37153abd31c014dab12351b",
+                "reference": "08fd7f2d8b4e7c52a37153abd31c014dab12351b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "php-yaoi/php-yaoi": "*",
+                "psr/log": "^1.0.1"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "0.1.2",
+                "phpunit/phpunit": "4.8.23"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Swaggest\\CodeBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Viacheslav Poturaev",
+                    "email": "vearutop@gmail.com",
+                    "homepage": "https://github.com/vearutop"
+                }
+            ],
+            "description": "GO code generation library",
+            "homepage": "https://github.com/swaggest/code-builder",
+            "keywords": [
+                "library"
+            ],
+            "time": "2018-05-02T09:13:55+00:00"
+        },
+        {
+            "name": "swaggest/go-code-builder",
+            "version": "v0.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swaggest/go-code-builder.git",
+                "reference": "2b1e7967e12a974a3ee81a86c4dfa9839cc60d87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/2b1e7967e12a974a3ee81a86c4dfa9839cc60d87",
+                "reference": "2b1e7967e12a974a3ee81a86c4dfa9839cc60d87",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=5.5.0",
+                "phplang/scope-exit": "^1.0",
+                "swaggest/code-builder": "^0.3.1|dev-master",
+                "swaggest/json-schema": "^0.12.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.36"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Swaggest\\GoCodeBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Viacheslav Poturaev",
+                    "email": "vearutop@gmail.com",
+                    "homepage": "https://github.com/vearutop"
+                }
+            ],
+            "description": "GO code generation library",
+            "homepage": "https://github.com/swaggest/go-code-builder",
+            "keywords": [
+                "library"
+            ],
+            "time": "2019-07-11T13:16:08+00:00"
+        },
+        {
+            "name": "swaggest/json-diff",
+            "version": "v3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swaggest/json-diff.git",
+                "reference": "53c412ad8e3fc1293d4e6fdf06f7839698ad897d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/53c412ad8e3fc1293d4e6fdf06f7839698ad897d",
+                "reference": "53c412ad8e3fc1293d4e6fdf06f7839698ad897d",
                 "shasum": ""
             },
             "require": {
@@ -191,34 +333,32 @@
                 }
             ],
             "description": "JSON diff/rearrange/patch/pointer library for PHP",
-            "time": "2018-09-20T15:30:09+00:00"
+            "time": "2019-04-25T04:15:41+00:00"
         },
         {
             "name": "swaggest/json-schema",
-            "version": "v0.12.8",
+            "version": "v0.12.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-json-schema.git",
-                "reference": "def5ca5f42decd2a7c396d6199f40356db8fbc6e"
+                "reference": "e4a5429c40bbb16c5defddf2d0ef029e38805002"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/def5ca5f42decd2a7c396d6199f40356db8fbc6e",
-                "reference": "def5ca5f42decd2a7c396d6199f40356db8fbc6e",
+                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/e4a5429c40bbb16c5defddf2d0ef029e38805002",
+                "reference": "e4a5429c40bbb16c5defddf2d0ef029e38805002",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
+                "ext-mbstring": "*",
                 "php": ">=5.4",
                 "phplang/scope-exit": "^1.0",
-                "swaggest/json-diff": "^3.4.2"
+                "swaggest/json-diff": "^3.5.1"
             },
             "require-dev": {
-                "codeclimate/php-test-reporter": "^0.4.0",
                 "phpunit/php-code-coverage": "2.2.4",
-                "phpunit/phpunit": "4.8.35",
-                "swaggest/code-builder": "dev-master#e0c5c0612fd241d2d120e5ddef91cda9edc208ee",
-                "swaggest/php-code-builder": "dev-master#3e643924445eb0f8d13dd011a57a42ce75629892"
+                "phpunit/phpunit": "4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -237,7 +377,54 @@
                 }
             ],
             "description": "High definition PHP structures with JSON-schema based validation",
-            "time": "2019-04-16T16:06:18+00:00"
+            "time": "2019-06-20T01:18:06+00:00"
+        },
+        {
+            "name": "swaggest/php-code-builder",
+            "version": "v0.2.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swaggest/php-code-builder.git",
+                "reference": "51b71e8e7ea48792c9948a3ce88ef84af91d8b89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/51b71e8e7ea48792c9948a3ce88ef84af91d8b89",
+                "reference": "51b71e8e7ea48792c9948a3ce88ef84af91d8b89",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=5.5.0",
+                "swaggest/code-builder": "^0.3.1",
+                "swaggest/json-schema": "^0.12.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.36"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Swaggest\\PhpCodeBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Viacheslav Poturaev",
+                    "email": "vearutop@gmail.com",
+                    "homepage": "https://github.com/vearutop"
+                }
+            ],
+            "description": "Swaggest JSON-schema enabled PHP code builder",
+            "homepage": "https://github.com/swaggest/php-code-builder",
+            "keywords": [
+                "library"
+            ],
+            "time": "2019-06-22T20:27:43+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -299,7 +486,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.26",
+            "version": "v3.4.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
@@ -605,16 +792,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "4ba436b55987b4bf311cb7c6ba82aa528aac0a06"
+                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/4ba436b55987b4bf311cb7c6ba82aa528aac0a06",
-                "reference": "4ba436b55987b4bf311cb7c6ba82aa528aac0a06",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
+                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
                 "shasum": ""
             },
             "require": {
@@ -635,8 +822,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Prophecy\\": "src/"
+                "psr-4": {
+                    "Prophecy\\": "src/Prophecy"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -664,7 +851,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2018-08-05T17:53:17+00:00"
+            "time": "2019-06-13T12:50:23+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1054,6 +1241,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-06-30T09:13:00+00:00"
         },
         {

@@ -4,6 +4,7 @@ namespace Swaggest\JsonCli;
 
 use Symfony\Component\Yaml\Yaml;
 use Yaoi\Command;
+use Yaoi\Io\Response;
 
 abstract class Base extends Command
 {
@@ -31,13 +32,19 @@ abstract class Base extends Command
 
     protected function readData($path)
     {
-        if (!file_exists($path)) {
-            $this->response->error('Unable to find ' . $path);
-            die(1);
-        }
+        return self::readJsonOrYaml($path, $this->response);
+    }
+
+    /**
+     * @param string $path
+     * @param Response $response
+     * @return mixed
+     */
+    public static function readJsonOrYaml($path, $response)
+    {
         $fileData = file_get_contents($path);
         if (!$fileData) {
-            $this->response->error('Unable to read ' . $path);
+            $response->error('Unable to read ' . $path);
             die(1);
         }
         if (substr($path, -5) === '.yaml' || substr($path, -4) === '.yml') {
@@ -50,6 +57,7 @@ abstract class Base extends Command
 
         return $jsonData;
     }
+
 
     protected function postPerform()
     {
