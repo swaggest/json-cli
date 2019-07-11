@@ -2,7 +2,6 @@
 
 namespace Swaggest\JsonCli;
 
-
 use Swaggest\GoCodeBuilder\JsonSchema\GoBuilder;
 use Swaggest\GoCodeBuilder\JsonSchema\StructHookCallback;
 use Swaggest\GoCodeBuilder\Templates\GoFile;
@@ -25,9 +24,11 @@ class GenGo extends Command
     /** @var bool */
     public $keepParentInPropertyNames = false;
     /** @var []string */
-    public $defPtr;
+    public $defPtr = ['#/definitions'];
     /** @var []string */
     public $ptrInSchema;
+
+    public $output;
 
 
     /**
@@ -36,21 +37,24 @@ class GenGo extends Command
      */
     public static function setUpDefinition(Command\Definition $definition, $options)
     {
-        $definition->description = 'Generate Go code from JSON schema, output to STDOUT';
+        $definition->description = 'Generate Go code from JSON schema';
         $options->schema = Command\Option::create()
             ->setDescription('Path to JSON schema file')->setIsUnnamed()->setIsRequired();
 
+        $options->output = Command\Option::create()
+            ->setDescription('Path to output .go file, STDOUT is used by default')->setType();
+
         $options->ptrInSchema = Command\Option::create()->setType()->setIsVariadic()
-            ->setDescription('JSON pointer to structure in in root schema, default #');
+            ->setDescription('JSON pointers to structure in in root schema, default #');
 
         $options->packageName = Command\Option::create()->setType()
             ->setDescription('Go package name, default "entities"');
 
         $options->rootName = Command\Option::create()->setType()
-            ->setDescription('Go root struct name, default "Structure"');
+            ->setDescription('Go root struct name, default "Structure", only used for # pointer');
 
         $options->defPtr = Command\Option::create()->setType()->setIsVariadic()
-            ->setDescription('Definitions pointer, default #/definitions');
+            ->setDescription('Definitions pointers to strip from symbol names, default #/definitions');
 
         $options->showConstProperties = Command\Option::create()
             ->setDescription('Show properties with constant values, hidden by default');
@@ -63,8 +67,6 @@ class GenGo extends Command
 
     public function performAction()
     {
-
-
         $dataValue = Base::readJsonOrYaml($this->schema, $this->response);
         if (!$dataValue) {
             $this->response->error('Unable to find schema in ' . $this->schema);
@@ -75,12 +77,13 @@ class GenGo extends Command
         if (empty($this->ptrInSchema)) {
             $schema = Schema::import($dataValue);
         } else {
+            $baseName = basename($this->schema);
             $skipRoot = true;
             $preloaded = new Preloaded();
-            $preloaded->setSchemaData($this->schema, $dataValue);
+            $preloaded->setSchemaData($baseName, $dataValue);
             $data = new \stdClass();
             foreach ($this->ptrInSchema as $i => $ptr) {
-                $data->oneOf[$i] = (object)[Schema::PROP_REF => $this->schema . $ptr];
+                $data->oneOf[$i] = (object)[Schema::PROP_REF => $baseName . $ptr];
             }
             $schema = Schema::import($data, new Context($preloaded));
         }
@@ -89,10 +92,19 @@ class GenGo extends Command
         $builder->options->hideConstProperties = !$this->showConstProperties;
         $builder->options->trimParentFromPropertyNames = !$this->keepParentInPropertyNames;
         if (!empty($this->defPtr)) {
+            $builder->pathToNameHook->prefixes = [];
             foreach ($this->defPtr as $defPtr) {
+                if (isset($baseName)) {
+                    $builder->pathToNameHook->prefixes[] = $baseName . $defPtr;
+                }
                 $builder->pathToNameHook->prefixes[] = $defPtr;
             }
         }
+
+        if (isset($baseName)) {
+            $builder->pathToNameHook->prefixes[] = $baseName;
+        }
+
         $builder->structCreatedHook = new StructHookCallback(function (StructDef $structDef, $path, $schema) use ($builder) {
             if ('#' === $path) {
                 $structDef->setName($this->rootName);
@@ -111,6 +123,10 @@ class GenGo extends Command
         }
         $goFile->getCode()->addSnippet($builder->getCode());
 
-        echo $goFile->render();
+        if ($this->output) {
+            file_put_contents($this->output, $goFile->render());
+        } else {
+            echo $goFile->render();
+        }
     }
 }

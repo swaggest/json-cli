@@ -11,10 +11,10 @@ import (
 	"strings"
 )
 
-// CDataDevJSONCliTestsSrcTestsAssetsSwaggerSchemaJSONDefinitionsInfo structure is generated from "C:\data\dev\json-cli\tests\src/../../tests/assets/swagger-schema.json#/definitions/info".
+// Info structure is generated from "swagger-schema.json#/definitions/info".
 //
 // General information about the API.
-type CDataDevJSONCliTestsSrcTestsAssetsSwaggerSchemaJSONDefinitionsInfo struct {
+type Info struct {
 	Title               string                 `json:"title,omitempty"`          // A unique and precise title of the API.
 	Version             string                 `json:"version,omitempty"`        // A semantic version number of the API.
 	Description         string                 `json:"description,omitempty"`    // A longer description of the API. Should be different from the title.  GitHub Flavored Markdown is allowed.
@@ -24,11 +24,11 @@ type CDataDevJSONCliTestsSrcTestsAssetsSwaggerSchemaJSONDefinitionsInfo struct {
 	MapOfAnythingValues map[string]interface{} `json:"-"`                        // Key must match pattern: ^x-
 }
 
-type marshalCDataDevJSONCliTestsSrcTestsAssetsSwaggerSchemaJSONDefinitionsInfo CDataDevJSONCliTestsSrcTestsAssetsSwaggerSchemaJSONDefinitionsInfo
+type marshalInfo Info
 
 // UnmarshalJSON decodes JSON.
-func (i *CDataDevJSONCliTestsSrcTestsAssetsSwaggerSchemaJSONDefinitionsInfo) UnmarshalJSON(data []byte) error {
-	ii := marshalCDataDevJSONCliTestsSrcTestsAssetsSwaggerSchemaJSONDefinitionsInfo(*i)
+func (i *Info) UnmarshalJSON(data []byte) error {
+	ii := marshalInfo(*i)
 
 	err := unionMap{
 		mustUnmarshal: []interface{}{&ii},
@@ -48,13 +48,13 @@ func (i *CDataDevJSONCliTestsSrcTestsAssetsSwaggerSchemaJSONDefinitionsInfo) Unm
 	if err != nil {
 		return err
 	}
-	*i = CDataDevJSONCliTestsSrcTestsAssetsSwaggerSchemaJSONDefinitionsInfo(ii)
+	*i = Info(ii)
 	return err
 }
 
 // MarshalJSON encodes JSON.
-func (i CDataDevJSONCliTestsSrcTestsAssetsSwaggerSchemaJSONDefinitionsInfo) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalCDataDevJSONCliTestsSrcTestsAssetsSwaggerSchemaJSONDefinitionsInfo(i), i.MapOfAnythingValues)
+func (i Info) MarshalJSON() ([]byte, error) {
+	return marshalUnion(marshalInfo(i), i.MapOfAnythingValues)
 }
 
 // Contact structure is generated from "#/definitions/contact".

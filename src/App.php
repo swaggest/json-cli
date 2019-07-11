@@ -39,6 +39,5 @@ class App extends Command\Application
         $commandDefinitions->resolvePos = ResolvePos::definition();
         $commandDefinitions->validateSchema = ValidateSchema::definition();
         $commandDefinitions->genGo = GenGo::definition();
-        $commandDefinitions->genPhp = GenPhp::definition();
     }
 }

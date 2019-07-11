@@ -42,10 +42,6 @@ abstract class Base extends Command
      */
     public static function readJsonOrYaml($path, $response)
     {
-        if (!file_exists($path)) {
-            $response->error('Unable to find ' . $path);
-            die(1);
-        }
         $fileData = file_get_contents($path);
         if (!$fileData) {
             $response->error('Unable to read ' . $path);

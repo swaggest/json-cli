@@ -12,7 +12,6 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         $d = new GenGo();
         $d->schema = __DIR__ . '/../../tests/assets/swagger-schema.json';
         $d->ptrInSchema = ['#/definitions/info'];
-        $d->rootName = "TheInfo";
         $d->packageName = "info";
 
         $d->setResponse(new Response());
@@ -34,6 +33,7 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         $d->defPtr = [
             'http://json-schema.org/draft-04/schema#/definitions',
             'http://json-schema.org/draft-04/schema',
+            '#/definitions',
         ];
         $d->rootName = 'AsyncAPI';
         $d->packageName = "asyncapi";
