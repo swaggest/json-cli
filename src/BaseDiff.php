@@ -12,6 +12,10 @@ abstract class BaseDiff extends Base
     public $newPath;
     public $rearrangeArrays;
 
+    /**
+     * @param Command\Definition $definition
+     * @param \stdClass|static $options
+     */
     static function setUpDefinition(Command\Definition $definition, $options)
     {
         $options->originalPath = Command\Option::create()->setIsUnnamed()->setIsRequired()

@@ -36,7 +36,7 @@ abstract class Base extends Command
     }
 
     /**
-     * @param $path
+     * @param string $path
      * @param Response $response
      * @return mixed
      */

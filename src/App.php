@@ -17,6 +17,7 @@ class App extends Command\Application
     public $resolve;
     public $resolvePos;
     public $validateSchema;
+    public $genGo;
 
     /**
      * @param Definition $definition
