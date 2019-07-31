@@ -29,6 +29,9 @@ class ResolvePos extends Command
         $options->dumpAll = Command\Option::create()->setDescription('Dump all pointer positions from JSON');
     }
 
+    /**
+     * @throws ExitCode
+     */
     public function performAction()
     {
         $listener = new FilePosition\PositionResolver();
@@ -46,7 +49,7 @@ class ResolvePos extends Command
         } catch (\Exception $e) {
             fclose($stream);
             $this->response->error($e->getMessage());
-            die(1);
+            throw new ExitCode('', 1);
         }
 
         if ($this->dumpAll) {
@@ -64,14 +67,14 @@ class ResolvePos extends Command
                 $pointer = JsonPointer::buildPath(JsonPointer::splitPath($this->pointer));
             } catch (Exception $e) {
                 $this->response->error($e->getMessage());
-                die(1);
+                throw new ExitCode('', 1);
             }
 
             if (isset($listener->resolved[$pointer])) {
                 $this->response->addContent($listener->resolved[$pointer]);
             } else {
                 $this->response->error('Pointer not found');
-                die(1);
+                throw new ExitCode('', 1);
             }
         }
 

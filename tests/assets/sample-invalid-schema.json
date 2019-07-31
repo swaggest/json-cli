@@ -1,0 +1,12 @@
+{
+  "oneOf": [
+    {"type": "invalid"},
+    {"$ref": "#/definitions/int10plus"}
+  ],
+  "definitions": {
+    "int10plus": {
+      "type": "integer",
+      "minimum": 10
+    }
+  }
+}

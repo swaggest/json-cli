@@ -77,7 +77,8 @@ class GenGo extends Command
 
         $skipRoot = false;
         if (empty($this->ptrInSchema)) {
-            $schema = Schema::import($dataValue);
+            $preloaded = new Preloaded();
+            $schema = Schema::import($dataValue, new Context($preloaded));
         } else {
             $baseName = basename($this->schema);
             $skipRoot = true;

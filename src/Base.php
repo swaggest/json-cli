@@ -39,13 +39,14 @@ abstract class Base extends Command
      * @param string $path
      * @param Response $response
      * @return mixed
+     * @throws ExitCode
      */
     public static function readJsonOrYaml($path, $response)
     {
         $fileData = file_get_contents($path);
         if (!$fileData) {
             $response->error('Unable to read ' . $path);
-            die(1);
+            throw new ExitCode('', 1);
         }
         if (substr($path, -5) === '.yaml' || substr($path, -4) === '.yml') {
             $jsonData = Yaml::parse($fileData, Yaml::PARSE_OBJECT + Yaml::PARSE_OBJECT_FOR_MAP);

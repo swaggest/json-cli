@@ -32,6 +32,9 @@ class Apply extends Base
             ->setDescription('Continue on error');
     }
 
+    /**
+     * @throws ExitCode
+     */
     public function performAction()
     {
         $patchJson = $this->readData($this->patchPath);
@@ -46,7 +49,7 @@ class Apply extends Base
             $this->out = $base;
         } catch (Exception $e) {
             $this->response->error($e->getMessage());
-            die(1);
+            throw new ExitCode('', 1);
         }
 
         $this->postPerform();
