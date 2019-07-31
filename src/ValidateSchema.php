@@ -43,7 +43,7 @@ class ValidateSchema extends Base
                 throw new ExitCode('', 1);
             }
         } else {
-            $schema = new Schema();
+            $schema = Schema::schema();
         }
 
         $data = $this->readData($this->data);
