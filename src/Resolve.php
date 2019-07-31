@@ -25,6 +25,9 @@ class Resolve extends Base
             ->setDescription('JSON Pointer, example /key4/1/a');
     }
 
+    /**
+     * @throws ExitCode
+     */
     public function performAction()
     {
         $jsonData = $this->readData($this->path);
@@ -32,7 +35,7 @@ class Resolve extends Base
             $this->out = JsonPointer::getByPointer($jsonData, $this->pointer);
         } catch (Exception $e) {
             $this->response->error($e->getMessage());
-            die(1);
+            throw new ExitCode('', 1);
         }
         $this->postPerform();
     }

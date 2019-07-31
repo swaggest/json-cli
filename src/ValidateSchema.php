@@ -24,6 +24,10 @@ class ValidateSchema extends Base
     }
 
 
+    /**
+     * @throws ExitCode
+     * @throws \Swaggest\JsonSchema\Exception
+     */
     public function performAction()
     {
         if ($this->schema) {
@@ -33,10 +37,10 @@ class ValidateSchema extends Base
             } catch (InvalidValue $e) {
                 $this->response->error('Invalid schema');
                 $this->response->addContent($e->getMessage());
-                die(1);
+                throw new ExitCode('', 1);
             } catch (\Exception $e) {
                 $this->response->error('Failed to import schema:' . $e->getMessage());
-                die(1);
+                throw new ExitCode('', 1);
             }
         } else {
             $schema = new Schema();
@@ -50,7 +54,7 @@ class ValidateSchema extends Base
         } catch (InvalidValue $exception) {
             $this->response->error('Data is invalid');
             $this->response->addContent($exception->getMessage());
-            die(1);
+            throw new ExitCode('', 1);
         }
     }
 }

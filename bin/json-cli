@@ -1,5 +1,10 @@
 #!/usr/bin/env php
 <?php
+
+use Swaggest\JsonCli\App;
+use Swaggest\JsonCli\ExitCode;
+use Yaoi\Cli\Command\Application\Runner;
+
 set_time_limit(20);
 
 foreach (array(__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php') as $file) {
@@ -9,4 +14,8 @@ foreach (array(__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoloa
     }
 }
 
-\Yaoi\Cli\Command\Application\Runner::create(new \Swaggest\JsonCli\App())->run();
+try {
+    Runner::create(new App())->run();
+} catch (ExitCode $exception) {
+    die($exception->getCode());
+}
