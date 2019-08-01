@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "225edfd56aae8072fcb7f70ab6ee5734",
+    "content-hash": "cc164b34bdddda9b43eda8b2a63e6d8d",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -201,20 +201,20 @@
         },
         {
             "name": "swaggest/code-builder",
-            "version": "v0.3.1",
+            "version": "v0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/code-builder.git",
-                "reference": "08fd7f2d8b4e7c52a37153abd31c014dab12351b"
+                "reference": "5ae06c6dd5f2d6ae38a583942ac9382f60196a25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/code-builder/zipball/08fd7f2d8b4e7c52a37153abd31c014dab12351b",
-                "reference": "08fd7f2d8b4e7c52a37153abd31c014dab12351b",
+                "url": "https://api.github.com/repos/swaggest/code-builder/zipball/5ae06c6dd5f2d6ae38a583942ac9382f60196a25",
+                "reference": "5ae06c6dd5f2d6ae38a583942ac9382f60196a25",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": ">=5.4.0",
                 "php-yaoi/php-yaoi": "*",
                 "psr/log": "^1.0.1"
             },
@@ -244,7 +244,7 @@
             "keywords": [
                 "library"
             ],
-            "time": "2018-05-02T09:13:55+00:00"
+            "time": "2019-08-01T06:33:01+00:00"
         },
         {
             "name": "swaggest/go-code-builder",
