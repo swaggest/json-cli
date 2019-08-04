@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "225edfd56aae8072fcb7f70ab6ee5734",
+    "content-hash": "caa56ced0b5e611175b4dc7d01c8408a",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -201,20 +201,20 @@
         },
         {
             "name": "swaggest/code-builder",
-            "version": "v0.3.1",
+            "version": "v0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/code-builder.git",
-                "reference": "08fd7f2d8b4e7c52a37153abd31c014dab12351b"
+                "reference": "5ae06c6dd5f2d6ae38a583942ac9382f60196a25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/code-builder/zipball/08fd7f2d8b4e7c52a37153abd31c014dab12351b",
-                "reference": "08fd7f2d8b4e7c52a37153abd31c014dab12351b",
+                "url": "https://api.github.com/repos/swaggest/code-builder/zipball/5ae06c6dd5f2d6ae38a583942ac9382f60196a25",
+                "reference": "5ae06c6dd5f2d6ae38a583942ac9382f60196a25",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": ">=5.4.0",
                 "php-yaoi/php-yaoi": "*",
                 "psr/log": "^1.0.1"
             },
@@ -244,7 +244,7 @@
             "keywords": [
                 "library"
             ],
-            "time": "2018-05-02T09:13:55+00:00"
+            "time": "2019-08-01T06:33:01+00:00"
         },
         {
             "name": "swaggest/go-code-builder",
@@ -337,16 +337,16 @@
         },
         {
             "name": "swaggest/json-schema",
-            "version": "v0.12.11",
+            "version": "v0.12.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-json-schema.git",
-                "reference": "e4a5429c40bbb16c5defddf2d0ef029e38805002"
+                "reference": "7a747571131f17b2902296fd4cdd0ee3d1be1739"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/e4a5429c40bbb16c5defddf2d0ef029e38805002",
-                "reference": "e4a5429c40bbb16c5defddf2d0ef029e38805002",
+                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/7a747571131f17b2902296fd4cdd0ee3d1be1739",
+                "reference": "7a747571131f17b2902296fd4cdd0ee3d1be1739",
                 "shasum": ""
             },
             "require": {
@@ -377,27 +377,27 @@
                 }
             ],
             "description": "High definition PHP structures with JSON-schema based validation",
-            "time": "2019-06-20T01:18:06+00:00"
+            "time": "2019-08-04T15:46:37+00:00"
         },
         {
             "name": "swaggest/php-code-builder",
-            "version": "v0.2.6",
+            "version": "v0.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-code-builder.git",
-                "reference": "51b71e8e7ea48792c9948a3ce88ef84af91d8b89"
+                "reference": "a713a225f2870fe44cca377619ad5446776ce48a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/51b71e8e7ea48792c9948a3ce88ef84af91d8b89",
-                "reference": "51b71e8e7ea48792c9948a3ce88ef84af91d8b89",
+                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/a713a225f2870fe44cca377619ad5446776ce48a",
+                "reference": "a713a225f2870fe44cca377619ad5446776ce48a",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": ">=5.5.0",
                 "swaggest/code-builder": "^0.3.1",
-                "swaggest/json-schema": "^0.12.0"
+                "swaggest/json-schema": "^0.12.13"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.8.36"
@@ -424,7 +424,7 @@
             "keywords": [
                 "library"
             ],
-            "time": "2019-06-22T20:27:43+00:00"
+            "time": "2019-08-04T22:03:04+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -486,16 +486,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.29",
+            "version": "v3.4.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "212a27b731e5bfb735679d1ffaac82bd6a1dc996"
+                "reference": "051d045c684148060ebfc9affb7e3f5e0899d40b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/212a27b731e5bfb735679d1ffaac82bd6a1dc996",
-                "reference": "212a27b731e5bfb735679d1ffaac82bd6a1dc996",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/051d045c684148060ebfc9affb7e3f5e0899d40b",
+                "reference": "051d045c684148060ebfc9affb7e3f5e0899d40b",
                 "shasum": ""
             },
             "require": {
@@ -541,7 +541,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2019-03-25T07:48:46+00:00"
+            "time": "2019-07-24T13:01:31+00:00"
         }
     ],
     "packages-dev": [

@@ -18,6 +18,7 @@ A CLI for finding unordered diff between two `JSON` documents (based on [`swagge
  * To resolve `JSON Pointer` to file position.
  * To validate JSON data against [`JSON Schema`](http://json-schema.org/).
  * To [render](#gengo) `JSON Schema` as [`Go`](http://golang.org/) structure.
+ * To [render](#genphp) `JSON Schema` as `PHP` classes.
 
 ## Installation
 
@@ -336,6 +337,8 @@ No valid results for oneOf {
 
 #### <a name="gengo"></a> Generate [`Go`](http://golang.org/) structure from `JSON Schema`.
 
+`Go` code is built using [`swaggest/go-code-builder`](http://github.com/swaggest/go-code-builder).
+
 ```
 json-cli gen-go --help
 v1.5.0 json-cli gen-go
@@ -457,5 +460,163 @@ func (i *TurnOnOffPayloadCommand) UnmarshalJSON(data []byte) error {
 
 	*i = v
 	return nil
+}
+```
+
+#### <a name="genphp"></a> Generate `PHP` classes from `JSON Schema`.
+
+`PHP` code is built using [`swaggest/php-code-builder`](http://github.com/swaggest/php-code-builder).
+
+Generated classes require [`swaggest/json-schema`](http://github.com/swaggest/php-json-schema) package.
+
+```
+json-cli gen-php --help
+v1.6.0 json-cli gen-php
+JSON CLI tool, https://github.com/swaggest/json-cli
+Generate PHP code from JSON schema
+Usage: 
+   json-cli gen-php <schema> --ns <ns> --ns-path <nsPath>
+   schema   Path to JSON schema file
+
+Options: 
+   --ns <ns>                          Namespace to use for generated classes, example \MyClasses
+   --ns-path <nsPath>                 Path to store generated classes, example ./src/MyClasses
+   --ptr-in-schema <ptrInSchema...>   JSON pointers to structure in in root schema, default #
+   --root-name <rootName>             Go root struct name, default "Structure", only used for # pointer
+   --def-ptr <defPtr...>              Definitions pointers to strip from symbol names, default #/definitions
+   --setters                          Build setters
+   --getters                          Build getters
+   --no-enum-const                    Do not create constants for enum/const values
+
+```
+
+Advanced example: 
+
+```
+mkdir ./StreetLights
+
+json-cli gen-php "https://raw.githubusercontent.com/asyncapi/asyncapi/2.0.0-rc1/examples/1.2.0/streetlights.yml" \
+    --ptr-in-schema "#/components/messages/lightMeasured/payload" "#/components/messages/turnOnOff/payload" \
+    --def-ptr "#/components/schemas" \
+    --ns MyApp\\StreetLights \
+    --ns-path ./StreetLights
+    
+cat ./StreetLights/*
+```
+
+```
+Classes are generated in /path/to/StreetLights
+
+<?php
+/**
+ * @file ATTENTION!!! The code below was carefully crafted by a mean machine.
+ * Please consider to NOT put any emotional human-generated modifications as the splendid AI will throw them away with no mercy.
+ */
+
+namespace MyApp\StreetLights;
+
+use Swaggest\JsonSchema\Constraint\Properties;
+use Swaggest\JsonSchema\Schema;
+use Swaggest\JsonSchema\Structure\ClassStructure;
+
+
+/**
+ * Built from #/components/schemas/lightMeasuredPayload
+ *  <- streetlights.yml#/components/messages/lightMeasured/payload
+ */
+class LightMeasuredPayload extends ClassStructure
+{
+    /** @var int Light intensity measured in lumens. */
+    public $lumens;
+
+    /** @var string Date and time when the message was sent. */
+    public $sentAt;
+
+    /**
+     * @param Properties|static $properties
+     * @param Schema $ownerSchema
+     */
+    public static function setUpProperties($properties, Schema $ownerSchema)
+    {
+        $properties->lumens = Schema::integer();
+        $properties->lumens->description = "Light intensity measured in lumens.";
+        $properties->lumens->minimum = 0;
+        $properties->sentAt = Schema::string();
+        $properties->sentAt->description = "Date and time when the message was sent.";
+        $properties->sentAt->format = "date-time";
+        $properties->sentAt->setFromRef('#/components/schemas/sentAt');
+        $ownerSchema->type = 'object';
+        $ownerSchema->components = (object)array(
+            'schemas' =>
+            (object)(array(
+                 'sentAt' =>
+                (object)(array(
+                     'description' => 'Date and time when the message was sent.',
+                     'type' => 'string',
+                     'format' => 'date-time',
+                )),
+            )),
+        );
+        $ownerSchema->setFromRef('streetlights.yml#/components/messages/lightMeasured/payload');
+    }
+}<?php
+/**
+ * @file ATTENTION!!! The code below was carefully crafted by a mean machine.
+ * Please consider to NOT put any emotional human-generated modifications as the splendid AI will throw them away with no mercy.
+ */
+
+namespace MyApp\StreetLights;
+
+use Swaggest\JsonSchema\Constraint\Properties;
+use Swaggest\JsonSchema\Schema;
+use Swaggest\JsonSchema\Structure\ClassStructure;
+
+
+/**
+ * Built from #/components/schemas/turnOnOffPayload
+ *  <- streetlights.yml#/components/messages/turnOnOff/payload
+ */
+class TurnOnOffPayload extends ClassStructure
+{
+    const ON = 'on';
+
+    const OFF = 'off';
+
+    /** @var string Whether to turn on or off the light. */
+    public $command;
+
+    /** @var string Date and time when the message was sent. */
+    public $sentAt;
+
+    /**
+     * @param Properties|static $properties
+     * @param Schema $ownerSchema
+     */
+    public static function setUpProperties($properties, Schema $ownerSchema)
+    {
+        $properties->command = Schema::string();
+        $properties->command->enum = array(
+            self::ON,
+            self::OFF,
+        );
+        $properties->command->description = "Whether to turn on or off the light.";
+        $properties->sentAt = Schema::string();
+        $properties->sentAt->description = "Date and time when the message was sent.";
+        $properties->sentAt->format = "date-time";
+        $properties->sentAt->setFromRef('#/components/schemas/sentAt');
+        $ownerSchema->type = 'object';
+        $ownerSchema->components = (object)array(
+            'schemas' =>
+            (object)(array(
+                 'sentAt' =>
+                (object)(array(
+                     'description' => 'Date and time when the message was sent.',
+                     'type' => 'string',
+                     'format' => 'date-time',
+                )),
+            )),
+        );
+        $ownerSchema->setFromRef('streetlights.yml#/components/messages/turnOnOff/payload');
+    }
 }
 ```

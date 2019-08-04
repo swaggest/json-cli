@@ -18,6 +18,7 @@ class App extends Command\Application
     public $resolvePos;
     public $validateSchema;
     public $genGo;
+    public $genPhp;
 
     /**
      * @param Definition $definition
@@ -26,7 +27,7 @@ class App extends Command\Application
     static function setUpCommands(Definition $definition, $commandDefinitions)
     {
         $definition->name = 'json-cli';
-        $definition->version = 'v1.5.0';
+        $definition->version = 'v1.6.0';
         $definition->description = 'JSON CLI tool, https://github.com/swaggest/json-cli';
 
         $commandDefinitions->diff = Diff::definition();
@@ -40,5 +41,6 @@ class App extends Command\Application
         $commandDefinitions->resolvePos = ResolvePos::definition();
         $commandDefinitions->validateSchema = ValidateSchema::definition();
         $commandDefinitions->genGo = GenGo::definition();
+        $commandDefinitions->genPhp = GenPhp::definition();
     }
 }
