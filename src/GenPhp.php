@@ -154,6 +154,10 @@ class GenPhp extends Command
             $app->addClass($class);
         });
 
+        if (!$schema instanceof Schema) {
+            $this->response->error('failed to assert Schema type, ' . get_class($schema) . ' received');
+            throw new ExitCode('', 1);
+        }
         $builder->getType($schema);
         $app->store($appPath);
         $this->response->success("Classes are generated in " . $appPath);

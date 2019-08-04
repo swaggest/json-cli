@@ -15,9 +15,9 @@
     "php-yaoi/php-yaoi": "^1",
     "symfony/yaml": "^3",
     "salsify/json-streaming-parser": "^7.0",
-    "swaggest/json-schema": "^0.12.0",
+    "swaggest/json-schema": "^0.12.13",
     "swaggest/go-code-builder": "^0.4.5",
-    "swaggest/php-code-builder": "^0.2.6",
+    "swaggest/php-code-builder": "^0.2.8",
     "swaggest/code-builder": "^0.3.2"
   },
   "require-dev": {
