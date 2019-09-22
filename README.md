@@ -6,6 +6,7 @@ A CLI for finding unordered diff between two `JSON` documents (based on [`swagge
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/swaggest/json-cli/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-cli/?branch=master)
 [![Code Climate](https://codeclimate.com/github/swaggest/json-cli/badges/gpa.svg)](https://codeclimate.com/github/swaggest/json-cli)
 [![Code Coverage](https://scrutinizer-ci.com/g/swaggest/json-cli/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-cli/code-structure/master/code-coverage)
+[![Image Size](https://images.microbadger.com/badges/image/swaggest/json-cli.svg)](https://microbadger.com/images/swaggest/json-cli)
 
 ## Purpose
 
@@ -21,6 +22,15 @@ A CLI for finding unordered diff between two `JSON` documents (based on [`swagge
  * To [render](#genphp) `JSON Schema` as `PHP` classes.
 
 ## Installation
+
+### Docker
+
+```
+docker run swaggest/json-cli json-cli --help
+v1.6.1 json-cli
+JSON CLI tool, https://github.com/swaggest/json-cli
+...
+```
 
 ### Composer
 
