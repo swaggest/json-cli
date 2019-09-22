@@ -23,7 +23,7 @@ class Components extends ClassStructure
     /** @var Message[] JSON objects describing the messages being consumed and produced by the API. */
     public $messages;
 
-    /** @var mixed */
+    /** @var Reference[]|UserPassword[]|ApiKey[]|X509[]|SymmetricEncryption[]|AsymmetricEncryption[]|NonBearerHTTPSecurityScheme[]|BearerHTTPSecurityScheme[]|APIKeyHTTPSecurityScheme[] */
     public $securitySchemes;
 
     /** @var Parameter[] JSON objects describing re-usable topic parameters. */
@@ -44,28 +44,28 @@ class Components extends ClassStructure
         $properties->messages->description = "JSON objects describing the messages being consumed and produced by the API.";
         $properties->messages->setFromRef('#/definitions/messages');
         $properties->securitySchemes = Schema1::object();
-        $patternProperty = new Schema1();
-        $patternProperty->oneOf[0] = Reference::schema();
-        $patternPropertyOneOf1 = new Schema1();
-        $patternPropertyOneOf1->oneOf[0] = UserPassword::schema();
-        $patternPropertyOneOf1->oneOf[1] = ApiKey::schema();
-        $patternPropertyOneOf1->oneOf[2] = X509::schema();
-        $patternPropertyOneOf1->oneOf[3] = SymmetricEncryption::schema();
-        $patternPropertyOneOf1->oneOf[4] = AsymmetricEncryption::schema();
-        $patternPropertyOneOf1OneOf5 = new Schema1();
-        $patternPropertyOneOf1OneOf5->oneOf[0] = NonBearerHTTPSecurityScheme::schema();
-        $patternPropertyOneOf1OneOf5->oneOf[1] = BearerHTTPSecurityScheme::schema();
-        $patternPropertyOneOf1OneOf5->oneOf[2] = APIKeyHTTPSecurityScheme::schema();
-        $patternPropertyOneOf1OneOf5->setFromRef('#/definitions/HTTPSecurityScheme');
-        $patternPropertyOneOf1->oneOf[5] = $patternPropertyOneOf1OneOf5;
-        $patternPropertyOneOf1->setFromRef('#/definitions/SecurityScheme');
-        $patternProperty->oneOf[1] = $patternPropertyOneOf1;
-        $properties->securitySchemes->setPatternProperty('^[a-zA-Z0-9\\.\\-_]+$', $patternProperty);
+        $aZAZ09 = new Schema1();
+        $aZAZ09->oneOf[0] = Reference::schema();
+        $aZAZ09OneOf1 = new Schema1();
+        $aZAZ09OneOf1->oneOf[0] = UserPassword::schema();
+        $aZAZ09OneOf1->oneOf[1] = ApiKey::schema();
+        $aZAZ09OneOf1->oneOf[2] = X509::schema();
+        $aZAZ09OneOf1->oneOf[3] = SymmetricEncryption::schema();
+        $aZAZ09OneOf1->oneOf[4] = AsymmetricEncryption::schema();
+        $aZAZ09OneOf1OneOf5 = new Schema1();
+        $aZAZ09OneOf1OneOf5->oneOf[0] = NonBearerHTTPSecurityScheme::schema();
+        $aZAZ09OneOf1OneOf5->oneOf[1] = BearerHTTPSecurityScheme::schema();
+        $aZAZ09OneOf1OneOf5->oneOf[2] = APIKeyHTTPSecurityScheme::schema();
+        $aZAZ09OneOf1OneOf5->setFromRef('#/definitions/HTTPSecurityScheme');
+        $aZAZ09OneOf1->oneOf[5] = $aZAZ09OneOf1OneOf5;
+        $aZAZ09OneOf1->setFromRef('#/definitions/SecurityScheme');
+        $aZAZ09->oneOf[1] = $aZAZ09OneOf1;
+        $properties->securitySchemes->setPatternProperty('^[a-zA-Z0-9\\.\\-_]+$', $aZAZ09);
         $properties->parameters = Schema1::object();
         $properties->parameters->additionalProperties = Parameter::schema();
         $properties->parameters->description = "JSON objects describing re-usable topic parameters.";
         $properties->parameters->setFromRef('#/definitions/parameters');
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema1::OBJECT;
         $ownerSchema->additionalProperties = false;
         $ownerSchema->description = "An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.";
         $ownerSchema->setFromRef('#/definitions/components');

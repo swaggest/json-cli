@@ -28,9 +28,9 @@ class Reference extends ClassStructure
         $properties->ref = Schema::string();
         $properties->ref->format = "uri";
         $ownerSchema->addPropertyMapping('$ref', self::names()->ref);
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema::OBJECT;
         $ownerSchema->required = array(
-            0 => '$ref',
+            '$ref',
         );
         $ownerSchema->setFromRef('#/definitions/Reference');
     }

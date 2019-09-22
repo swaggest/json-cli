@@ -53,13 +53,13 @@ class BearerHTTPSecurityScheme extends ClassStructure
             self::HTTP,
         );
         $properties->description = Schema::string();
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema::OBJECT;
         $ownerSchema->additionalProperties = false;
-        $patternProperty = new Schema();
-        $ownerSchema->setPatternProperty('^x-', $patternProperty);
+        $x = new Schema();
+        $ownerSchema->setPatternProperty('^x-', $x);
         $ownerSchema->required = array(
-            0 => 'type',
-            1 => 'scheme',
+            self::names()->type,
+            self::names()->scheme,
         );
         $ownerSchema->setFromRef('#/definitions/BearerHTTPSecurityScheme');
     }

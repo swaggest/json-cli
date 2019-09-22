@@ -36,7 +36,7 @@ class LightMeasuredPayload extends ClassStructure
         $properties->sentAt->description = "Date and time when the message was sent.";
         $properties->sentAt->format = "date-time";
         $properties->sentAt->setFromRef('#/components/schemas/sentAt');
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema::OBJECT;
         $ownerSchema->setFromRef('streetlights.yml#/components/messages/lightMeasured/payload');
     }
 }

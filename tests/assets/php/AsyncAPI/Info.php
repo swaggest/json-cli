@@ -57,18 +57,18 @@ class Info extends ClassStructure
         $properties->termsOfService->format = "uri";
         $properties->contact = Contact::schema();
         $properties->license = License::schema();
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema::OBJECT;
         $ownerSchema->additionalProperties = false;
-        $patternProperty = new Schema();
-        $patternProperty->additionalProperties = true;
-        $patternProperty->additionalItems = true;
-        $patternProperty->description = "Any property starting with x- is valid.";
-        $patternProperty->setFromRef('#/definitions/vendorExtension');
-        $ownerSchema->setPatternProperty('^x-', $patternProperty);
+        $x = new Schema();
+        $x->additionalProperties = true;
+        $x->additionalItems = true;
+        $x->description = "Any property starting with x- is valid.";
+        $x->setFromRef('#/definitions/vendorExtension');
+        $ownerSchema->setPatternProperty('^x-', $x);
         $ownerSchema->description = "General information about the API.";
         $ownerSchema->required = array(
-            0 => 'version',
-            1 => 'title',
+            self::names()->version,
+            self::names()->title,
         );
         $ownerSchema->setFromRef('#/definitions/info');
     }

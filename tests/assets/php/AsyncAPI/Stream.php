@@ -38,12 +38,12 @@ class Stream extends ClassStructure
     public static function setUpProperties($properties, Schema $ownerSchema)
     {
         $properties->framing = Schema::object();
-        $patternProperty = new Schema();
-        $patternProperty->additionalProperties = true;
-        $patternProperty->additionalItems = true;
-        $patternProperty->description = "Any property starting with x- is valid.";
-        $patternProperty->setFromRef('#/definitions/vendorExtension');
-        $properties->framing->setPatternProperty('^x-', $patternProperty);
+        $x = new Schema();
+        $x->additionalProperties = true;
+        $x->additionalItems = true;
+        $x->description = "Any property starting with x- is valid.";
+        $x->setFromRef('#/definitions/vendorExtension');
+        $properties->framing->setPatternProperty('^x-', $x);
         $properties->framing->oneOf[0] = StreamFraming::schema();
         $properties->framing->oneOf[1] = StreamFraming::schema();
         $properties->framing->title = "Stream Framing Object";
@@ -58,14 +58,14 @@ class Stream extends ClassStructure
         $properties->write->title = "Stream Write Object";
         $properties->write->minItems = 1;
         $properties->write->uniqueItems = true;
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema::OBJECT;
         $ownerSchema->additionalProperties = false;
-        $patternProperty = new Schema();
-        $patternProperty->additionalProperties = true;
-        $patternProperty->additionalItems = true;
-        $patternProperty->description = "Any property starting with x- is valid.";
-        $patternProperty->setFromRef('#/definitions/vendorExtension');
-        $ownerSchema->setPatternProperty('^x-', $patternProperty);
+        $x = new Schema();
+        $x->additionalProperties = true;
+        $x->additionalItems = true;
+        $x->description = "Any property starting with x- is valid.";
+        $x->setFromRef('#/definitions/vendorExtension');
+        $ownerSchema->setPatternProperty('^x-', $x);
         $ownerSchema->title = "Stream Object";
         $ownerSchema->minProperties = 1;
         $ownerSchema->setFromRef('#/definitions/stream');

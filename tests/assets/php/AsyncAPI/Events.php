@@ -46,22 +46,22 @@ class Events extends ClassStructure
         $properties->send->title = "Events Send Object";
         $properties->send->minItems = 1;
         $properties->send->uniqueItems = true;
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema::OBJECT;
         $ownerSchema->additionalProperties = false;
-        $patternProperty = new Schema();
-        $patternProperty->additionalProperties = true;
-        $patternProperty->additionalItems = true;
-        $patternProperty->description = "Any property starting with x- is valid.";
-        $patternProperty->setFromRef('#/definitions/vendorExtension');
-        $ownerSchema->setPatternProperty('^x-', $patternProperty);
+        $x = new Schema();
+        $x->additionalProperties = true;
+        $x->additionalItems = true;
+        $x->description = "Any property starting with x- is valid.";
+        $x->setFromRef('#/definitions/vendorExtension');
+        $ownerSchema->setPatternProperty('^x-', $x);
         $ownerSchemaAnyOf0 = new Schema();
         $ownerSchemaAnyOf0->required = array(
-            0 => 'receive',
+            self::names()->receive,
         );
         $ownerSchema->anyOf[0] = $ownerSchemaAnyOf0;
         $ownerSchemaAnyOf1 = new Schema();
         $ownerSchemaAnyOf1->required = array(
-            0 => 'send',
+            self::names()->send,
         );
         $ownerSchema->anyOf[1] = $ownerSchemaAnyOf1;
         $ownerSchema->title = "Events Object";

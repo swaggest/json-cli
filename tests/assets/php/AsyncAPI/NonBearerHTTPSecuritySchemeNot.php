@@ -28,6 +28,6 @@ class NonBearerHTTPSecuritySchemeNot extends ClassStructure
         $properties->scheme->enum = array(
             self::BEARER,
         );
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema::OBJECT;
     }
 }

@@ -69,14 +69,14 @@ class Message extends ClassStructure
         $properties->deprecated = Schema1::boolean();
         $properties->deprecated->default = false;
         $properties->example = new Schema1();
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema1::OBJECT;
         $ownerSchema->additionalProperties = false;
-        $patternProperty = new Schema1();
-        $patternProperty->additionalProperties = true;
-        $patternProperty->additionalItems = true;
-        $patternProperty->description = "Any property starting with x- is valid.";
-        $patternProperty->setFromRef('#/definitions/vendorExtension');
-        $ownerSchema->setPatternProperty('^x-', $patternProperty);
+        $x = new Schema1();
+        $x->additionalProperties = true;
+        $x->additionalItems = true;
+        $x->description = "Any property starting with x- is valid.";
+        $x->setFromRef('#/definitions/vendorExtension');
+        $ownerSchema->setPatternProperty('^x-', $x);
         $ownerSchema->setFromRef('#/definitions/message');
     }
 

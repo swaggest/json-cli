@@ -41,7 +41,7 @@ class Structure extends ClassStructure
     /** @var Server[]|array */
     public $servers;
 
-    /** @var mixed Relative paths to the individual topics. They must be relative to the 'baseTopic'. */
+    /** @var TopicItem[] Relative paths to the individual topics. They must be relative to the 'baseTopic'. */
     public $topics;
 
     /** @var Stream */
@@ -85,14 +85,14 @@ class Structure extends ClassStructure
         $properties->servers->uniqueItems = true;
         $properties->topics = Schema::object();
         $properties->topics->additionalProperties = false;
-        $patternProperty = new Schema();
-        $patternProperty->additionalProperties = true;
-        $patternProperty->additionalItems = true;
-        $patternProperty->description = "Any property starting with x- is valid.";
-        $patternProperty->setFromRef('#/definitions/vendorExtension');
-        $properties->topics->setPatternProperty('^x-', $patternProperty);
-        $patternProperty = TopicItem::schema();
-        $properties->topics->setPatternProperty('^[^.]', $patternProperty);
+        $x = new Schema();
+        $x->additionalProperties = true;
+        $x->additionalItems = true;
+        $x->description = "Any property starting with x- is valid.";
+        $x->setFromRef('#/definitions/vendorExtension');
+        $properties->topics->setPatternProperty('^x-', $x);
+        $property777c12 = TopicItem::schema();
+        $properties->topics->setPatternProperty('^[^.]', $property777c12);
         $properties->topics->description = "Relative paths to the individual topics. They must be relative to the 'baseTopic'.";
         $properties->topics->setFromRef('#/definitions/topics');
         $properties->stream = Stream::schema();
@@ -107,35 +107,35 @@ class Structure extends ClassStructure
         $properties->security->items->additionalProperties->items = Schema::string();
         $properties->security->items->setFromRef('#/definitions/SecurityRequirement');
         $properties->externalDocs = ExternalDocs::schema();
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema::OBJECT;
         $ownerSchema->additionalProperties = false;
-        $patternProperty = new Schema();
-        $patternProperty->additionalProperties = true;
-        $patternProperty->additionalItems = true;
-        $patternProperty->description = "Any property starting with x- is valid.";
-        $patternProperty->setFromRef('#/definitions/vendorExtension');
-        $ownerSchema->setPatternProperty('^x-', $patternProperty);
+        $x = new Schema();
+        $x->additionalProperties = true;
+        $x->additionalItems = true;
+        $x->description = "Any property starting with x- is valid.";
+        $x->setFromRef('#/definitions/vendorExtension');
+        $ownerSchema->setPatternProperty('^x-', $x);
         $ownerSchemaOneOf0 = new Schema();
         $ownerSchemaOneOf0->required = array(
-            0 => 'topics',
+            self::names()->topics,
         );
         $ownerSchema->oneOf[0] = $ownerSchemaOneOf0;
         $ownerSchemaOneOf1 = new Schema();
         $ownerSchemaOneOf1->required = array(
-            0 => 'stream',
+            self::names()->stream,
         );
         $ownerSchema->oneOf[1] = $ownerSchemaOneOf1;
         $ownerSchemaOneOf2 = new Schema();
         $ownerSchemaOneOf2->required = array(
-            0 => 'events',
+            self::names()->events,
         );
         $ownerSchema->oneOf[2] = $ownerSchemaOneOf2;
         $ownerSchema->id = "http://asyncapi.hitchhq.com/v1/schema.json#";
         $ownerSchema->schema = "http://json-schema.org/draft-04/schema#";
         $ownerSchema->title = "AsyncAPI 1.2.0 schema.";
         $ownerSchema->required = array(
-            0 => 'asyncapi',
-            1 => 'info',
+            self::names()->asyncapi,
+            self::names()->info,
         );
     }
 

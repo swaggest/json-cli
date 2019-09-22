@@ -40,12 +40,12 @@ class X509 extends ClassStructure
             self::X509,
         );
         $properties->description = Schema::string();
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema::OBJECT;
         $ownerSchema->additionalProperties = false;
-        $patternProperty = new Schema();
-        $ownerSchema->setPatternProperty('^x-', $patternProperty);
+        $x = new Schema();
+        $ownerSchema->setPatternProperty('^x-', $x);
         $ownerSchema->required = array(
-            0 => 'type',
+            self::names()->type,
         );
         $ownerSchema->setFromRef('#/definitions/X509');
     }

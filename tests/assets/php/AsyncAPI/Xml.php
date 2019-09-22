@@ -44,7 +44,7 @@ class Xml extends ClassStructure
         $properties->attribute->default = false;
         $properties->wrapped = Schema::boolean();
         $properties->wrapped->default = false;
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema::OBJECT;
         $ownerSchema->additionalProperties = false;
         $ownerSchema->setFromRef('#/definitions/xml');
     }

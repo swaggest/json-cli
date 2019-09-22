@@ -44,14 +44,14 @@ class NonBearerHTTPSecurityScheme extends ClassStructure
         $properties->type->enum = array(
             self::HTTP,
         );
-        $ownerSchema->type = 'object';
+        $ownerSchema->type = Schema::OBJECT;
         $ownerSchema->additionalProperties = false;
-        $patternProperty = new Schema();
-        $ownerSchema->setPatternProperty('^x-', $patternProperty);
+        $x = new Schema();
+        $ownerSchema->setPatternProperty('^x-', $x);
         $ownerSchema->not = NonBearerHTTPSecuritySchemeNot::schema();
         $ownerSchema->required = array(
-            0 => 'scheme',
-            1 => 'type',
+            self::names()->scheme,
+            self::names()->type,
         );
         $ownerSchema->setFromRef('#/definitions/NonBearerHTTPSecurityScheme');
     }
