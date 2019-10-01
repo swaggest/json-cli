@@ -848,7 +848,7 @@ var (
 
 // MarshalJSON encodes JSON.
 func (i StreamFramingOneOf0) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalStreamFramingOneOf0(i), constStreamFramingOneOf0)
+	return marshalUnion(constStreamFramingOneOf0, marshalStreamFramingOneOf0(i))
 }
 
 // StreamFramingOneOf1 structure is generated from "#/definitions/stream->framing/oneOf/1".
@@ -883,7 +883,7 @@ var (
 
 // MarshalJSON encodes JSON.
 func (i StreamFramingOneOf1) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalStreamFramingOneOf1(i), constStreamFramingOneOf1)
+	return marshalUnion(constStreamFramingOneOf1, marshalStreamFramingOneOf1(i))
 }
 
 // StreamFraming structure is generated from "#/definitions/stream->framing".
@@ -1016,7 +1016,7 @@ var (
 
 // MarshalJSON encodes JSON.
 func (i UserPassword) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalUserPassword(i), i.MapOfAnythingValues, constUserPassword)
+	return marshalUnion(constUserPassword, marshalUserPassword(i), i.MapOfAnythingValues)
 }
 
 // APIKey structure is generated from "#/definitions/apiKey".
@@ -1062,7 +1062,7 @@ var (
 
 // MarshalJSON encodes JSON.
 func (i APIKey) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalAPIKey(i), i.MapOfAnythingValues, constAPIKey)
+	return marshalUnion(constAPIKey, marshalAPIKey(i), i.MapOfAnythingValues)
 }
 
 // X509 structure is generated from "#/definitions/X509".
@@ -1106,7 +1106,7 @@ var (
 
 // MarshalJSON encodes JSON.
 func (i X509) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalX509(i), i.MapOfAnythingValues, constX509)
+	return marshalUnion(constX509, marshalX509(i), i.MapOfAnythingValues)
 }
 
 // SymmetricEncryption structure is generated from "#/definitions/symmetricEncryption".
@@ -1150,7 +1150,7 @@ var (
 
 // MarshalJSON encodes JSON.
 func (i SymmetricEncryption) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalSymmetricEncryption(i), i.MapOfAnythingValues, constSymmetricEncryption)
+	return marshalUnion(constSymmetricEncryption, marshalSymmetricEncryption(i), i.MapOfAnythingValues)
 }
 
 // AsymmetricEncryption structure is generated from "#/definitions/asymmetricEncryption".
@@ -1194,7 +1194,7 @@ var (
 
 // MarshalJSON encodes JSON.
 func (i AsymmetricEncryption) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalAsymmetricEncryption(i), i.MapOfAnythingValues, constAsymmetricEncryption)
+	return marshalUnion(constAsymmetricEncryption, marshalAsymmetricEncryption(i), i.MapOfAnythingValues)
 }
 
 // NonBearerHTTPSecurityScheme structure is generated from "#/definitions/NonBearerHTTPSecurityScheme".
@@ -1240,7 +1240,7 @@ var (
 
 // MarshalJSON encodes JSON.
 func (i NonBearerHTTPSecurityScheme) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalNonBearerHTTPSecurityScheme(i), i.MapOfAnythingValues, constNonBearerHTTPSecurityScheme)
+	return marshalUnion(constNonBearerHTTPSecurityScheme, marshalNonBearerHTTPSecurityScheme(i), i.MapOfAnythingValues)
 }
 
 // BearerHTTPSecurityScheme structure is generated from "#/definitions/BearerHTTPSecurityScheme".
@@ -1289,7 +1289,7 @@ var (
 
 // MarshalJSON encodes JSON.
 func (i BearerHTTPSecurityScheme) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalBearerHTTPSecurityScheme(i), i.MapOfAnythingValues, constBearerHTTPSecurityScheme)
+	return marshalUnion(constBearerHTTPSecurityScheme, marshalBearerHTTPSecurityScheme(i), i.MapOfAnythingValues)
 }
 
 // APIKeyHTTPSecurityScheme structure is generated from "#/definitions/APIKeyHTTPSecurityScheme".
@@ -1337,7 +1337,7 @@ var (
 
 // MarshalJSON encodes JSON.
 func (i APIKeyHTTPSecurityScheme) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalAPIKeyHTTPSecurityScheme(i), i.MapOfAnythingValues, constAPIKeyHTTPSecurityScheme)
+	return marshalUnion(constAPIKeyHTTPSecurityScheme, marshalAPIKeyHTTPSecurityScheme(i), i.MapOfAnythingValues)
 }
 
 // HTTPSecurityScheme structure is generated from "#/definitions/HTTPSecurityScheme".

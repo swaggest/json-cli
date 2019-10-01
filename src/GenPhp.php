@@ -2,7 +2,9 @@
 
 namespace Swaggest\JsonCli;
 
+use Swaggest\JsonCli\JsonSchema\ResolverMux;
 use Swaggest\JsonSchema\Context;
+use Swaggest\JsonSchema\RemoteRef\BasicFetcher;
 use Swaggest\JsonSchema\RemoteRef\Preloaded;
 use Swaggest\JsonSchema\Schema;
 use Swaggest\PhpCodeBuilder\App\PhpApp;
@@ -71,95 +73,107 @@ class GenPhp extends Command
 
     public function performAction()
     {
-        $dataValue = Base::readJsonOrYaml($this->schema, $this->response);
-        if (!$dataValue) {
-            $this->response->error('Unable to find schema in ' . $this->schema);
-            die(1);
-        }
+        try {
 
-        $baseName = null;
-        $skipRoot = false;
-        if (empty($this->ptrInSchema)) {
-            $preloaded = new Preloaded();
-            $schema = Schema::import($dataValue, new Context($preloaded));
-        } else {
-            $baseName = basename($this->schema);
-            $skipRoot = true;
-            $preloaded = new Preloaded();
-            $preloaded->setSchemaData($baseName, $dataValue);
-            $data = new \stdClass();
-            foreach ($this->ptrInSchema as $i => $ptr) {
-                $data->oneOf[$i] = (object)[Schema::PROP_REF => $baseName . $ptr];
-            }
-            $schema = Schema::import($data, new Context($preloaded));
-        }
 
-        $appPath = realpath($this->nsPath);
-        if (!$appPath) {
-            $this->response->error('Could not find directory ' . $this->nsPath);
-            throw new ExitCode('', 1);
-        }
-        $appNs = $this->ns;
-
-        $app = new PhpApp();
-        $app->setNamespaceRoot($appNs, '.');
-
-        $builder = new PhpBuilder();
-        $builder->buildSetters = $this->setters;
-        $builder->buildGetters = $this->getters;
-
-        $builder->makeEnumConstants = !$this->noEnumConst;
-
-        $builder->classCreatedHook = new ClassHookCallback(function (PhpClass $class, $path, $schema)
-        use ($app, $appNs, $skipRoot, $baseName) {
-            if ($skipRoot && '#' === $path) {
-                return;
+            $dataValue = Base::readJsonOrYaml($this->schema, $this->response);
+            if (!$dataValue) {
+                $this->response->error('Unable to find schema in ' . $this->schema);
+                die(1);
             }
 
-            $desc = '';
-            if ($schema->title) {
-                $desc = $schema->title;
-            }
-            if ($schema->description) {
-                $desc .= "\n" . $schema->description;
-            }
-            if ($fromRefs = $schema->getFromRefs()) {
-                $desc .= "\nBuilt from " . implode("\n" . ' <- ', $fromRefs);
-            }
-            $class->setDescription(trim($desc));
+            $baseName = null;
+            $skipRoot = false;
+            $data = $dataValue;
 
-            $class->setNamespace($appNs);
-            if ('#' === $path) {
-                $class->setName($this->rootName);
-            } else {
-                if (!empty($fromRefs)) {
-                    $path = $fromRefs[0];
+            $resolver = new ResolverMux();
+
+            if (!empty($this->ptrInSchema)) {
+                $baseName = basename($this->schema);
+                $skipRoot = true;
+                $preloaded = new Preloaded();
+                $preloaded->setSchemaData($baseName, $dataValue);
+                $resolver->resolvers[] = $preloaded;
+                $data = new \stdClass();
+                foreach ($this->ptrInSchema as $i => $ptr) {
+                    $data->oneOf[$i] = (object)[Schema::PROP_REF => $baseName . $ptr];
                 }
-                foreach ($this->defPtr as $defPtr) {
-                    if (isset($baseName)) {
-                        $baseNameDefPtr = $baseName . $defPtr;
-                        if ($baseNameDefPtr === substr($path, 0, strlen($baseNameDefPtr))) {
-                            $path = substr($path, strlen($baseNameDefPtr));
-                            $className = PhpCode::makePhpClassName($path);
+            }
+
+            $resolver->resolvers[] = new BasicFetcher();
+            $schema = Schema::import($data, new Context($resolver));
+
+
+            $appPath = realpath($this->nsPath);
+            if (!$appPath) {
+                $this->response->error('Could not find directory ' . $this->nsPath);
+                throw new ExitCode('', 1);
+            }
+            $appNs = $this->ns;
+
+            $app = new PhpApp();
+            $app->setNamespaceRoot($appNs, '.');
+
+            $builder = new PhpBuilder();
+            $builder->buildSetters = $this->setters;
+            $builder->buildGetters = $this->getters;
+
+            $builder->makeEnumConstants = !$this->noEnumConst;
+
+            $builder->classCreatedHook = new ClassHookCallback(function (PhpClass $class, $path, $schema)
+            use ($app, $appNs, $skipRoot, $baseName) {
+                if ($skipRoot && '#' === $path) {
+                    return;
+                }
+
+                $desc = '';
+                if ($schema->title) {
+                    $desc = $schema->title;
+                }
+                if ($schema->description) {
+                    $desc .= "\n" . $schema->description;
+                }
+                if ($fromRefs = $schema->getFromRefs()) {
+                    $desc .= "\nBuilt from " . implode("\n" . ' <- ', $fromRefs);
+                }
+                $class->setDescription(trim($desc));
+
+                $class->setNamespace($appNs);
+                if ('#' === $path) {
+                    $class->setName($this->rootName);
+                } else {
+                    if (!empty($fromRefs)) {
+                        $path = $fromRefs[0];
+                    }
+                    foreach ($this->defPtr as $defPtr) {
+                        if (isset($baseName)) {
+                            $baseNameDefPtr = $baseName . $defPtr;
+                            if ($baseNameDefPtr === substr($path, 0, strlen($baseNameDefPtr))) {
+                                $path = substr($path, strlen($baseNameDefPtr));
+                                $className = PhpCode::makePhpClassName($path);
+                                $class->setName($className);
+                            }
+                        }
+
+                        if ($defPtr === substr($path, 0, strlen($defPtr))) {
+                            $className = PhpCode::makePhpClassName(substr($path, strlen($defPtr)));
                             $class->setName($className);
                         }
                     }
-
-                    if ($defPtr === substr($path, 0, strlen($defPtr))) {
-                        $className = PhpCode::makePhpClassName(substr($path, strlen($defPtr)));
-                        $class->setName($className);
-                    }
                 }
-            }
-            $app->addClass($class);
-        });
+                $app->addClass($class);
+            });
 
-        if (!$schema instanceof Schema) {
-            $this->response->error('failed to assert Schema type, ' . get_class($schema) . ' received');
+            if (!$schema instanceof Schema) {
+                $this->response->error('failed to assert Schema type, ' . get_class($schema) . ' received');
+                throw new ExitCode('', 1);
+            }
+            $builder->getType($schema);
+            $app->store($appPath);
+            $this->response->success("Classes are generated in " . $appPath);
+        } catch (\Exception $e) {
+            $this->response->error($e->getMessage());
             throw new ExitCode('', 1);
         }
-        $builder->getType($schema);
-        $app->store($appPath);
-        $this->response->success("Classes are generated in " . $appPath);
     }
 }
