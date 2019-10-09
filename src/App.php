@@ -17,6 +17,7 @@ class App extends Command\Application
     public $resolve;
     public $resolvePos;
     public $validateSchema;
+    public $makeSchema;
     public $genGo;
     public $genPhp;
 
@@ -40,6 +41,7 @@ class App extends Command\Application
         $commandDefinitions->resolve = Resolve::definition();
         $commandDefinitions->resolvePos = ResolvePos::definition();
         $commandDefinitions->validateSchema = ValidateSchema::definition();
+        $commandDefinitions->makeSchema = MakeSchema::definition();
         $commandDefinitions->genGo = GenGo::definition();
         $commandDefinitions->genPhp = GenPhp::definition();
     }
