@@ -2,6 +2,7 @@
 
 namespace Swaggest\JsonCli\Tests;
 
+use Swaggest\JsonCli\App;
 use Swaggest\JsonCli\GenGo;
 use Yaoi\Cli\Response;
 
@@ -20,7 +21,8 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
 
         $this->assertSame(
-            file_get_contents(__DIR__ . '/../../tests/assets/go/swagger/entities.go'),
+            str_replace('<version>', App::$version,
+                file_get_contents(__DIR__ . '/../../tests/assets/go/swagger/entities.go')),
             $res
         );
 
@@ -44,7 +46,8 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
 
         $this->assertSame(
-            file_get_contents(__DIR__ . '/../../tests/assets/go/asyncapi/entities.go'),
+            str_replace('<version>', App::$version,
+                file_get_contents(__DIR__ . '/../../tests/assets/go/asyncapi/entities.go')),
             $res
         );
 
@@ -68,7 +71,8 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
 
         $this->assertSame(
-            file_get_contents(__DIR__ . '/../../tests/assets/go/asyncapi-streetlights/entities.go'),
+            str_replace('<version>', App::$version,
+                file_get_contents(__DIR__ . '/../../tests/assets/go/asyncapi-streetlights/entities.go')),
             $res
         );
 

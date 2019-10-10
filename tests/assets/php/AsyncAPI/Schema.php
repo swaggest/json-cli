@@ -287,6 +287,7 @@ class Schema extends ClassStructure
     }
 
     /**
+     * @return array
      * @codeCoverageIgnoreStart
      */
     public function getXValues()

@@ -53,6 +53,7 @@ class ExternalDocs extends ClassStructure
     }
 
     /**
+     * @return array
      * @codeCoverageIgnoreStart
      */
     public function getXValues()

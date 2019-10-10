@@ -64,6 +64,7 @@ class ApiKey extends ClassStructure
     }
 
     /**
+     * @return array
      * @codeCoverageIgnoreStart
      */
     public function getXValues()

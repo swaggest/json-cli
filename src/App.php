@@ -7,6 +7,8 @@ use Yaoi\Command\Definition;
 
 class App extends Command\Application
 {
+    public static $version = 'v1.6.3';
+
     public $diff;
     public $apply;
     public $rearrange;
@@ -27,7 +29,7 @@ class App extends Command\Application
     static function setUpCommands(Definition $definition, $commandDefinitions)
     {
         $definition->name = 'json-cli';
-        $definition->version = 'v1.6.2';
+        $definition->version = self::$version;
         $definition->description = 'JSON CLI tool, https://github.com/swaggest/json-cli';
 
         $commandDefinitions->diff = Diff::definition();
