@@ -7,6 +7,8 @@ A CLI for finding unordered diff between two `JSON` documents (based on [`swagge
 [![Code Climate](https://codeclimate.com/github/swaggest/json-cli/badges/gpa.svg)](https://codeclimate.com/github/swaggest/json-cli)
 [![Code Coverage](https://scrutinizer-ci.com/g/swaggest/json-cli/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/swaggest/json-cli/code-structure/master/code-coverage)
 [![Image Size](https://images.microbadger.com/badges/image/swaggest/json-cli.svg)](https://microbadger.com/images/swaggest/json-cli)
+![Code lines](https://sloc.xyz/github/swaggest/json-cli/?category=code)
+![Comments](https://sloc.xyz/github/swaggest/json-cli/?category=comments)
 
 ## Purpose
 
