@@ -16,7 +16,7 @@
     "symfony/yaml": "^3",
     "salsify/json-streaming-parser": "^7.0",
     "swaggest/json-schema": "^0.12.21",
-    "swaggest/go-code-builder": "^0.4.9",
+    "swaggest/go-code-builder": "^0.4.10",
     "swaggest/php-code-builder": "^0.2.8",
     "swaggest/code-builder": "^0.3.2"
   },

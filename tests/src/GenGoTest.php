@@ -21,7 +21,7 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
 
         $this->assertSame(
-            str_replace('<version>', App::$version,
+            str_replace('<version>', App::$ver,
                 file_get_contents(__DIR__ . '/../../tests/assets/go/swagger/entities.go')),
             $res
         );
@@ -39,6 +39,7 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         ];
         $d->rootName = 'AsyncAPI';
         $d->packageName = "asyncapi";
+        $d->enableDefaultAdditionalProperties = true;
 
         $d->setResponse(new Response());
         ob_start();
@@ -46,7 +47,7 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
 
         $this->assertSame(
-            str_replace('<version>', App::$version,
+            str_replace('<version>', App::$ver,
                 file_get_contents(__DIR__ . '/../../tests/assets/go/asyncapi/entities.go')),
             $res
         );
@@ -64,6 +65,7 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         ];
         $d->defPtr = ['#/components/schemas'];
         $d->packageName = "message";
+        $d->enableDefaultAdditionalProperties = true;
 
         $d->setResponse(new Response());
         ob_start();
@@ -71,7 +73,7 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
 
         $this->assertSame(
-            str_replace('<version>', App::$version,
+            str_replace('<version>', App::$ver,
                 file_get_contents(__DIR__ . '/../../tests/assets/go/asyncapi-streetlights/entities.go')),
             $res
         );
