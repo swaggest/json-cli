@@ -51,6 +51,7 @@ class X509 extends ClassStructure
     }
 
     /**
+     * @return array
      * @codeCoverageIgnoreStart
      */
     public function getXValues()

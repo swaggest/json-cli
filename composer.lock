@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26c2b1853118d54a42e880fe3a2b7a12",
+    "content-hash": "454fe02da1d20b20be36bed4f788aa9f",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -248,16 +248,16 @@
         },
         {
             "name": "swaggest/go-code-builder",
-            "version": "v0.4.6",
+            "version": "v0.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/go-code-builder.git",
-                "reference": "c1b089fcd9e436ea5b125730314f45f311263079"
+                "reference": "737929b554dcb2bebf12d06912900565bba31558"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/c1b089fcd9e436ea5b125730314f45f311263079",
-                "reference": "c1b089fcd9e436ea5b125730314f45f311263079",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/737929b554dcb2bebf12d06912900565bba31558",
+                "reference": "737929b554dcb2bebf12d06912900565bba31558",
                 "shasum": ""
             },
             "require": {
@@ -268,7 +268,8 @@
                 "swaggest/json-schema": "^0.12.4"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5"
+                "phpunit/phpunit": "^5",
+                "victorjonsson/markdowndocs": "^1.3"
             },
             "type": "library",
             "autoload": {
@@ -292,7 +293,7 @@
             "keywords": [
                 "library"
             ],
-            "time": "2019-10-01T13:02:33+00:00"
+            "time": "2019-10-15T00:13:37+00:00"
         },
         {
             "name": "swaggest/json-diff",
@@ -381,16 +382,16 @@
         },
         {
             "name": "swaggest/php-code-builder",
-            "version": "v0.2.18",
+            "version": "v0.2.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-code-builder.git",
-                "reference": "6ab051790722b77140ebe36785b8d963a0702a95"
+                "reference": "989bc3a41d377d28c5d4f5ed45f27024f204c1c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/6ab051790722b77140ebe36785b8d963a0702a95",
-                "reference": "6ab051790722b77140ebe36785b8d963a0702a95",
+                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/989bc3a41d377d28c5d4f5ed45f27024f204c1c6",
+                "reference": "989bc3a41d377d28c5d4f5ed45f27024f204c1c6",
                 "shasum": ""
             },
             "require": {
@@ -424,7 +425,7 @@
             "keywords": [
                 "library"
             ],
-            "time": "2019-09-22T19:54:40+00:00"
+            "time": "2019-10-02T21:08:31+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -486,16 +487,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.31",
+            "version": "v3.4.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "3dc414b7db30695bae671a1d86013d03f4ae9834"
+                "reference": "768f817446da74a776a31eea335540f9dcb53942"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/3dc414b7db30695bae671a1d86013d03f4ae9834",
-                "reference": "3dc414b7db30695bae671a1d86013d03f4ae9834",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/768f817446da74a776a31eea335540f9dcb53942",
+                "reference": "768f817446da74a776a31eea335540f9dcb53942",
                 "shasum": ""
             },
             "require": {
@@ -541,7 +542,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2019-08-20T13:31:17+00:00"
+            "time": "2019-09-10T10:38:46+00:00"
         }
     ],
     "packages-dev": [
@@ -792,22 +793,22 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.8.1",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76"
+                "reference": "f6811d96d97bdf400077a0cc100ae56aa32b9203"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
-                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/f6811d96d97bdf400077a0cc100ae56aa32b9203",
+                "reference": "f6811d96d97bdf400077a0cc100ae56aa32b9203",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
-                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0",
+                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0|^5.0",
                 "sebastian/comparator": "^1.1|^2.0|^3.0",
                 "sebastian/recursion-context": "^1.0|^2.0|^3.0"
             },
@@ -851,7 +852,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2019-06-13T12:50:23+00:00"
+            "time": "2019-10-03T11:07:50+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

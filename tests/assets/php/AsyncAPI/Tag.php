@@ -54,6 +54,7 @@ class Tag extends ClassStructure
     }
 
     /**
+     * @return array
      * @codeCoverageIgnoreStart
      */
     public function getXValues()

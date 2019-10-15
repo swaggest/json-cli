@@ -56,6 +56,7 @@ class ServerVariable extends ClassStructure
     }
 
     /**
+     * @return array
      * @codeCoverageIgnoreStart
      */
     public function getXValues()
