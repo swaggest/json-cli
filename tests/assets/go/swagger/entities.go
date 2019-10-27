@@ -45,10 +45,13 @@ func (i *Info) UnmarshalJSON(data []byte) error {
 		},
 		jsonData: data,
 	}.unmarshal()
+
 	if err != nil {
 		return err
 	}
+
 	*i = Info(ii)
+
 	return err
 }
 
@@ -85,10 +88,13 @@ func (i *Contact) UnmarshalJSON(data []byte) error {
 		},
 		jsonData: data,
 	}.unmarshal()
+
 	if err != nil {
 		return err
 	}
+
 	*i = Contact(ii)
+
 	return err
 }
 
@@ -121,10 +127,13 @@ func (i *License) UnmarshalJSON(data []byte) error {
 		},
 		jsonData: data,
 	}.unmarshal()
+
 	if err != nil {
 		return err
 	}
+
 	*i = License(ii)
+
 	return err
 }
 
@@ -137,23 +146,29 @@ func marshalUnion(maps ...interface{}) ([]byte, error) {
 	result := make([]byte, 1, 100)
 	result[0] = '{'
 	isObject := true
+
 	for _, m := range maps {
 		j, err := json.Marshal(m)
 		if err != nil {
 			return nil, err
 		}
+
 		if string(j) == "{}" {
 			continue
 		}
+
 		if string(j) == "null" {
 			continue
 		}
+
 		if j[0] != '{' {
 			if len(result) == 1 && (isObject || bytes.Equal(result, j)) {
 				result = j
 				isObject = false
+
 				continue
 			}
+
 			return nil, errors.New("failed to union map: object expected, " + string(j) + " received")
 		}
 
@@ -164,8 +179,10 @@ func marshalUnion(maps ...interface{}) ([]byte, error) {
 		if len(result) > 1 {
 			result[len(result)-1] = ','
 		}
+
 		result = append(result, j[1:]...)
 	}
+
 	// Close empty result.
 	if isObject && len(result) == 1 {
 		result = append(result, '}')
@@ -187,7 +204,7 @@ type unionMap struct {
 
 func (u unionMap) unmarshal() error {
 	for _, item := range u.mustUnmarshal {
-		// unmarshal to struct
+		// Unmarshal to struct.
 		err := json.Unmarshal(u.jsonData, item)
 		if err != nil {
 			return err
@@ -198,27 +215,32 @@ func (u unionMap) unmarshal() error {
 		return nil
 	}
 
-	// unmarshal to a generic map
+	// Unmarshal to a generic map.
 	var m map[string]*json.RawMessage
+
 	err := json.Unmarshal(u.jsonData, &m)
 	if err != nil {
 		return err
 	}
-	// removing ignored keys (defined in struct)
+
+	// Remove ignored keys (defined in struct).
 	for _, i := range u.ignoreKeys {
 		delete(m, i)
 	}
-	// returning early on empty map
+
+	// Return early on empty map.
 	if len(m) == 0 {
 		return nil
 	}
+
 	if len(u.patternProperties) != 0 {
 		err = u.unmarshalPatternProperties(m)
 		if err != nil {
 			return err
 		}
 	}
-	// Returning early on empty map.
+
+	// Return early on empty map.
 	if len(m) == 0 {
 		return nil
 	}
@@ -228,16 +250,19 @@ func (u unionMap) unmarshal() error {
 
 func (u unionMap) unmarshalPatternProperties(m map[string]*json.RawMessage) error {
 	patternMapsRaw := make(map[*regexp.Regexp][]byte, len(u.patternProperties))
+
 	// Iterating map and filling pattern properties sub maps.
 	for key, val := range m {
 		matched := false
-		var ok bool
+		ok := false
 		keyEscaped := `"` + strings.Replace(key, `"`, `\"`, -1) + `":`
 
 		for regex := range u.patternProperties {
 			if regex.MatchString(key) {
 				matched = true
+
 				var subMap []byte
+
 				if subMap, ok = patternMapsRaw[regex]; !ok {
 					subMap = make([]byte, 1, 100)
 					subMap[0] = '{'
@@ -246,7 +271,13 @@ func (u unionMap) unmarshalPatternProperties(m map[string]*json.RawMessage) erro
 				}
 
 				subMap = append(subMap, []byte(keyEscaped)...)
-				subMap = append(subMap, []byte(*val)...)
+
+				if val != nil {
+					subMap = append(subMap, []byte(*val)...)
+				} else {
+					subMap = append(subMap, []byte("null")...)
+				}
+
 				subMap = append(subMap, '}')
 
 				patternMapsRaw[regex] = subMap
@@ -269,5 +300,6 @@ func (u unionMap) unmarshalPatternProperties(m map[string]*json.RawMessage) erro
 			}
 		}
 	}
+
 	return nil
 }

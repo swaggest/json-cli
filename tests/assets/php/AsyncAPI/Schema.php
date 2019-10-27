@@ -17,6 +17,8 @@ use Swaggest\JsonSchema\Structure\ClassStructure;
 /**
  * A deterministic version of a JSON Schema object.
  * Built from #/definitions/schema
+ * @property mixed $default
+ * @property mixed $example
  */
 class Schema extends ClassStructure
 {
@@ -47,9 +49,6 @@ class Schema extends ClassStructure
 
     /** @var string */
     public $description;
-
-    /** @var mixed */
-    public $default;
 
     /** @var float */
     public $multipleOf;
@@ -131,9 +130,6 @@ class Schema extends ClassStructure
 
     /** @var ExternalDocs information about external documentation */
     public $externalDocs;
-
-    /** @var mixed */
-    public $example;
 
     /**
      * @param Properties|static $properties
