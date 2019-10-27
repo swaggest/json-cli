@@ -16,6 +16,7 @@ use Swaggest\JsonSchema\Structure\ClassStructure;
 
 /**
  * Built from #/definitions/message
+ * @property mixed $example
  */
 class Message extends ClassStructure
 {
@@ -44,9 +45,6 @@ class Message extends ClassStructure
 
     /** @var bool */
     public $deprecated;
-
-    /** @var mixed */
-    public $example;
 
     /**
      * @param Properties|static $properties
