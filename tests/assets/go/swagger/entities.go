@@ -8,7 +8,6 @@ import (
 	"encoding/json"
 	"errors"
 	"regexp"
-	"strings"
 )
 
 // Info structure is generated from "swagger-schema.json#/definitions/info".
@@ -26,33 +25,65 @@ type Info struct {
 
 type marshalInfo Info
 
+var ignoreKeysInfo = []string{
+	"title",
+	"version",
+	"description",
+	"termsOfService",
+	"contact",
+	"license",
+}
+
 // UnmarshalJSON decodes JSON.
 func (i *Info) UnmarshalJSON(data []byte) error {
+	var err error
+
 	ii := marshalInfo(*i)
 
-	err := unionMap{
-		mustUnmarshal: []interface{}{&ii},
-		ignoreKeys: []string{
-			"title",
-			"version",
-			"description",
-			"termsOfService",
-			"contact",
-			"license",
-		},
-		patternProperties: map[*regexp.Regexp]interface{}{
-			regexX: &ii.MapOfAnything, // ^x-
-		},
-		jsonData: data,
-	}.unmarshal()
-
+	err = json.Unmarshal(data, &ii)
 	if err != nil {
 		return err
 	}
 
+	var m map[string]json.RawMessage
+
+	err = json.Unmarshal(data, &m)
+	if err != nil {
+		m = nil
+	}
+
+	for _, key := range ignoreKeysInfo {
+		delete(m, key)
+	}
+
+	for key, rawValue := range m {
+		matched := false
+
+		if regexX.MatchString(key) {
+			matched = true
+
+			if ii.MapOfAnything == nil {
+				ii.MapOfAnything = make(map[string]interface{}, 1)
+			}
+
+			var val interface{}
+
+			err = json.Unmarshal(rawValue, &val)
+			if err != nil {
+				return err
+			}
+
+			ii.MapOfAnything[key] = val
+		}
+
+		if matched {
+			delete(m, key)
+		}
+	}
+
 	*i = Info(ii)
 
-	return err
+	return nil
 }
 
 // MarshalJSON encodes JSON.
@@ -72,30 +103,62 @@ type Contact struct {
 
 type marshalContact Contact
 
+var ignoreKeysContact = []string{
+	"name",
+	"url",
+	"email",
+}
+
 // UnmarshalJSON decodes JSON.
 func (i *Contact) UnmarshalJSON(data []byte) error {
+	var err error
+
 	ii := marshalContact(*i)
 
-	err := unionMap{
-		mustUnmarshal: []interface{}{&ii},
-		ignoreKeys: []string{
-			"name",
-			"url",
-			"email",
-		},
-		patternProperties: map[*regexp.Regexp]interface{}{
-			regexX: &ii.MapOfAnything, // ^x-
-		},
-		jsonData: data,
-	}.unmarshal()
-
+	err = json.Unmarshal(data, &ii)
 	if err != nil {
 		return err
 	}
 
+	var m map[string]json.RawMessage
+
+	err = json.Unmarshal(data, &m)
+	if err != nil {
+		m = nil
+	}
+
+	for _, key := range ignoreKeysContact {
+		delete(m, key)
+	}
+
+	for key, rawValue := range m {
+		matched := false
+
+		if regexX.MatchString(key) {
+			matched = true
+
+			if ii.MapOfAnything == nil {
+				ii.MapOfAnything = make(map[string]interface{}, 1)
+			}
+
+			var val interface{}
+
+			err = json.Unmarshal(rawValue, &val)
+			if err != nil {
+				return err
+			}
+
+			ii.MapOfAnything[key] = val
+		}
+
+		if matched {
+			delete(m, key)
+		}
+	}
+
 	*i = Contact(ii)
 
-	return err
+	return nil
 }
 
 // MarshalJSON encodes JSON.
@@ -112,29 +175,61 @@ type License struct {
 
 type marshalLicense License
 
+var ignoreKeysLicense = []string{
+	"name",
+	"url",
+}
+
 // UnmarshalJSON decodes JSON.
 func (i *License) UnmarshalJSON(data []byte) error {
+	var err error
+
 	ii := marshalLicense(*i)
 
-	err := unionMap{
-		mustUnmarshal: []interface{}{&ii},
-		ignoreKeys: []string{
-			"name",
-			"url",
-		},
-		patternProperties: map[*regexp.Regexp]interface{}{
-			regexX: &ii.MapOfAnything, // ^x-
-		},
-		jsonData: data,
-	}.unmarshal()
-
+	err = json.Unmarshal(data, &ii)
 	if err != nil {
 		return err
 	}
 
+	var m map[string]json.RawMessage
+
+	err = json.Unmarshal(data, &m)
+	if err != nil {
+		m = nil
+	}
+
+	for _, key := range ignoreKeysLicense {
+		delete(m, key)
+	}
+
+	for key, rawValue := range m {
+		matched := false
+
+		if regexX.MatchString(key) {
+			matched = true
+
+			if ii.MapOfAnything == nil {
+				ii.MapOfAnything = make(map[string]interface{}, 1)
+			}
+
+			var val interface{}
+
+			err = json.Unmarshal(rawValue, &val)
+			if err != nil {
+				return err
+			}
+
+			ii.MapOfAnything[key] = val
+		}
+
+		if matched {
+			delete(m, key)
+		}
+	}
+
 	*i = License(ii)
 
-	return err
+	return nil
 }
 
 // MarshalJSON encodes JSON.
@@ -194,112 +289,3 @@ func marshalUnion(maps ...interface{}) ([]byte, error) {
 var (
 	regexX = regexp.MustCompile("^x-")
 )
-
-type unionMap struct {
-	mustUnmarshal     []interface{}
-	ignoreKeys        []string
-	patternProperties map[*regexp.Regexp]interface{}
-	jsonData          []byte
-}
-
-func (u unionMap) unmarshal() error {
-	for _, item := range u.mustUnmarshal {
-		// Unmarshal to struct.
-		err := json.Unmarshal(u.jsonData, item)
-		if err != nil {
-			return err
-		}
-	}
-
-	if len(u.patternProperties) == 0 {
-		return nil
-	}
-
-	// Unmarshal to a generic map.
-	var m map[string]*json.RawMessage
-
-	err := json.Unmarshal(u.jsonData, &m)
-	if err != nil {
-		return err
-	}
-
-	// Remove ignored keys (defined in struct).
-	for _, i := range u.ignoreKeys {
-		delete(m, i)
-	}
-
-	// Return early on empty map.
-	if len(m) == 0 {
-		return nil
-	}
-
-	if len(u.patternProperties) != 0 {
-		err = u.unmarshalPatternProperties(m)
-		if err != nil {
-			return err
-		}
-	}
-
-	// Return early on empty map.
-	if len(m) == 0 {
-		return nil
-	}
-
-	return nil
-}
-
-func (u unionMap) unmarshalPatternProperties(m map[string]*json.RawMessage) error {
-	patternMapsRaw := make(map[*regexp.Regexp][]byte, len(u.patternProperties))
-
-	// Iterating map and filling pattern properties sub maps.
-	for key, val := range m {
-		matched := false
-		ok := false
-		keyEscaped := `"` + strings.Replace(key, `"`, `\"`, -1) + `":`
-
-		for regex := range u.patternProperties {
-			if regex.MatchString(key) {
-				matched = true
-
-				var subMap []byte
-
-				if subMap, ok = patternMapsRaw[regex]; !ok {
-					subMap = make([]byte, 1, 100)
-					subMap[0] = '{'
-				} else {
-					subMap = append(subMap[:len(subMap)-1], ',')
-				}
-
-				subMap = append(subMap, []byte(keyEscaped)...)
-
-				if val != nil {
-					subMap = append(subMap, []byte(*val)...)
-				} else {
-					subMap = append(subMap, []byte("null")...)
-				}
-
-				subMap = append(subMap, '}')
-
-				patternMapsRaw[regex] = subMap
-			}
-		}
-
-		// Remove from properties map if matched to at least one regex.
-		if matched {
-			delete(m, key)
-		}
-	}
-
-	for regex := range u.patternProperties {
-		if subMap, ok := patternMapsRaw[regex]; !ok {
-			continue
-		} else {
-			err := json.Unmarshal(subMap, u.patternProperties[regex])
-			if err != nil {
-				return err
-			}
-		}
-	}
-
-	return nil
-}

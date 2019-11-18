@@ -8,7 +8,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"strings"
 	"time"
 )
 
@@ -21,27 +20,51 @@ type LightMeasuredPayload struct {
 
 type marshalLightMeasuredPayload LightMeasuredPayload
 
+var ignoreKeysLightMeasuredPayload = []string{
+	"lumens",
+	"sentAt",
+}
+
 // UnmarshalJSON decodes JSON.
 func (i *LightMeasuredPayload) UnmarshalJSON(data []byte) error {
+	var err error
+
 	ii := marshalLightMeasuredPayload(*i)
 
-	err := unionMap{
-		mustUnmarshal: []interface{}{&ii},
-		ignoreKeys: []string{
-			"lumens",
-			"sentAt",
-		},
-		additionalProperties: &ii.AdditionalProperties,
-		jsonData: data,
-	}.unmarshal()
-
+	err = json.Unmarshal(data, &ii)
 	if err != nil {
 		return err
 	}
 
+	var m map[string]json.RawMessage
+
+	err = json.Unmarshal(data, &m)
+	if err != nil {
+		m = nil
+	}
+
+	for _, key := range ignoreKeysLightMeasuredPayload {
+		delete(m, key)
+	}
+
+	for key, rawValue := range m {
+		if ii.AdditionalProperties == nil {
+			ii.AdditionalProperties = make(map[string]interface{}, 1)
+		}
+
+		var val interface{}
+
+		err = json.Unmarshal(rawValue, &val)
+		if err != nil {
+			return err
+		}
+
+		ii.AdditionalProperties[key] = val
+	}
+
 	*i = LightMeasuredPayload(ii)
 
-	return err
+	return nil
 }
 
 // MarshalJSON encodes JSON.
@@ -58,27 +81,51 @@ type TurnOnOffPayload struct {
 
 type marshalTurnOnOffPayload TurnOnOffPayload
 
+var ignoreKeysTurnOnOffPayload = []string{
+	"command",
+	"sentAt",
+}
+
 // UnmarshalJSON decodes JSON.
 func (i *TurnOnOffPayload) UnmarshalJSON(data []byte) error {
+	var err error
+
 	ii := marshalTurnOnOffPayload(*i)
 
-	err := unionMap{
-		mustUnmarshal: []interface{}{&ii},
-		ignoreKeys: []string{
-			"command",
-			"sentAt",
-		},
-		additionalProperties: &ii.AdditionalProperties,
-		jsonData: data,
-	}.unmarshal()
-
+	err = json.Unmarshal(data, &ii)
 	if err != nil {
 		return err
 	}
 
+	var m map[string]json.RawMessage
+
+	err = json.Unmarshal(data, &m)
+	if err != nil {
+		m = nil
+	}
+
+	for _, key := range ignoreKeysTurnOnOffPayload {
+		delete(m, key)
+	}
+
+	for key, rawValue := range m {
+		if ii.AdditionalProperties == nil {
+			ii.AdditionalProperties = make(map[string]interface{}, 1)
+		}
+
+		var val interface{}
+
+		err = json.Unmarshal(rawValue, &val)
+		if err != nil {
+			return err
+		}
+
+		ii.AdditionalProperties[key] = val
+	}
+
 	*i = TurnOnOffPayload(ii)
 
-	return err
+	return nil
 }
 
 // MarshalJSON encodes JSON.
@@ -95,27 +142,51 @@ type DimLightPayload struct {
 
 type marshalDimLightPayload DimLightPayload
 
+var ignoreKeysDimLightPayload = []string{
+	"percentage",
+	"sentAt",
+}
+
 // UnmarshalJSON decodes JSON.
 func (i *DimLightPayload) UnmarshalJSON(data []byte) error {
+	var err error
+
 	ii := marshalDimLightPayload(*i)
 
-	err := unionMap{
-		mustUnmarshal: []interface{}{&ii},
-		ignoreKeys: []string{
-			"percentage",
-			"sentAt",
-		},
-		additionalProperties: &ii.AdditionalProperties,
-		jsonData: data,
-	}.unmarshal()
-
+	err = json.Unmarshal(data, &ii)
 	if err != nil {
 		return err
 	}
 
+	var m map[string]json.RawMessage
+
+	err = json.Unmarshal(data, &m)
+	if err != nil {
+		m = nil
+	}
+
+	for _, key := range ignoreKeysDimLightPayload {
+		delete(m, key)
+	}
+
+	for key, rawValue := range m {
+		if ii.AdditionalProperties == nil {
+			ii.AdditionalProperties = make(map[string]interface{}, 1)
+		}
+
+		var val interface{}
+
+		err = json.Unmarshal(rawValue, &val)
+		if err != nil {
+			return err
+		}
+
+		ii.AdditionalProperties[key] = val
+	}
+
 	*i = DimLightPayload(ii)
 
-	return err
+	return nil
 }
 
 // MarshalJSON encodes JSON.
@@ -216,84 +287,4 @@ func marshalUnion(maps ...interface{}) ([]byte, error) {
 	}
 
 	return result, nil
-}
-type unionMap struct {
-	mustUnmarshal        []interface{}
-	ignoreKeys           []string
-	additionalProperties interface{}
-	jsonData             []byte
-}
-
-func (u unionMap) unmarshal() error {
-	for _, item := range u.mustUnmarshal {
-		// Unmarshal to struct.
-		err := json.Unmarshal(u.jsonData, item)
-		if err != nil {
-			return err
-		}
-	}
-
-	if u.additionalProperties == nil {
-		return nil
-	}
-
-	// Unmarshal to a generic map.
-	var m map[string]*json.RawMessage
-
-	err := json.Unmarshal(u.jsonData, &m)
-	if err != nil {
-		return err
-	}
-
-	// Remove ignored keys (defined in struct).
-	for _, i := range u.ignoreKeys {
-		delete(m, i)
-	}
-
-	// Return early on empty map.
-	if len(m) == 0 {
-		return nil
-	}
-
-	if u.additionalProperties != nil {
-		return u.unmarshalAdditionalProperties(m)
-	}
-
-	return nil
-}
-
-func (u unionMap) unmarshalAdditionalProperties(m map[string]*json.RawMessage) error {
-	var err error
-
-	subMap := make([]byte, 1, 100)
-
-	subMap[0] = '{'
-
-	// Iterating map and filling additional properties.
-	for key, val := range m {
-		keyEscaped := `"` + strings.Replace(key, `"`, `\"`, -1) + `":`
-
-		if len(subMap) != 1 {
-			subMap = append(subMap[:len(subMap)-1], ',')
-		}
-
-		subMap = append(subMap, []byte(keyEscaped)...)
-
-		if val != nil {
-			subMap = append(subMap, []byte(*val)...)
-		} else {
-			subMap = append(subMap, []byte("null")...)
-		}
-
-		subMap = append(subMap, '}')
-	}
-
-	if len(subMap) > 1 {
-		err = json.Unmarshal(subMap, u.additionalProperties)
-		if err != nil {
-			return err
-		}
-	}
-
-	return nil
 }
