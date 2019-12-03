@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.6] - 2019-12-03
+
+### Added
+- Dependencies updated to fix issues in `swaggest/php-code-builder` and `swaggest/php-json-schema`.
+
 ## [1.6.5] - 2019-11-18
 
 ### Added
@@ -33,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Local file resolver in references.
 
+[1.6.6]: https://github.com/swaggest/json-cli/compare/v1.6.5...v1.6.6
 [1.6.5]: https://github.com/swaggest/json-cli/compare/v1.6.4...v1.6.5
 [1.6.4]: https://github.com/swaggest/json-cli/compare/v1.6.3...v1.6.4
 [1.6.3]: https://github.com/swaggest/json-cli/compare/v1.6.2...v1.6.3
