@@ -40,6 +40,8 @@ class GenGo extends Command
     public $defPtr = ['#/definitions'];
     /** @var string[] */
     public $ptrInSchema;
+    /** @var bool */
+    public $fluentSetters;
 
     public $output;
 
@@ -90,6 +92,9 @@ class GenGo extends Command
 
         $options->enableDefaultAdditionalProperties = Command\Option::create()
             ->setDescription('Add field property for undefined `additionalProperties`');
+
+        $options->fluentSetters = Command\Option::create()
+            ->setDescription('Add fluent setters to struct fields');
     }
 
 
@@ -130,6 +135,7 @@ class GenGo extends Command
             $builder->options->withZeroValues = $this->withZeroValues;
             $builder->options->enableXNullable = $this->enableXNullable;
             $builder->options->defaultAdditionalProperties = $this->enableDefaultAdditionalProperties;
+            $builder->options->fluentSetters = $this->fluentSetters;
             $pathToNameHook = new StripPrefixPathToNameHook();
 
             if (!empty($this->defPtr)) {
