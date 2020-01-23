@@ -36,6 +36,12 @@ class GenPhp extends Command
     /** @var bool */
     public $noEnumConst = false;
 
+    /** @var bool */
+    public $declarePropertyDefaults = false;
+
+    /** @var bool */
+    public $buildAdditionalPropertiesAccessors = false;
+
     /**
      * @param Command\Definition $definition
      * @param \stdClass|static $options
@@ -67,6 +73,12 @@ class GenPhp extends Command
         $options->getters = Command\Option::create()->setDescription('Build getters');
         $options->noEnumConst = Command\Option::create()
             ->setDescription('Do not create constants for enum/const values');
+
+        $options->declarePropertyDefaults = Command\Option::create()
+            ->setDescription('Use default values to initialize properties');
+
+        $options->buildAdditionalPropertiesAccessors = Command\Option::create()
+            ->setDescription('Build accessors for additionalProperties');
 
     }
 
@@ -119,6 +131,8 @@ class GenPhp extends Command
             $builder->buildGetters = $this->getters;
 
             $builder->makeEnumConstants = !$this->noEnumConst;
+            $builder->declarePropertyDefaults = $this->declarePropertyDefaults;
+            $builder->buildAdditionalPropertyMethodsOnTrue = $this->buildAdditionalPropertiesAccessors;
 
             $builder->classCreatedHook = new ClassHookCallback(function (PhpClass $class, $path, $schema)
             use ($app, $appNs, $skipRoot, $baseName) {

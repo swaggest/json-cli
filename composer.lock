@@ -337,16 +337,16 @@
         },
         {
             "name": "swaggest/json-schema",
-            "version": "v0.12.24",
+            "version": "v0.12.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-json-schema.git",
-                "reference": "395a9f6a1eefe65e1184ef425c3843b4f9bf9b86"
+                "reference": "0f509795092872601752f8a1f20f3cad4670370d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/395a9f6a1eefe65e1184ef425c3843b4f9bf9b86",
-                "reference": "395a9f6a1eefe65e1184ef425c3843b4f9bf9b86",
+                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/0f509795092872601752f8a1f20f3cad4670370d",
+                "reference": "0f509795092872601752f8a1f20f3cad4670370d",
                 "shasum": ""
             },
             "require": {
@@ -377,7 +377,7 @@
                 }
             ],
             "description": "High definition PHP structures with JSON-schema based validation",
-            "time": "2019-12-03T22:35:15+00:00"
+            "time": "2020-01-07T10:09:25+00:00"
         },
         {
             "name": "swaggest/json-schema-maker",
@@ -427,16 +427,16 @@
         },
         {
             "name": "swaggest/php-code-builder",
-            "version": "v0.2.23",
+            "version": "v0.2.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-code-builder.git",
-                "reference": "4535bc2a6661c7fff75212774748f969dc1c070c"
+                "reference": "2f562e4a6f7f1a5da8b9a3792b8ad3900c9d07a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/4535bc2a6661c7fff75212774748f969dc1c070c",
-                "reference": "4535bc2a6661c7fff75212774748f969dc1c070c",
+                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/2f562e4a6f7f1a5da8b9a3792b8ad3900c9d07a4",
+                "reference": "2f562e4a6f7f1a5da8b9a3792b8ad3900c9d07a4",
                 "shasum": ""
             },
             "require": {
@@ -470,7 +470,7 @@
             "keywords": [
                 "library"
             ],
-            "time": "2019-12-11T08:28:30+00:00"
+            "time": "2020-01-10T21:40:37+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -532,16 +532,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.36",
+            "version": "v3.4.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "dab657db15207879217fc81df4f875947bf68804"
+                "reference": "aa46bc2233097d5212332c907f9911533acfbf80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/dab657db15207879217fc81df4f875947bf68804",
-                "reference": "dab657db15207879217fc81df4f875947bf68804",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/aa46bc2233097d5212332c907f9911533acfbf80",
+                "reference": "aa46bc2233097d5212332c907f9911533acfbf80",
                 "shasum": ""
             },
             "require": {
@@ -587,7 +587,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2019-10-24T15:33:53+00:00"
+            "time": "2020-01-13T08:00:59+00:00"
         }
     ],
     "packages-dev": [
@@ -838,24 +838,24 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.10.1",
+            "version": "v1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "cbe1df668b3fe136bcc909126a0f529a78d4cbbc"
+                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/cbe1df668b3fe136bcc909126a0f529a78d4cbbc",
-                "reference": "cbe1df668b3fe136bcc909126a0f529a78d4cbbc",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
+                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
                 "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0|^5.0",
-                "sebastian/comparator": "^1.2.3|^2.0|^3.0",
-                "sebastian/recursion-context": "^1.0|^2.0|^3.0"
+                "sebastian/comparator": "^1.2.3|^2.0|^3.0|^4.0",
+                "sebastian/recursion-context": "^1.0|^2.0|^3.0|^4.0"
             },
             "require-dev": {
                 "phpspec/phpspec": "^2.5 || ^3.2",
@@ -897,7 +897,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2019-12-22T21:05:45+00:00"
+            "time": "2020-01-20T15:57:02+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
