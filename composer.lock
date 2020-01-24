@@ -248,16 +248,16 @@
         },
         {
             "name": "swaggest/go-code-builder",
-            "version": "v0.4.20",
+            "version": "v0.4.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/go-code-builder.git",
-                "reference": "de24e80b592d8888e33ff3f452b6ceef1e91b6e0"
+                "reference": "2b2e0e87a2a86d79e173076c9eceb64fea17cb54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/de24e80b592d8888e33ff3f452b6ceef1e91b6e0",
-                "reference": "de24e80b592d8888e33ff3f452b6ceef1e91b6e0",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/2b2e0e87a2a86d79e173076c9eceb64fea17cb54",
+                "reference": "2b2e0e87a2a86d79e173076c9eceb64fea17cb54",
                 "shasum": ""
             },
             "require": {
@@ -294,20 +294,20 @@
             "keywords": [
                 "library"
             ],
-            "time": "2020-01-03T23:29:36+00:00"
+            "time": "2020-01-24T10:34:19+00:00"
         },
         {
             "name": "swaggest/json-diff",
-            "version": "v3.7.2",
+            "version": "v3.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-diff.git",
-                "reference": "fb13f6f7b12b985e2b99877c3604ce904b4fdd7a"
+                "reference": "df30535920131d575330ed0ed7a696e1a42cddd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/fb13f6f7b12b985e2b99877c3604ce904b4fdd7a",
-                "reference": "fb13f6f7b12b985e2b99877c3604ce904b4fdd7a",
+                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/df30535920131d575330ed0ed7a696e1a42cddd3",
+                "reference": "df30535920131d575330ed0ed7a696e1a42cddd3",
                 "shasum": ""
             },
             "require": {
@@ -333,7 +333,7 @@
                 }
             ],
             "description": "JSON diff/rearrange/patch/pointer library for PHP",
-            "time": "2019-10-23T09:36:24+00:00"
+            "time": "2020-01-24T12:11:25+00:00"
         },
         {
             "name": "swaggest/json-schema",
