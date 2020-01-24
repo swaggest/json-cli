@@ -3,6 +3,7 @@
 namespace Swaggest\JsonCli;
 
 use Swaggest\JsonDiff\Exception;
+use Swaggest\JsonDiff\JsonMergePatch;
 use Swaggest\JsonDiff\JsonPatch;
 use Yaoi\Command;
 use Yaoi\Command\Definition;
@@ -11,8 +12,8 @@ class Apply extends Base
 {
     public $patchPath;
     public $basePath;
-    public $isURIFragmentId = false;
     public $tolerateErrors;
+    public $merge;
 
     /**
      * @param Definition $definition
@@ -30,6 +31,8 @@ class Apply extends Base
         $definition->description = 'Apply patch to base json document, output to STDOUT';
         $options->tolerateErrors = Command\Option::create()
             ->setDescription('Continue on error');
+        $options->merge = Command\Option::create()
+            ->setDescription('Use merge patch (RFC 7386)');
     }
 
     /**
@@ -41,12 +44,17 @@ class Apply extends Base
         $base = $this->readData($this->basePath);
 
         try {
-            $patch = JsonPatch::import($patchJson);
-            $errors = $patch->apply($base, !$this->tolerateErrors);
-            foreach ($errors as $error) {
-                $this->response->error($error->getMessage());
+            if ($this->merge) {
+                JsonMergePatch::apply($base, $patchJson);
+                $this->out = $base;
+            } else {
+                $patch = JsonPatch::import($patchJson);
+                $errors = $patch->apply($base, !$this->tolerateErrors);
+                foreach ($errors as $error) {
+                    $this->response->error($error->getMessage());
+                }
+                $this->out = $base;
             }
-            $this->out = $base;
         } catch (Exception $e) {
             $this->response->error($e->getMessage());
             throw new ExitCode('', 1);
