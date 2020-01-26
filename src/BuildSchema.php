@@ -68,6 +68,8 @@ class BuildSchema extends Base
      */
     public function performAction()
     {
+        $schema = new Schema();
+
         if ($this->schema) {
             $schemaDataOrig = $this->readData($this->schema);
             $schemaData = $schemaDataOrig;
@@ -85,7 +87,10 @@ class BuildSchema extends Base
             $resolver->resolvers[] = new BasicFetcher();
 
             try {
-                $schema = Schema::import($schemaData, new Context($resolver));
+                $schemaContract = Schema::import($schemaData, new Context($resolver));
+                if ($schemaContract instanceof Schema) {
+                    $schema = $schemaContract;
+                }
             } catch (InvalidValue $e) {
                 $this->response->error('Invalid schema');
                 $this->response->addContent($e->getMessage());
@@ -94,8 +99,6 @@ class BuildSchema extends Base
                 $this->response->error('Failed to import schema:' . $e->getMessage());
                 throw new ExitCode('', 1);
             }
-        } else {
-            $schema = new Schema();
         }
 
         $maker = new JsonSchemaFromInstance($schema);
@@ -104,6 +107,7 @@ class BuildSchema extends Base
         $maker->options->defsPtr = $this->defsPtr;
 
         if ($this->jsonl) {
+            $pathInData = [];
             if ($this->ptrInData) {
                 $pathInData = JsonPointer::splitPath($this->ptrInData);
             }
@@ -131,8 +135,12 @@ class BuildSchema extends Base
         $s = Schema::export($schema);
         $this->out = $s;
 
-        if ($this->ptrInSchema) {
-            $schemaDataResult = json_decode(json_encode($schemaDataOrig));
+        if ($this->ptrInSchema && isset($schemaDataOrig)) {
+            $tmp = json_encode($schemaDataOrig);
+            if ($tmp === false) {
+                throw new ExitCode('Failed to encode JSON', 1);
+            }
+            $schemaDataResult = json_decode($tmp);
 
             $defs = JsonPointer::get($s, JsonPointer::splitPath(rtrim($this->defsPtr, '/')));
             foreach ($defs as $name => $def) {
@@ -141,9 +149,12 @@ class BuildSchema extends Base
             JsonPointer::remove($s, JsonPointer::splitPath(rtrim($this->defsPtr, '/')));
             JsonPointer::add($schemaDataResult, JsonPointer::splitPath($this->ptrInSchema), $s);
 
-            $schemaDataResult = json_decode(json_encode($schemaDataResult));
+            $tmp = json_encode($schemaDataResult);
+            if ($tmp === false) {
+                throw new ExitCode('Failed to encode JSON', 1);
+            }
+            $schemaDataResult = json_decode($tmp);
             $diff = new JsonDiff($schemaDataOrig, $schemaDataResult, JsonDiff::REARRANGE_ARRAYS);
-            echo $diff->getDiffCnt();
             $this->out = $diff->getRearranged();
         }
 
