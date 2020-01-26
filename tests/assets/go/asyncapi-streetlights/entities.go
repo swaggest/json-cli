@@ -69,6 +69,9 @@ func (i *LightMeasuredPayload) UnmarshalJSON(data []byte) error {
 
 // MarshalJSON encodes JSON.
 func (i LightMeasuredPayload) MarshalJSON() ([]byte, error) {
+	if len(i.AdditionalProperties) == 0 {
+		return json.Marshal(marshalLightMeasuredPayload(i))
+	}
 	return marshalUnion(marshalLightMeasuredPayload(i), i.AdditionalProperties)
 }
 
@@ -130,6 +133,9 @@ func (i *TurnOnOffPayload) UnmarshalJSON(data []byte) error {
 
 // MarshalJSON encodes JSON.
 func (i TurnOnOffPayload) MarshalJSON() ([]byte, error) {
+	if len(i.AdditionalProperties) == 0 {
+		return json.Marshal(marshalTurnOnOffPayload(i))
+	}
 	return marshalUnion(marshalTurnOnOffPayload(i), i.AdditionalProperties)
 }
 
@@ -191,6 +197,9 @@ func (i *DimLightPayload) UnmarshalJSON(data []byte) error {
 
 // MarshalJSON encodes JSON.
 func (i DimLightPayload) MarshalJSON() ([]byte, error) {
+	if len(i.AdditionalProperties) == 0 {
+		return json.Marshal(marshalDimLightPayload(i))
+	}
 	return marshalUnion(marshalDimLightPayload(i), i.AdditionalProperties)
 }
 

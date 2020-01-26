@@ -1661,6 +1661,9 @@ func (i *Reference) UnmarshalJSON(data []byte) error {
 
 // MarshalJSON encodes JSON.
 func (i Reference) MarshalJSON() ([]byte, error) {
+	if len(i.AdditionalProperties) == 0 {
+		return json.Marshal(marshalReference(i))
+	}
 	return marshalUnion(marshalReference(i), i.AdditionalProperties)
 }
 
