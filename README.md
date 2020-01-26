@@ -1,5 +1,7 @@
 # JSON CLI tool
 
+<img align="right" width="100px" height="100px" alt="Swiss Knife" src="./knife.svg">
+
 A CLI for finding unordered diff between two `JSON` documents (based on [`swaggest/json-diff`](https://github.com/swaggest/json-diff)), pretty print, minify, yaml convert, etc....
 
 [![Build Status](https://travis-ci.org/swaggest/json-cli.svg?branch=master)](https://travis-ci.org/swaggest/json-cli)
@@ -20,6 +22,7 @@ A CLI for finding unordered diff between two `JSON` documents (based on [`swagge
  * To resolve `JSON Pointer` to data.
  * To resolve `JSON Pointer` to file position.
  * To validate JSON data against [`JSON Schema`](http://json-schema.org/).
+ * To [generate or update](#buildschema) JSON Schema with instance value(s).
  * To [render](#gengo) `JSON Schema` as [`Go`](http://golang.org/) structure.
  * To [render](#genphp) `JSON Schema` as `PHP` classes.
 
@@ -346,6 +349,39 @@ No valid results for oneOf {
  1: Value more than 10 expected, 5 received at #->oneOf[1]->$ref[#/definitions/int10plus]
 }
 ```
+
+#### <a name="buildschema"></a> Generate/update `JSON Schema` from instance value(s).
+
+New or existing schema is synchronized to match data samples.
+
+```
+v1.7.0 json-cli build-schema
+JSON CLI tool, https://github.com/swaggest/json-cli
+Usage: 
+   json-cli build-schema <data> [schema]
+   data     Path to data (JSON/JSONL/YAML)
+   schema   Path to parent schema   
+   
+Options: 
+   --ptr-in-schema <ptrInSchema>   JSON pointer to structure in root schema, default #                      
+   --ptr-in-data <ptrInData>       JSON pointer to structure in data, default #                             
+   --jsonl                         Data is a stream of JSON Lines                                           
+   --use-nullable                  Use `nullable: true` instead of `type: null`, OAS 3.0 compatibility      
+   --use-xnullable                 Use `x-nullable: true` instead of `type: null`, Swagger 2.0 compatibility
+   --defs-ptr <defsPtr>            Location to put new definitions. default: "#/definitions/"               
+   --pretty                        Pretty-print result JSON                                                 
+   --output <output>               Path to output result, default STDOUT                                    
+   --to-yaml                       Output in YAML format                                                    
+   --to-serialized                 Output in PHP serialized format
+```
+
+Example:
+
+```
+json-cli build-schema dump-responses.jsonl ./acme-service/swagger.json --ptr-in-schema "#/definitions/Orders" --jsonl --ptr-in-data "#/responseValue" --pretty --output swagger.json
+```
+
+Updates `swagger.json` with actual response samples provided in `dump-responses.jsonl`.
 
 #### <a name="gengo"></a> Generate [`Go`](http://golang.org/) structure from `JSON Schema`.
 

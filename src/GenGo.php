@@ -60,7 +60,7 @@ class GenGo extends Command
             ->setDescription('Path to output .go file, STDOUT is used by default')->setType();
 
         $options->ptrInSchema = Command\Option::create()->setType()->setIsVariadic()
-            ->setDescription('JSON pointers to structure in in root schema, default #');
+            ->setDescription('JSON pointers to structure in root schema, default #');
 
         $options->packageName = Command\Option::create()->setType()
             ->setDescription('Go package name, default "entities"');

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d93d8421a1792a0baaad8dd3eead8fa",
+    "content-hash": "c96d615aa4d29cee8a60471cce042f3f",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -248,16 +248,16 @@
         },
         {
             "name": "swaggest/go-code-builder",
-            "version": "v0.4.21",
+            "version": "v0.4.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/go-code-builder.git",
-                "reference": "2b2e0e87a2a86d79e173076c9eceb64fea17cb54"
+                "reference": "e0210fbd2db39019c4d6bb216cb81e3fd51f49d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/2b2e0e87a2a86d79e173076c9eceb64fea17cb54",
-                "reference": "2b2e0e87a2a86d79e173076c9eceb64fea17cb54",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/e0210fbd2db39019c4d6bb216cb81e3fd51f49d2",
+                "reference": "e0210fbd2db39019c4d6bb216cb81e3fd51f49d2",
                 "shasum": ""
             },
             "require": {
@@ -266,7 +266,7 @@
                 "phplang/scope-exit": "^1.0",
                 "swaggest/code-builder": "^0.3.1|dev-master",
                 "swaggest/json-schema": "^0.12.4",
-                "swaggest/json-schema-maker": "^0.0.1"
+                "swaggest/json-schema-maker": "^0.2.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5",
@@ -294,20 +294,20 @@
             "keywords": [
                 "library"
             ],
-            "time": "2020-01-24T10:34:19+00:00"
+            "time": "2020-01-26T15:56:51+00:00"
         },
         {
             "name": "swaggest/json-diff",
-            "version": "v3.7.3",
+            "version": "v3.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-diff.git",
-                "reference": "df30535920131d575330ed0ed7a696e1a42cddd3"
+                "reference": "fccbbd6ee31b5949ab52e9c53f7a1e1b06d84716"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/df30535920131d575330ed0ed7a696e1a42cddd3",
-                "reference": "df30535920131d575330ed0ed7a696e1a42cddd3",
+                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/fccbbd6ee31b5949ab52e9c53f7a1e1b06d84716",
+                "reference": "fccbbd6ee31b5949ab52e9c53f7a1e1b06d84716",
                 "shasum": ""
             },
             "require": {
@@ -333,20 +333,20 @@
                 }
             ],
             "description": "JSON diff/rearrange/patch/pointer library for PHP",
-            "time": "2020-01-24T12:11:25+00:00"
+            "time": "2020-01-26T20:52:06+00:00"
         },
         {
             "name": "swaggest/json-schema",
-            "version": "v0.12.25",
+            "version": "v0.12.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-json-schema.git",
-                "reference": "0f509795092872601752f8a1f20f3cad4670370d"
+                "reference": "9ec863a05a40e9b4547bc0c43dc6992cf17307a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/0f509795092872601752f8a1f20f3cad4670370d",
-                "reference": "0f509795092872601752f8a1f20f3cad4670370d",
+                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/9ec863a05a40e9b4547bc0c43dc6992cf17307a3",
+                "reference": "9ec863a05a40e9b4547bc0c43dc6992cf17307a3",
                 "shasum": ""
             },
             "require": {
@@ -377,26 +377,26 @@
                 }
             ],
             "description": "High definition PHP structures with JSON-schema based validation",
-            "time": "2020-01-07T10:09:25+00:00"
+            "time": "2020-01-26T21:05:11+00:00"
         },
         {
             "name": "swaggest/json-schema-maker",
-            "version": "v0.0.1",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-schema-maker.git",
-                "reference": "4336134bb9e8890d0b6eea5dab51660a82c2b142"
+                "reference": "9aa905a78857b1be1ad083f503e635ab8340b192"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-schema-maker/zipball/4336134bb9e8890d0b6eea5dab51660a82c2b142",
-                "reference": "4336134bb9e8890d0b6eea5dab51660a82c2b142",
+                "url": "https://api.github.com/repos/swaggest/json-schema-maker/zipball/9aa905a78857b1be1ad083f503e635ab8340b192",
+                "reference": "9aa905a78857b1be1ad083f503e635ab8340b192",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=5.5.0",
-                "swaggest/json-schema": "^0.12.21"
+                "php": ">=5.6.0",
+                "swaggest/json-schema": "^0.12.26"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5"
@@ -423,7 +423,7 @@
             "keywords": [
                 "json-schema"
             ],
-            "time": "2019-10-03T23:40:03+00:00"
+            "time": "2020-01-26T13:38:50+00:00"
         },
         {
             "name": "swaggest/php-code-builder",
