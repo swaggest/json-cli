@@ -248,16 +248,16 @@
         },
         {
             "name": "swaggest/go-code-builder",
-            "version": "v0.4.22",
+            "version": "v0.4.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/go-code-builder.git",
-                "reference": "e0210fbd2db39019c4d6bb216cb81e3fd51f49d2"
+                "reference": "4287cddd267b49d24f521e19994d3a141ad182cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/e0210fbd2db39019c4d6bb216cb81e3fd51f49d2",
-                "reference": "e0210fbd2db39019c4d6bb216cb81e3fd51f49d2",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/4287cddd267b49d24f521e19994d3a141ad182cd",
+                "reference": "4287cddd267b49d24f521e19994d3a141ad182cd",
                 "shasum": ""
             },
             "require": {
@@ -294,7 +294,7 @@
             "keywords": [
                 "library"
             ],
-            "time": "2020-01-26T15:56:51+00:00"
+            "time": "2020-02-02T16:08:33+00:00"
         },
         {
             "name": "swaggest/json-diff",
@@ -337,16 +337,16 @@
         },
         {
             "name": "swaggest/json-schema",
-            "version": "v0.12.27",
+            "version": "v0.12.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-json-schema.git",
-                "reference": "9ec863a05a40e9b4547bc0c43dc6992cf17307a3"
+                "reference": "6f57c0d80e246c2868accaab5c550cd470a5537f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/9ec863a05a40e9b4547bc0c43dc6992cf17307a3",
-                "reference": "9ec863a05a40e9b4547bc0c43dc6992cf17307a3",
+                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/6f57c0d80e246c2868accaab5c550cd470a5537f",
+                "reference": "6f57c0d80e246c2868accaab5c550cd470a5537f",
                 "shasum": ""
             },
             "require": {
@@ -377,7 +377,7 @@
                 }
             ],
             "description": "High definition PHP structures with JSON-schema based validation",
-            "time": "2020-01-26T21:05:11+00:00"
+            "time": "2020-01-27T09:47:50+00:00"
         },
         {
             "name": "swaggest/json-schema-maker",
