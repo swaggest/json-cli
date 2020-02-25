@@ -42,6 +42,8 @@ class GenGo extends Command
     public $ptrInSchema;
     /** @var bool */
     public $fluentSetters;
+    /** @var bool */
+    public $ignoreRequired = false;
 
     public $output;
 
@@ -95,6 +97,9 @@ class GenGo extends Command
 
         $options->fluentSetters = Command\Option::create()
             ->setDescription('Add fluent setters to struct fields');
+
+        $options->ignoreRequired = Command\Option::create()
+            ->setDescription('Ignore if property is required when deciding on pointer type or omitempty');
     }
 
 
@@ -136,6 +141,7 @@ class GenGo extends Command
             $builder->options->enableXNullable = $this->enableXNullable;
             $builder->options->defaultAdditionalProperties = $this->enableDefaultAdditionalProperties;
             $builder->options->fluentSetters = $this->fluentSetters;
+            $builder->options->ignoreRequired = $this->ignoreRequired;
             $pathToNameHook = new StripPrefixPathToNameHook();
 
             if (!empty($this->defPtr)) {
