@@ -7,7 +7,8 @@ docker-build:
 	@docker build . -t swaggest/json-cli:$(shell git describe --abbrev=0 --tags)
 
 docker-push:
-	@docker push swaggest/json-cli
+	@docker push swaggest/json-cli:latest
+	@docker push swaggest/json-cli:$(shell git describe --abbrev=0 --tags)
 
 lint:
 	@test -f $$HOME/.cache/composer/phpstan-0.11.8.phar || (mkdir -p $$HOME/.cache/composer/ && wget https://github.com/phpstan/phpstan/releases/download/0.11.8/phpstan.phar -O $$HOME/.cache/composer/phpstan-0.11.8.phar)
