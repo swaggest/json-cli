@@ -11,7 +11,7 @@ use Swaggest\JsonSchema\InvalidValue;
 use Swaggest\JsonSchema\RemoteRef\BasicFetcher;
 use Swaggest\JsonSchema\RemoteRef\Preloaded;
 use Swaggest\JsonSchema\Schema;
-use Swaggest\JsonSchemaMaker\JsonSchemaFromInstance;
+use Swaggest\JsonSchemaMaker\SchemaMaker;
 use Yaoi\Command;
 
 class BuildSchema extends Base
@@ -30,6 +30,8 @@ class BuildSchema extends Base
     public $useNullable = false;
 
     public $useXNullable = false;
+
+    public $collectExamples = false;
 
     public $defsPtr = '#/definitions/';
 
@@ -57,6 +59,9 @@ class BuildSchema extends Base
 
         $options->defsPtr = Command\Option::create()->setType()
             ->setDescription('Location to put new definitions. default: "#/definitions/"');
+
+        $options->collectExamples = Command\Option::create()
+            ->setDescription('Collect scalar values example');
 
         parent::setUpDefinition($definition, $options);
     }
@@ -101,10 +106,11 @@ class BuildSchema extends Base
             }
         }
 
-        $maker = new JsonSchemaFromInstance($schema);
+        $maker = new SchemaMaker($schema);
         $maker->options->useXNullable = $this->useXNullable;
         $maker->options->useNullable = $this->useNullable;
         $maker->options->defsPtr = $this->defsPtr;
+        $maker->options->collectExamples = $this->collectExamples;
 
         if ($this->jsonl) {
             $pathInData = [];
