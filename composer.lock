@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c96d615aa4d29cee8a60471cce042f3f",
+    "content-hash": "fc476548f5e0f8f5a75327787848b383",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -248,16 +248,16 @@
         },
         {
             "name": "swaggest/go-code-builder",
-            "version": "v0.4.27",
+            "version": "v0.4.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/go-code-builder.git",
-                "reference": "c9a376c0915333f36fd7f13d6873ab3033852e69"
+                "reference": "4acac2fed0a783429b7007a07a9025e88a6bd331"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/c9a376c0915333f36fd7f13d6873ab3033852e69",
-                "reference": "c9a376c0915333f36fd7f13d6873ab3033852e69",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/4acac2fed0a783429b7007a07a9025e88a6bd331",
+                "reference": "4acac2fed0a783429b7007a07a9025e88a6bd331",
                 "shasum": ""
             },
             "require": {
@@ -266,7 +266,7 @@
                 "phplang/scope-exit": "^1.0",
                 "swaggest/code-builder": "^0.3.1|dev-master",
                 "swaggest/json-schema": "^0.12.4",
-                "swaggest/json-schema-maker": "^0.2.0"
+                "swaggest/json-schema-maker": "^0.3.2"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5",
@@ -294,7 +294,7 @@
             "keywords": [
                 "library"
             ],
-            "time": "2020-02-25T15:27:29+00:00"
+            "time": "2020-03-10T20:39:45+00:00"
         },
         {
             "name": "swaggest/json-diff",
@@ -381,16 +381,16 @@
         },
         {
             "name": "swaggest/json-schema-maker",
-            "version": "v0.2.1",
+            "version": "v0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-schema-maker.git",
-                "reference": "3866c4602a7df347b5e301d99262aac03ba07c02"
+                "reference": "070df524941bf91d0b79a6e73223a2321fb565e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-schema-maker/zipball/3866c4602a7df347b5e301d99262aac03ba07c02",
-                "reference": "3866c4602a7df347b5e301d99262aac03ba07c02",
+                "url": "https://api.github.com/repos/swaggest/json-schema-maker/zipball/070df524941bf91d0b79a6e73223a2321fb565e4",
+                "reference": "070df524941bf91d0b79a6e73223a2321fb565e4",
                 "shasum": ""
             },
             "require": {
@@ -423,7 +423,7 @@
             "keywords": [
                 "json-schema"
             ],
-            "time": "2020-02-18T12:02:49+00:00"
+            "time": "2020-03-10T17:00:17+00:00"
         },
         {
             "name": "swaggest/php-code-builder",
@@ -532,16 +532,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.37",
+            "version": "v3.4.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "aa46bc2233097d5212332c907f9911533acfbf80"
+                "reference": "bc63e15160866e8730a1f738541b194c401f72bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/aa46bc2233097d5212332c907f9911533acfbf80",
-                "reference": "aa46bc2233097d5212332c907f9911533acfbf80",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/bc63e15160866e8730a1f738541b194c401f72bf",
+                "reference": "bc63e15160866e8730a1f738541b194c401f72bf",
                 "shasum": ""
             },
             "require": {
@@ -587,7 +587,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2020-01-13T08:00:59+00:00"
+            "time": "2020-01-16T19:04:26+00:00"
         }
     ],
     "packages-dev": [
@@ -838,16 +838,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.10.2",
+            "version": "v1.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9"
+                "reference": "451c3cd1418cf640de218914901e51b064abb093"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/451c3cd1418cf640de218914901e51b064abb093",
+                "reference": "451c3cd1418cf640de218914901e51b064abb093",
                 "shasum": ""
             },
             "require": {
@@ -897,7 +897,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-01-20T15:57:02+00:00"
+            "time": "2020-03-05T15:02:03+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
