@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc476548f5e0f8f5a75327787848b383",
+    "content-hash": "156d12e5f4299f8195536af4319ea304",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -248,16 +248,16 @@
         },
         {
             "name": "swaggest/go-code-builder",
-            "version": "v0.4.28",
+            "version": "v0.4.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/go-code-builder.git",
-                "reference": "4acac2fed0a783429b7007a07a9025e88a6bd331"
+                "reference": "ed9564b7b826f708c326d7bb6384f7e4682f7c6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/4acac2fed0a783429b7007a07a9025e88a6bd331",
-                "reference": "4acac2fed0a783429b7007a07a9025e88a6bd331",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/ed9564b7b826f708c326d7bb6384f7e4682f7c6f",
+                "reference": "ed9564b7b826f708c326d7bb6384f7e4682f7c6f",
                 "shasum": ""
             },
             "require": {
@@ -294,7 +294,7 @@
             "keywords": [
                 "library"
             ],
-            "time": "2020-03-10T20:39:45+00:00"
+            "time": "2020-03-17T22:07:25+00:00"
         },
         {
             "name": "swaggest/json-diff",
