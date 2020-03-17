@@ -264,6 +264,11 @@ Options:
    --output <output>   Path to output result, default STDOUT
 ```
 
+Bash command to minify all JSON files in current directory. 
+```
+for f in *.json; do json-cli minify $f --output $f; done
+```
+
 #### Replace values in JSON document
 
 ```
