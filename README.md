@@ -380,7 +380,14 @@ Options:
    --to-serialized                 Output in PHP serialized format
 ```
 
-Example:
+Basic example:
+```
+json-cli build-schema tests/assets/original.json 
+
+{"properties":{"key1":{"items":{"type":"integer"},"type":"array"},"key2":{"type":"integer"},"key3":{"$ref":"#/definitions/key3"},"key4":{"items":{"$ref":"#/definitions/key4.element"},"type":"array"}},"type":"object","definitions":{"key3":{"properties":{"sub0":{"type":"integer"},"sub1":{"type":"string"},"sub2":{"type":"string"}},"type":"object"},"key4.element":{"properties":{"a":{"type":"integer"},"b":{"type":"boolean"}},"type":"object"}}}
+```
+
+Advanced example:
 
 ```
 json-cli build-schema dump-responses.jsonl ./acme-service/swagger.json --ptr-in-schema "#/definitions/Orders" --jsonl --ptr-in-data "#/responseValue" --pretty --output swagger.json
