@@ -253,15 +253,17 @@ Options:
 
 ```
 json-cli minify --help
-v1.3.0 json-cli minify
+v1.7.5 json-cli minify
 JSON CLI tool, https://github.com/swaggest/json-cli
 Minify JSON document
-Usage:
+Usage: 
    json-cli minify <path>
    path   Path to JSON/YAML file
-
-Options:
+   
+Options: 
    --output <output>   Path to output result, default STDOUT
+   --to-serialized     Output in PHP serialized format      
+   --eol               Add line break to the output         
 ```
 
 Bash command to minify all JSON files in current directory. 
@@ -400,7 +402,7 @@ Updates `swagger.json` with actual response samples provided in `dump-responses.
 `Go` code is built using [`swaggest/go-code-builder`](http://github.com/swaggest/go-code-builder).
 
 ```
-v1.6.3 json-cli gen-go
+v1.7.5 json-cli gen-go
 JSON CLI tool, https://github.com/swaggest/json-cli
 Generate Go code from JSON schema
 Usage: 
@@ -408,18 +410,22 @@ Usage:
    schema   Path to JSON schema file
    
 Options: 
-   --output <output>                         Path to output .go file, STDOUT is used by default                    
-   --ptr-in-schema <ptrInSchema...>          JSON pointers to structure in in root schema, default #               
-   --package-name <packageName>              Go package name, default "entities"                                   
-   --root-name <rootName>                    Go root struct name, default "Structure", only used for # pointer     
-   --def-ptr <defPtr...>                     Definitions pointers to strip from symbol names, default #/definitions
-   --show-const-properties                   Show properties with constant values, hidden by default               
-   --keep-parent-in-property-names           Keep parent prefix in property name, removed by default               
-   --ignore-nullable                         Add `omitempty` to nullable properties, removed by default            
-   --ignore-xgo-type                         Ignore `x-go-type` in schema to skip generation                       
-   --with-zero-values                        Use pointer types to avoid zero value ambiguity                       
-   --enable-xnullable                        Add `null` to types if `x-nullable` or `nullable` is available        
-   --enable-default-additional-properties    Add field property for undefined `additionalProperties`               
+   --output <output>                         Path to output .go file, STDOUT is used by default                       
+   --ptr-in-schema <ptrInSchema...>          JSON pointers to structure in root schema, default #                     
+   --package-name <packageName>              Go package name, default "entities"                                      
+   --root-name <rootName>                    Go root struct name, default "Structure", only used for # pointer        
+   --def-ptr <defPtr...>                     Definitions pointers to strip from symbol names, default #/definitions   
+   --show-const-properties                   Show properties with constant values, hidden by default                  
+   --keep-parent-in-property-names           Keep parent prefix in property name, removed by default                  
+   --ignore-nullable                         Add `omitempty` to nullable properties, removed by default               
+   --ignore-xgo-type                         Ignore `x-go-type` in schema to skip generation                          
+   --with-zero-values                        Use pointer types to avoid zero value ambiguity                          
+   --enable-xnullable                        Add `null` to types if `x-nullable` or `nullable` is available           
+   --enable-default-additional-properties    Add field property for undefined `additionalProperties`                  
+   --fluent-setters                          Add fluent setters to struct fields                                      
+   --ignore-required                         Ignore if property is required when deciding on pointer type or omitempty
+   --renames <renames...>                    Map of exported symbol renames, example From:To                          
+   --with-tests                              Generate (un)marshaling tests for entities (experimental feature)        
 ```
 
 Example:

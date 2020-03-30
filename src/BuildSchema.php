@@ -19,6 +19,8 @@ class BuildSchema extends Base
     public $schema;
     public $data;
 
+    public $additionalData;
+
     /** @var string */
     public $ptrInSchema;
 
@@ -62,6 +64,9 @@ class BuildSchema extends Base
 
         $options->collectExamples = Command\Option::create()
             ->setDescription('Collect scalar values example');
+
+        $options->additionalData = Command\Option::create()->setType()->setIsVariadic()
+            ->setDescription('Additional paths to data');
 
         parent::setUpDefinition($definition, $options);
     }
@@ -135,6 +140,13 @@ class BuildSchema extends Base
         } else {
             $data = $this->readData($this->data);
             $maker->addInstanceValue($data);
+
+            if (!empty($this->additionalData)) {
+                foreach ($this->additionalData as $path) {
+                    $data = $this->readData($path);
+                    $maker->addInstanceValue($data);
+                }
+            }
         }
 
 
