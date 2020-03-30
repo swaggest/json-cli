@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.5] - 2020-03-30
+
+### Added
+- Option to add multiple data samples in `build-schema`.
+- Option to add new line in `minify`.
+
+### Fixed
+- Generated tests do not honor `--enable-default-additional-properties`.
+
 ## [1.7.4] - 2020-03-17
 
 ### Added

@@ -203,7 +203,7 @@ class GenGo extends Command
                 }
                 $goFile->getCode()->addSnippet($generatedStruct->structDef);
                 if ($this->withTests) {
-                    $goTestFile->getCode()->addSnippet(MarshalingTestFunc::make($generatedStruct));
+                    $goTestFile->getCode()->addSnippet(MarshalingTestFunc::make($generatedStruct, $builder->options));
                 }
             }
             $goFile->getCode()->addSnippet($builder->getCode());
