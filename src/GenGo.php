@@ -51,6 +51,9 @@ class GenGo extends Command
     /** @var array */
     public $renames = [];
 
+    /** @var bool */
+    public $requireXGenerate = false;
+
     public $output;
 
 
@@ -112,6 +115,9 @@ class GenGo extends Command
 
         $options->withTests = Command\Option::create()
             ->setDescription('Generate (un)marshaling tests for entities (experimental feature)');
+
+        $options->requireXGenerate = Command\Option::create()
+            ->setDescription('Generate properties with `x-generate: true` only');
     }
 
 
@@ -154,6 +160,7 @@ class GenGo extends Command
             $builder->options->defaultAdditionalProperties = $this->enableDefaultAdditionalProperties;
             $builder->options->fluentSetters = $this->fluentSetters;
             $builder->options->ignoreRequired = $this->ignoreRequired;
+            $builder->options->requireXGenerate = $this->requireXGenerate;
             if (!empty($this->renames)) {
                 foreach ($this->renames as $rename) {
                     $rename = explode(':', $rename, 2);

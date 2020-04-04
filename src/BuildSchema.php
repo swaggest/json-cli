@@ -127,6 +127,10 @@ class BuildSchema extends Base
             if ($handle) {
                 while (($buffer = fgets($handle)) !== false) {
                     $item = json_decode($buffer);
+                    // Tolerate and skip malformed JSON line.
+                    if (null === $item) {
+                        continue;
+                    }
                     if ($this->ptrInData) {
                         $item = JsonPointer::get($item, $pathInData);
                     }
