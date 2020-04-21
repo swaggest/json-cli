@@ -1197,10 +1197,6 @@ func (x *XML) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// MarshalJSON encodes JSON.
-func (x XML) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalXML(x))
-}
 
 // ExternalDocs structure is generated from "#/definitions/externalDocs".
 //
@@ -2054,10 +2050,6 @@ func (c *Components) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// MarshalJSON encodes JSON.
-func (c Components) MarshalJSON() ([]byte, error) {
-	return marshalUnion(marshalComponents(c))
-}
 
 // Reference structure is generated from "#/definitions/Reference".
 type Reference struct {
@@ -3587,8 +3579,7 @@ func (i *APIKeyHTTPSecuritySchemeIn) UnmarshalJSON(data []byte) error {
 }
 
 func marshalUnion(maps ...interface{}) ([]byte, error) {
-	result := make([]byte, 1, 100)
-	result[0] = '{'
+	result := []byte("{")
 	isObject := true
 
 	for _, m := range maps {
