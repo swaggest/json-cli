@@ -362,24 +362,27 @@ No valid results for oneOf {
 New or existing schema is synchronized to match data samples.
 
 ```
-v1.7.0 json-cli build-schema
+v1.7.8 json-cli build-schema
 JSON CLI tool, https://github.com/swaggest/json-cli
 Usage: 
    json-cli build-schema <data> [schema]
-   data     Path to data (JSON/JSONL/YAML)
+   data     Path to data (JSON/YAML)
    schema   Path to parent schema   
    
 Options: 
-   --ptr-in-schema <ptrInSchema>   JSON pointer to structure in root schema, default #                      
-   --ptr-in-data <ptrInData>       JSON pointer to structure in data, default #                             
-   --jsonl                         Data is a stream of JSON Lines                                           
-   --use-nullable                  Use `nullable: true` instead of `type: null`, OAS 3.0 compatibility      
-   --use-xnullable                 Use `x-nullable: true` instead of `type: null`, Swagger 2.0 compatibility
-   --defs-ptr <defsPtr>            Location to put new definitions. default: "#/definitions/"               
-   --pretty                        Pretty-print result JSON                                                 
-   --output <output>               Path to output result, default STDOUT                                    
-   --to-yaml                       Output in YAML format                                                    
-   --to-serialized                 Output in PHP serialized format
+   --ptr-in-schema <ptrInSchema>           JSON pointer to structure in root schema, default #                      
+   --ptr-in-data <ptrInData>               JSON pointer to structure in data, default #                             
+   --jsonl                                 Data is a stream of JSON Lines                                           
+   --use-nullable                          Use `nullable: true` instead of `type: null`, OAS 3.0 compatibility      
+   --use-xnullable                         Use `x-nullable: true` instead of `type: null`, Swagger 2.0 compatibility
+   --defs-ptr <defsPtr>                    Location to put new definitions. default: "#/definitions/"               
+   --collect-examples                      Collect scalar values example                                            
+   --heuristic-required                    Mark properties that are available in all samples as `required`.         
+   --additional-data <additionalData...>   Additional paths to data                                                 
+   --pretty                                Pretty-print result JSON                                                 
+   --output <output>                       Path to output result, default STDOUT                                    
+   --to-yaml                               Output in YAML format                                                    
+   --to-serialized                         Output in PHP serialized format                                          
 ```
 
 Basic example:

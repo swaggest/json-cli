@@ -54,6 +54,9 @@ class GenGo extends Command
     /** @var bool */
     public $requireXGenerate = false;
 
+    /** @var bool */
+    public $validateRequired = false;
+
     public $output;
 
 
@@ -118,6 +121,9 @@ class GenGo extends Command
 
         $options->requireXGenerate = Command\Option::create()
             ->setDescription('Generate properties with `x-generate: true` only');
+
+        $options->validateRequired = Command\Option::create()
+            ->setDescription('Generate validation code to check required properties during unmarshal');
     }
 
 
@@ -161,6 +167,7 @@ class GenGo extends Command
             $builder->options->fluentSetters = $this->fluentSetters;
             $builder->options->ignoreRequired = $this->ignoreRequired;
             $builder->options->requireXGenerate = $this->requireXGenerate;
+            $builder->options->validateRequired = $this->validateRequired;
             if (!empty($this->renames)) {
                 foreach ($this->renames as $rename) {
                     $rename = explode(':', $rename, 2);

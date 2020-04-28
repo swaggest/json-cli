@@ -5,8 +5,6 @@ use Swaggest\JsonCli\App;
 use Swaggest\JsonCli\ExitCode;
 use Yaoi\Cli\Command\Application\Runner;
 
-set_time_limit(60);
-
 foreach (array(__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php') as $file) {
     if (file_exists($file)) {
         require_once $file;
