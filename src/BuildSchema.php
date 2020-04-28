@@ -37,6 +37,8 @@ class BuildSchema extends Base
 
     public $defsPtr = '#/definitions/';
 
+    public $heuristicRequired = false;
+
     /**
      * @param Command\Definition $definition
      * @param \stdClass|static $options
@@ -64,6 +66,9 @@ class BuildSchema extends Base
 
         $options->collectExamples = Command\Option::create()
             ->setDescription('Collect scalar values example');
+
+        $options->heuristicRequired = Command\Option::create()
+            ->setDescription('Mark properties that are available in all samples as `required`.');
 
         $options->additionalData = Command\Option::create()->setType()->setIsVariadic()
             ->setDescription('Additional paths to data');
@@ -116,6 +121,7 @@ class BuildSchema extends Base
         $maker->options->useNullable = $this->useNullable;
         $maker->options->defsPtr = $this->defsPtr;
         $maker->options->collectExamples = $this->collectExamples;
+        $maker->options->heuristicRequired = $this->heuristicRequired;
 
         if ($this->jsonl) {
             $pathInData = [];

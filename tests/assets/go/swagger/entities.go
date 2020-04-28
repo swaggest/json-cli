@@ -38,11 +38,6 @@ var knownKeysInfo = []string{
 	"license",
 }
 
-var requireKeysInfo = []string{
-	"version",
-	"title",
-}
-
 // UnmarshalJSON decodes JSON.
 func (i *Info) UnmarshalJSON(data []byte) error {
 	var err error
@@ -59,12 +54,6 @@ func (i *Info) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysInfo {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	for _, key := range knownKeysInfo {
@@ -223,10 +212,6 @@ var knownKeysLicense = []string{
 	"url",
 }
 
-var requireKeysLicense = []string{
-	"name",
-}
-
 // UnmarshalJSON decodes JSON.
 func (l *License) UnmarshalJSON(data []byte) error {
 	var err error
@@ -243,12 +228,6 @@ func (l *License) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysLicense {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	for _, key := range knownKeysLicense {

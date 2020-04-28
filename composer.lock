@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b87674c07cd1d7d182f9639b87794d88",
+    "content-hash": "bcc91346e84a5cdab8be42583c80c63c",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -248,16 +248,16 @@
         },
         {
             "name": "swaggest/go-code-builder",
-            "version": "v0.4.34",
+            "version": "v0.4.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/go-code-builder.git",
-                "reference": "2531706220f39b615171cbdf6af67f3b5999c863"
+                "reference": "73849c42134bc721a125f97f040f5188713ca64b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/2531706220f39b615171cbdf6af67f3b5999c863",
-                "reference": "2531706220f39b615171cbdf6af67f3b5999c863",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/73849c42134bc721a125f97f040f5188713ca64b",
+                "reference": "73849c42134bc721a125f97f040f5188713ca64b",
                 "shasum": ""
             },
             "require": {
@@ -294,7 +294,7 @@
             "keywords": [
                 "library"
             ],
-            "time": "2020-04-12T20:33:51+00:00"
+            "time": "2020-04-28T13:12:14+00:00"
         },
         {
             "name": "swaggest/json-diff",
@@ -381,16 +381,16 @@
         },
         {
             "name": "swaggest/json-schema-maker",
-            "version": "v0.3.2",
+            "version": "v0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-schema-maker.git",
-                "reference": "070df524941bf91d0b79a6e73223a2321fb565e4"
+                "reference": "e9d851d96adb0ff43554d946cc3c3a2b96e5a3f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-schema-maker/zipball/070df524941bf91d0b79a6e73223a2321fb565e4",
-                "reference": "070df524941bf91d0b79a6e73223a2321fb565e4",
+                "url": "https://api.github.com/repos/swaggest/json-schema-maker/zipball/e9d851d96adb0ff43554d946cc3c3a2b96e5a3f5",
+                "reference": "e9d851d96adb0ff43554d946cc3c3a2b96e5a3f5",
                 "shasum": ""
             },
             "require": {
@@ -423,7 +423,7 @@
             "keywords": [
                 "json-schema"
             ],
-            "time": "2020-03-10T17:00:17+00:00"
+            "time": "2020-04-28T13:38:43+00:00"
         },
         {
             "name": "swaggest/php-code-builder",
@@ -532,16 +532,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.39",
+            "version": "v3.4.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "e701b47e11749970f63803879c4febb520f07b6c"
+                "reference": "8fef49ac1357f4e05c997a1f139467ccb186bffa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/e701b47e11749970f63803879c4febb520f07b6c",
-                "reference": "e701b47e11749970f63803879c4febb520f07b6c",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/8fef49ac1357f4e05c997a1f139467ccb186bffa",
+                "reference": "8fef49ac1357f4e05c997a1f139467ccb186bffa",
                 "shasum": ""
             },
             "require": {
@@ -587,7 +587,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2020-03-25T12:02:26+00:00"
+            "time": "2020-04-24T10:16:04+00:00"
         }
     ],
     "packages-dev": [

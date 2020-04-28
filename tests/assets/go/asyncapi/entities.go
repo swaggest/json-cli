@@ -51,11 +51,6 @@ var knownKeysAsyncAPI = []string{
 	"externalDocs",
 }
 
-var requireKeysAsyncAPI = []string{
-	"asyncapi",
-	"info",
-}
-
 // UnmarshalJSON decodes JSON.
 func (a *AsyncAPI) UnmarshalJSON(data []byte) error {
 	var err error
@@ -72,12 +67,6 @@ func (a *AsyncAPI) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysAsyncAPI {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	for _, key := range knownKeysAsyncAPI {
@@ -159,11 +148,6 @@ var knownKeysInfo = []string{
 	"license",
 }
 
-var requireKeysInfo = []string{
-	"version",
-	"title",
-}
-
 // UnmarshalJSON decodes JSON.
 func (i *Info) UnmarshalJSON(data []byte) error {
 	var err error
@@ -180,12 +164,6 @@ func (i *Info) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysInfo {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	for _, key := range knownKeysInfo {
@@ -344,10 +322,6 @@ var knownKeysLicense = []string{
 	"url",
 }
 
-var requireKeysLicense = []string{
-	"name",
-}
-
 // UnmarshalJSON decodes JSON.
 func (l *License) UnmarshalJSON(data []byte) error {
 	var err error
@@ -364,12 +338,6 @@ func (l *License) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysLicense {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	for _, key := range knownKeysLicense {
@@ -445,11 +413,6 @@ var knownKeysServer = []string{
 	"variables",
 }
 
-var requireKeysServer = []string{
-	"url",
-	"scheme",
-}
-
 // UnmarshalJSON decodes JSON.
 func (s *Server) UnmarshalJSON(data []byte) error {
 	var err error
@@ -466,12 +429,6 @@ func (s *Server) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysServer {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	for _, key := range knownKeysServer {
@@ -1216,10 +1173,6 @@ var knownKeysExternalDocs = []string{
 	"url",
 }
 
-var requireKeysExternalDocs = []string{
-	"url",
-}
-
 // UnmarshalJSON decodes JSON.
 func (e *ExternalDocs) UnmarshalJSON(data []byte) error {
 	var err error
@@ -1236,12 +1189,6 @@ func (e *ExternalDocs) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysExternalDocs {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	for _, key := range knownKeysExternalDocs {
@@ -1411,10 +1358,6 @@ var knownKeysTag = []string{
 	"externalDocs",
 }
 
-var requireKeysTag = []string{
-	"name",
-}
-
 // UnmarshalJSON decodes JSON.
 func (t *Tag) UnmarshalJSON(data []byte) error {
 	var err error
@@ -1431,12 +1374,6 @@ func (t *Tag) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysTag {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	for _, key := range knownKeysTag {
@@ -1500,10 +1437,6 @@ var knownKeysOperationOneOf1 = []string{
 	"oneOf",
 }
 
-var requireKeysOperationOneOf1 = []string{
-	"oneOf",
-}
-
 // UnmarshalJSON decodes JSON.
 func (o *OperationOneOf1) UnmarshalJSON(data []byte) error {
 	var err error
@@ -1520,12 +1453,6 @@ func (o *OperationOneOf1) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysOperationOneOf1 {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	for _, key := range knownKeysOperationOneOf1 {
@@ -2065,10 +1992,6 @@ var knownKeysReference = []string{
 	"$ref",
 }
 
-var requireKeysReference = []string{
-	"$ref",
-}
-
 // UnmarshalJSON decodes JSON.
 func (r *Reference) UnmarshalJSON(data []byte) error {
 	var err error
@@ -2085,12 +2008,6 @@ func (r *Reference) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysReference {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	for _, key := range knownKeysReference {
@@ -2139,10 +2056,6 @@ var knownKeysUserPassword = []string{
 	"type",
 }
 
-var requireKeysUserPassword = []string{
-	"type",
-}
-
 // UnmarshalJSON decodes JSON.
 func (u *UserPassword) UnmarshalJSON(data []byte) error {
 	var err error
@@ -2159,12 +2072,6 @@ func (u *UserPassword) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysUserPassword {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	if v, ok := rawMap["type"]; !ok || string(v) != `"userPassword"` {
@@ -2242,11 +2149,6 @@ var knownKeysAPIKey = []string{
 	"type",
 }
 
-var requireKeysAPIKey = []string{
-	"type",
-	"in",
-}
-
 // UnmarshalJSON decodes JSON.
 func (a *APIKey) UnmarshalJSON(data []byte) error {
 	var err error
@@ -2263,12 +2165,6 @@ func (a *APIKey) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysAPIKey {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	if v, ok := rawMap["type"]; !ok || string(v) != `"apiKey"` {
@@ -2344,10 +2240,6 @@ var knownKeysX509 = []string{
 	"type",
 }
 
-var requireKeysX509 = []string{
-	"type",
-}
-
 // UnmarshalJSON decodes JSON.
 func (x *X509) UnmarshalJSON(data []byte) error {
 	var err error
@@ -2364,12 +2256,6 @@ func (x *X509) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysX509 {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	if v, ok := rawMap["type"]; !ok || string(v) != `"X509"` {
@@ -2445,10 +2331,6 @@ var knownKeysSymmetricEncryption = []string{
 	"type",
 }
 
-var requireKeysSymmetricEncryption = []string{
-	"type",
-}
-
 // UnmarshalJSON decodes JSON.
 func (s *SymmetricEncryption) UnmarshalJSON(data []byte) error {
 	var err error
@@ -2465,12 +2347,6 @@ func (s *SymmetricEncryption) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysSymmetricEncryption {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	if v, ok := rawMap["type"]; !ok || string(v) != `"symmetricEncryption"` {
@@ -2546,10 +2422,6 @@ var knownKeysAsymmetricEncryption = []string{
 	"type",
 }
 
-var requireKeysAsymmetricEncryption = []string{
-	"type",
-}
-
 // UnmarshalJSON decodes JSON.
 func (a *AsymmetricEncryption) UnmarshalJSON(data []byte) error {
 	var err error
@@ -2566,12 +2438,6 @@ func (a *AsymmetricEncryption) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysAsymmetricEncryption {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	if v, ok := rawMap["type"]; !ok || string(v) != `"asymmetricEncryption"` {
@@ -2649,11 +2515,6 @@ var knownKeysNonBearerHTTPSecurityScheme = []string{
 	"type",
 }
 
-var requireKeysNonBearerHTTPSecurityScheme = []string{
-	"scheme",
-	"type",
-}
-
 // UnmarshalJSON decodes JSON.
 func (n *NonBearerHTTPSecurityScheme) UnmarshalJSON(data []byte) error {
 	var err error
@@ -2676,12 +2537,6 @@ func (n *NonBearerHTTPSecurityScheme) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysNonBearerHTTPSecurityScheme {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	if v, ok := rawMap["type"]; !ok || string(v) != `"http"` {
@@ -2810,11 +2665,6 @@ var knownKeysBearerHTTPSecurityScheme = []string{
 	"type",
 }
 
-var requireKeysBearerHTTPSecurityScheme = []string{
-	"type",
-	"scheme",
-}
-
 // UnmarshalJSON decodes JSON.
 func (b *BearerHTTPSecurityScheme) UnmarshalJSON(data []byte) error {
 	var err error
@@ -2831,12 +2681,6 @@ func (b *BearerHTTPSecurityScheme) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysBearerHTTPSecurityScheme {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	if v, ok := rawMap["scheme"]; !ok || string(v) != `"bearer"` {
@@ -2922,12 +2766,6 @@ var knownKeysAPIKeyHTTPSecurityScheme = []string{
 	"type",
 }
 
-var requireKeysAPIKeyHTTPSecurityScheme = []string{
-	"type",
-	"name",
-	"in",
-}
-
 // UnmarshalJSON decodes JSON.
 func (a *APIKeyHTTPSecurityScheme) UnmarshalJSON(data []byte) error {
 	var err error
@@ -2944,12 +2782,6 @@ func (a *APIKeyHTTPSecurityScheme) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &rawMap)
 	if err != nil {
 		rawMap = nil
-	}
-
-	for _, key := range requireKeysAPIKeyHTTPSecurityScheme {
-		if _, found := rawMap[key]; !found {
-			return errors.New("required key missing: " + key)
-		}
 	}
 
 	if v, ok := rawMap["type"]; !ok || string(v) != `"httpApiKey"` {
