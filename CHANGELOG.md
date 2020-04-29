@@ -115,6 +115,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Local file resolver in references.
 
+[1.7.9]: https://github.com/swaggest/json-cli/compare/v1.7.8...v1.7.9
 [1.7.8]: https://github.com/swaggest/json-cli/compare/v1.7.7...v1.7.8
 [1.7.7]: https://github.com/swaggest/json-cli/compare/v1.7.6...v1.7.7
 [1.7.6]: https://github.com/swaggest/json-cli/compare/v1.7.5...v1.7.6
