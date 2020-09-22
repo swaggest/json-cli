@@ -201,16 +201,16 @@
         },
         {
             "name": "swaggest/code-builder",
-            "version": "v0.3.2",
+            "version": "v0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/code-builder.git",
-                "reference": "5ae06c6dd5f2d6ae38a583942ac9382f60196a25"
+                "reference": "14a5d5f202c47890529a68f6ff16263ff66e8bf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/code-builder/zipball/5ae06c6dd5f2d6ae38a583942ac9382f60196a25",
-                "reference": "5ae06c6dd5f2d6ae38a583942ac9382f60196a25",
+                "url": "https://api.github.com/repos/swaggest/code-builder/zipball/14a5d5f202c47890529a68f6ff16263ff66e8bf1",
+                "reference": "14a5d5f202c47890529a68f6ff16263ff66e8bf1",
                 "shasum": ""
             },
             "require": {
@@ -244,20 +244,20 @@
             "keywords": [
                 "library"
             ],
-            "time": "2019-08-01T06:33:01+00:00"
+            "time": "2020-09-08T20:06:31+00:00"
         },
         {
             "name": "swaggest/go-code-builder",
-            "version": "v0.4.38",
+            "version": "v0.4.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/go-code-builder.git",
-                "reference": "173b27b0c6654d0d1ad951625cb729ca8864900f"
+                "reference": "8650ed4bf931d15aaed3e851fec6c2305a05e2fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/173b27b0c6654d0d1ad951625cb729ca8864900f",
-                "reference": "173b27b0c6654d0d1ad951625cb729ca8864900f",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/8650ed4bf931d15aaed3e851fec6c2305a05e2fa",
+                "reference": "8650ed4bf931d15aaed3e851fec6c2305a05e2fa",
                 "shasum": ""
             },
             "require": {
@@ -294,20 +294,20 @@
             "keywords": [
                 "library"
             ],
-            "time": "2020-04-30T15:54:07+00:00"
+            "time": "2020-09-08T21:29:30+00:00"
         },
         {
             "name": "swaggest/json-diff",
-            "version": "v3.7.4",
+            "version": "v3.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-diff.git",
-                "reference": "fccbbd6ee31b5949ab52e9c53f7a1e1b06d84716"
+                "reference": "e452a9c6444905a486280c7d56503a6468303f69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/fccbbd6ee31b5949ab52e9c53f7a1e1b06d84716",
-                "reference": "fccbbd6ee31b5949ab52e9c53f7a1e1b06d84716",
+                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/e452a9c6444905a486280c7d56503a6468303f69",
+                "reference": "e452a9c6444905a486280c7d56503a6468303f69",
                 "shasum": ""
             },
             "require": {
@@ -333,20 +333,20 @@
                 }
             ],
             "description": "JSON diff/rearrange/patch/pointer library for PHP",
-            "time": "2020-01-26T20:52:06+00:00"
+            "time": "2020-05-26T21:53:21+00:00"
         },
         {
             "name": "swaggest/json-schema",
-            "version": "v0.12.29",
+            "version": "v0.12.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-json-schema.git",
-                "reference": "7564d4a5fc8c068479698a30e5a7c589ea32a9c6"
+                "reference": "a4adcdbb38f38a19d3f1801150822172cf1c4853"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/7564d4a5fc8c068479698a30e5a7c589ea32a9c6",
-                "reference": "7564d4a5fc8c068479698a30e5a7c589ea32a9c6",
+                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/a4adcdbb38f38a19d3f1801150822172cf1c4853",
+                "reference": "a4adcdbb38f38a19d3f1801150822172cf1c4853",
                 "shasum": ""
             },
             "require": {
@@ -377,20 +377,20 @@
                 }
             ],
             "description": "High definition PHP structures with JSON-schema based validation",
-            "time": "2020-03-19T08:41:40+00:00"
+            "time": "2020-09-21T09:31:21+00:00"
         },
         {
             "name": "swaggest/json-schema-maker",
-            "version": "v0.3.4",
+            "version": "v0.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-schema-maker.git",
-                "reference": "e9d851d96adb0ff43554d946cc3c3a2b96e5a3f5"
+                "reference": "46b3f8b55794c9f5cd987cfe6671ffd39c68da66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-schema-maker/zipball/e9d851d96adb0ff43554d946cc3c3a2b96e5a3f5",
-                "reference": "e9d851d96adb0ff43554d946cc3c3a2b96e5a3f5",
+                "url": "https://api.github.com/repos/swaggest/json-schema-maker/zipball/46b3f8b55794c9f5cd987cfe6671ffd39c68da66",
+                "reference": "46b3f8b55794c9f5cd987cfe6671ffd39c68da66",
                 "shasum": ""
             },
             "require": {
@@ -423,27 +423,27 @@
             "keywords": [
                 "json-schema"
             ],
-            "time": "2020-04-28T13:38:43+00:00"
+            "time": "2020-09-08T19:48:57+00:00"
         },
         {
             "name": "swaggest/php-code-builder",
-            "version": "v0.2.25",
+            "version": "v0.2.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-code-builder.git",
-                "reference": "2f562e4a6f7f1a5da8b9a3792b8ad3900c9d07a4"
+                "reference": "df29f1bae6def0224cbec38da8bf5814c5b6791c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/2f562e4a6f7f1a5da8b9a3792b8ad3900c9d07a4",
-                "reference": "2f562e4a6f7f1a5da8b9a3792b8ad3900c9d07a4",
+                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/df29f1bae6def0224cbec38da8bf5814c5b6791c",
+                "reference": "df29f1bae6def0224cbec38da8bf5814c5b6791c",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": ">=5.6.0",
-                "swaggest/code-builder": "^0.3.1",
-                "swaggest/json-schema": "^0.12.19"
+                "swaggest/code-builder": "^0.3.3",
+                "swaggest/json-schema": "^0.12.31"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5"
@@ -470,20 +470,20 @@
             "keywords": [
                 "library"
             ],
-            "time": "2020-01-10T21:40:37+00:00"
+            "time": "2020-09-22T07:35:17+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.17.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9"
+                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
-                "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/1c302646f6efc070cd46856e600e5e0684d6b454",
+                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454",
                 "shasum": ""
             },
             "require": {
@@ -495,7 +495,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
@@ -528,20 +532,20 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2020-05-12T16:14:59+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.40",
+            "version": "v3.4.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "8fef49ac1357f4e05c997a1f139467ccb186bffa"
+                "reference": "4152e36b0f305c2a57aa0233dee56ec27bca4f06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/8fef49ac1357f4e05c997a1f139467ccb186bffa",
-                "reference": "8fef49ac1357f4e05c997a1f139467ccb186bffa",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/4152e36b0f305c2a57aa0233dee56ec27bca4f06",
+                "reference": "4152e36b0f305c2a57aa0233dee56ec27bca4f06",
                 "shasum": ""
             },
             "require": {
@@ -587,7 +591,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2020-04-24T10:16:04+00:00"
+            "time": "2020-08-26T06:32:27+00:00"
         }
     ],
     "packages-dev": [
@@ -1146,6 +1150,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2017-12-04T08:55:13+00:00"
         },
         {
@@ -1805,23 +1810,24 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.8.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6"
+                "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
-                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3 || ^7.0",
+                "php": "^5.3.3 || ^7.0 || ^8.0",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
+                "phpstan/phpstan": "<0.12.20",
                 "vimeo/psalm": "<3.9.1"
             },
             "require-dev": {
@@ -1849,7 +1855,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2020-04-18T12:12:48+00:00"
+            "time": "2020-07-08T17:02:28+00:00"
         }
     ],
     "aliases": [],
