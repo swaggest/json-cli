@@ -298,16 +298,16 @@
         },
         {
             "name": "swaggest/json-diff",
-            "version": "v3.7.5",
+            "version": "v3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-diff.git",
-                "reference": "e452a9c6444905a486280c7d56503a6468303f69"
+                "reference": "321078163129c2292ac5be38369730b107cd3716"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/e452a9c6444905a486280c7d56503a6468303f69",
-                "reference": "e452a9c6444905a486280c7d56503a6468303f69",
+                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/321078163129c2292ac5be38369730b107cd3716",
+                "reference": "321078163129c2292ac5be38369730b107cd3716",
                 "shasum": ""
             },
             "require": {
@@ -333,7 +333,7 @@
                 }
             ],
             "description": "JSON diff/rearrange/patch/pointer library for PHP",
-            "time": "2020-05-26T21:53:21+00:00"
+            "time": "2020-09-24T22:42:02+00:00"
         },
         {
             "name": "swaggest/json-schema",
