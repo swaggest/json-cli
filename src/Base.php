@@ -62,7 +62,7 @@ abstract class Base extends Command
 
     protected function postPerform()
     {
-        $options = JSON_UNESCAPED_SLASHES;
+        $options = JSON_UNESCAPED_SLASHES + JSON_UNESCAPED_UNICODE;
         if ($this->pretty) {
             $options += JSON_PRETTY_PRINT;
         }
