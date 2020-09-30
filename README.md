@@ -405,30 +405,34 @@ Updates `swagger.json` with actual response samples provided in `dump-responses.
 `Go` code is built using [`swaggest/go-code-builder`](http://github.com/swaggest/go-code-builder).
 
 ```
-v1.7.5 json-cli gen-go
+v1.8.0 json-cli gen-go
 JSON CLI tool, https://github.com/swaggest/json-cli
 Generate Go code from JSON schema
 Usage: 
    json-cli gen-go <schema>
    schema   Path to JSON schema file
-   
+
 Options: 
-   --output <output>                         Path to output .go file, STDOUT is used by default                       
-   --ptr-in-schema <ptrInSchema...>          JSON pointers to structure in root schema, default #                     
-   --package-name <packageName>              Go package name, default "entities"                                      
-   --root-name <rootName>                    Go root struct name, default "Structure", only used for # pointer        
-   --def-ptr <defPtr...>                     Definitions pointers to strip from symbol names, default #/definitions   
-   --show-const-properties                   Show properties with constant values, hidden by default                  
-   --keep-parent-in-property-names           Keep parent prefix in property name, removed by default                  
-   --ignore-nullable                         Add `omitempty` to nullable properties, removed by default               
-   --ignore-xgo-type                         Ignore `x-go-type` in schema to skip generation                          
-   --with-zero-values                        Use pointer types to avoid zero value ambiguity                          
-   --enable-xnullable                        Add `null` to types if `x-nullable` or `nullable` is available           
-   --enable-default-additional-properties    Add field property for undefined `additionalProperties`                  
-   --fluent-setters                          Add fluent setters to struct fields                                      
+   --ptr-in-schema <ptrInSchema...>          JSON pointers to structure in in root schema, default #
+   --def-ptr <defPtr...>                     Definitions pointers to strip from symbol names, default #/definitions
+   --patches <patches...>                    JSON patches to apply to schema file before processing, merge patches are also supported
+   --output <output>                         Path to output .go file, STDOUT is used by default
+   --package-name <packageName>              Go package name, default "entities"
+   --root-name <rootName>                    Go root struct name, default "Structure", only used for # pointer
+   --show-const-properties                   Show properties with constant values, hidden by default
+   --keep-parent-in-property-names           Keep parent prefix in property name, removed by default
+   --ignore-nullable                         Add `omitempty` to nullable properties, removed by default
+   --ignore-xgo-type                         Ignore `x-go-type` in schema to skip generation
+   --with-zero-values                        Use pointer types to avoid zero value ambiguity
+   --enable-xnullable                        Add `null` to types if `x-nullable` or `nullable` is available
+   --enable-default-additional-properties    Add field property for undefined `additionalProperties`
+   --fluent-setters                          Add fluent setters to struct fields
    --ignore-required                         Ignore if property is required when deciding on pointer type or omitempty
-   --renames <renames...>                    Map of exported symbol renames, example From:To                          
-   --with-tests                              Generate (un)marshaling tests for entities (experimental feature)        
+   --renames <renames...>                    Map of exported symbol renames, example From:To
+   --with-tests                              Generate (un)marshaling tests for entities (experimental feature)
+   --require-xgenerate                       Generate properties with `x-generate: true` only
+   --validate-required                       Generate validation code to check required properties during unmarshal
+   --name-tags <nameTags...>                 Set additional field tags with property name, example "msgp bson"
 ```
 
 Example:
@@ -543,8 +547,7 @@ func (i *TurnOnOffPayloadCommand) UnmarshalJSON(data []byte) error {
 Generated classes require [`swaggest/json-schema`](http://github.com/swaggest/php-json-schema) package.
 
 ```
-json-cli gen-php --help
-v1.6.0 json-cli gen-php
+v1.8.0 json-cli gen-php
 JSON CLI tool, https://github.com/swaggest/json-cli
 Generate PHP code from JSON schema
 Usage: 
@@ -552,15 +555,17 @@ Usage:
    schema   Path to JSON schema file
 
 Options: 
-   --ns <ns>                          Namespace to use for generated classes, example \MyClasses
-   --ns-path <nsPath>                 Path to store generated classes, example ./src/MyClasses
-   --ptr-in-schema <ptrInSchema...>   JSON pointers to structure in in root schema, default #
-   --root-name <rootName>             Go root struct name, default "Structure", only used for # pointer
-   --def-ptr <defPtr...>              Definitions pointers to strip from symbol names, default #/definitions
-   --setters                          Build setters
-   --getters                          Build getters
-   --no-enum-const                    Do not create constants for enum/const values
-
+   --ptr-in-schema <ptrInSchema...>           JSON pointers to structure in in root schema, default #
+   --def-ptr <defPtr...>                      Definitions pointers to strip from symbol names, default #/definitions
+   --patches <patches...>                     JSON patches to apply to schema file before processing, merge patches are also supported
+   --ns <ns>                                  Namespace to use for generated classes, example \MyClasses
+   --ns-path <nsPath>                         Path to store generated classes, example ./src/MyClasses
+   --root-name <rootName>                     Go root struct name, default "Structure", only used for # pointer
+   --setters                                  Build setters
+   --getters                                  Build getters
+   --no-enum-const                            Do not create constants for enum/const values
+   --declare-property-defaults                Use default values to initialize properties
+   --build-additional-properties-accessors    Build accessors for additionalProperties
 ```
 
 Advanced example: 

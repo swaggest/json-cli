@@ -35,24 +35,15 @@ abstract class BaseDiff extends Base
 
     protected function prePerform()
     {
-        $originalJson = file_get_contents($this->originalPath);
-        if (!$originalJson) {
-            $this->response->error('Unable to read ' . $this->originalPath);
-            return;
-        }
-
-        $newJson = file_get_contents($this->newPath);
-        if (!$newJson) {
-            $this->response->error('Unable to read ' . $this->newPath);
-            return;
-        }
+        $original = Base::readJsonOrYaml($this->originalPath, $this->response);
+        $new = Base::readJsonOrYaml($this->newPath, $this->response);
 
         $options = 0;
         if ($this->rearrangeArrays) {
             $options += JsonDiff::REARRANGE_ARRAYS;
         }
         try {
-            $this->diff = new JsonDiff(json_decode($originalJson), json_decode($newJson), $options);
+            $this->diff = new JsonDiff($original, $new, $options);
         } catch (Exception $e) {
             $this->response->error($e->getMessage());
             return;

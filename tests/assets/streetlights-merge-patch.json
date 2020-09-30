@@ -1,0 +1,1 @@
+{"components":{"schemas":{"lightMeasuredPayload":{"properties":{"lumens":{"description":"Light intensity measured in lumens (updated)."}}}}}}

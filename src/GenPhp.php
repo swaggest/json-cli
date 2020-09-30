@@ -14,21 +14,14 @@ use Swaggest\PhpCodeBuilder\PhpClass;
 use Swaggest\PhpCodeBuilder\PhpCode;
 use Yaoi\Command;
 
-class GenPhp extends Command
+class GenPhp extends Base
 {
-    /** @var string */
-    public $schema;
     /** @var string */
     public $ns;
     /** @var string */
     public $nsPath;
     /** @var string */
     public $rootName = 'Structure';
-    /** @var string[] */
-    public $defPtr = ['#/definitions'];
-    /** @var string[] */
-    public $ptrInSchema;
-
     /** @var bool */
     public $setters = false;
     /** @var bool */
@@ -49,8 +42,7 @@ class GenPhp extends Command
     public static function setUpDefinition(Command\Definition $definition, $options)
     {
         $definition->description = 'Generate PHP code from JSON schema';
-        $options->schema = Command\Option::create()
-            ->setDescription('Path to JSON schema file')->setIsUnnamed()->setIsRequired();
+        Base::setupGenOptions($definition, $options);
 
         $options->ns = Command\Option::create()
             ->setDescription('Namespace to use for generated classes, example \MyClasses')->setType()->setIsRequired();
@@ -60,14 +52,8 @@ class GenPhp extends Command
             ->setType()
             ->setIsRequired();
 
-        $options->ptrInSchema = Command\Option::create()->setType()->setIsVariadic()
-            ->setDescription('JSON pointers to structure in in root schema, default #');
-
         $options->rootName = Command\Option::create()->setType()
             ->setDescription('Go root struct name, default "Structure", only used for # pointer');
-
-        $options->defPtr = Command\Option::create()->setType()->setIsVariadic()
-            ->setDescription('Definitions pointers to strip from symbol names, default #/definitions');
 
         $options->setters = Command\Option::create()->setDescription('Build setters');
         $options->getters = Command\Option::create()->setDescription('Build getters');
@@ -80,41 +66,16 @@ class GenPhp extends Command
         $options->buildAdditionalPropertiesAccessors = Command\Option::create()
             ->setDescription('Build accessors for additionalProperties');
 
+         Base::setupGenOptions($definition, $options);
     }
 
 
     public function performAction()
     {
         try {
-
-
-            $dataValue = Base::readJsonOrYaml($this->schema, $this->response);
-            if (!$dataValue) {
-                $this->response->error('Unable to find schema in ' . $this->schema);
-                die(1);
-            }
-
-            $baseName = null;
             $skipRoot = false;
-            $data = $dataValue;
-
-            $resolver = new ResolverMux();
-
-            if (!empty($this->ptrInSchema)) {
-                $baseName = basename($this->schema);
-                $skipRoot = true;
-                $preloaded = new Preloaded();
-                $preloaded->setSchemaData($baseName, $dataValue);
-                $resolver->resolvers[] = $preloaded;
-                $data = new \stdClass();
-                foreach ($this->ptrInSchema as $i => $ptr) {
-                    $data->oneOf[$i] = (object)[Schema::PROP_REF => $baseName . $ptr];
-                }
-            }
-
-            $resolver->resolvers[] = new BasicFetcher();
-            $schema = Schema::import($data, new Context($resolver));
-
+            $baseName = null;
+            $schema = $this->loadSchema($skipRoot, $baseName);
 
             $appPath = realpath($this->nsPath);
             if (!$appPath) {

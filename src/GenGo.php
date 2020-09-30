@@ -15,10 +15,8 @@ use Swaggest\JsonSchema\RemoteRef\Preloaded;
 use Swaggest\JsonSchema\Schema;
 use Yaoi\Command;
 
-class GenGo extends Command
+class GenGo extends Base
 {
-    /** @var string */
-    public $schema;
     /** @var string */
     public $packageName = 'entities';
     /** @var string */
@@ -37,10 +35,6 @@ class GenGo extends Command
     public $enableXNullable;
     /** @var bool */
     public $enableDefaultAdditionalProperties;
-    /** @var string[] */
-    public $defPtr = ['#/definitions'];
-    /** @var string[] */
-    public $ptrInSchema;
     /** @var bool */
     public $fluentSetters;
     /** @var bool */
@@ -57,6 +51,9 @@ class GenGo extends Command
     /** @var bool */
     public $validateRequired = false;
 
+    /** @var string[] */
+    public $nameTags = [];
+
     public $output;
 
 
@@ -67,23 +64,16 @@ class GenGo extends Command
     public static function setUpDefinition(Command\Definition $definition, $options)
     {
         $definition->description = 'Generate Go code from JSON schema';
-        $options->schema = Command\Option::create()
-            ->setDescription('Path to JSON schema file')->setIsUnnamed()->setIsRequired();
+        Base::setupGenOptions($definition, $options);
 
         $options->output = Command\Option::create()
             ->setDescription('Path to output .go file, STDOUT is used by default')->setType();
-
-        $options->ptrInSchema = Command\Option::create()->setType()->setIsVariadic()
-            ->setDescription('JSON pointers to structure in root schema, default #');
 
         $options->packageName = Command\Option::create()->setType()
             ->setDescription('Go package name, default "entities"');
 
         $options->rootName = Command\Option::create()->setType()
             ->setDescription('Go root struct name, default "Structure", only used for # pointer');
-
-        $options->defPtr = Command\Option::create()->setType()->setIsVariadic()
-            ->setDescription('Definitions pointers to strip from symbol names, default #/definitions');
 
         $options->showConstProperties = Command\Option::create()
             ->setDescription('Show properties with constant values, hidden by default');
@@ -124,37 +114,18 @@ class GenGo extends Command
 
         $options->validateRequired = Command\Option::create()
             ->setDescription('Generate validation code to check required properties during unmarshal');
+
+        $options->nameTags = Command\Option::create()->setIsVariadic()->setType()
+            ->setDescription('Set additional field tags with property name, example "msgp bson"');
     }
 
 
     public function performAction()
     {
         try {
-
-            $dataValue = Base::readJsonOrYaml($this->schema, $this->response);
-            if (!$dataValue) {
-                $this->response->error('Unable to find schema in ' . $this->schema);
-                die(1);
-            }
-
-            $resolver = new ResolverMux();
-
-            $data = $dataValue;
             $skipRoot = false;
-            if (!empty($this->ptrInSchema)) {
-                $baseName = basename($this->schema);
-                $skipRoot = true;
-                $preloaded = new Preloaded();
-                $preloaded->setSchemaData($baseName, $dataValue);
-                $resolver->resolvers[] = $preloaded;
-                $data = new \stdClass();
-                foreach ($this->ptrInSchema as $i => $ptr) {
-                    $data->oneOf[$i] = (object)[Schema::PROP_REF => $baseName . $ptr];
-                }
-            }
-
-            $resolver->resolvers[] = new BasicFetcher();
-            $schema = Schema::import($data, new Context($resolver));
+            $baseName = null;
+            $schema = $this->loadSchema($skipRoot, $baseName);
 
             $builder = new GoBuilder();
             $builder->options->hideConstProperties = !$this->showConstProperties;
@@ -168,6 +139,7 @@ class GenGo extends Command
             $builder->options->ignoreRequired = $this->ignoreRequired;
             $builder->options->requireXGenerate = $this->requireXGenerate;
             $builder->options->validateRequired = $this->validateRequired;
+            $builder->options->nameTags = $this->nameTags;
             if (!empty($this->renames)) {
                 foreach ($this->renames as $rename) {
                     $rename = explode(':', $rename, 2);

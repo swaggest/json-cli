@@ -13,8 +13,8 @@ import (
 
 // LightMeasuredPayload structure is generated from "#/components/schemas/lightMeasuredPayload".
 type LightMeasuredPayload struct {
-	Lumens               int64                  `json:"lumens,omitempty"` // Light intensity measured in lumens.
-	// Date and time when the message was sent.
+	Lumens               int64                  `json:"lumens,omitempty"` // Light intensity measured in lumens (updated).
+	// Date and time when the message was sent (updated).
 	// Format: date-time.
 	SentAt               *time.Time             `json:"sentAt,omitempty"`
 	AdditionalProperties map[string]interface{} `json:"-"`                // All unmatched properties.
@@ -81,7 +81,7 @@ func (l LightMeasuredPayload) MarshalJSON() ([]byte, error) {
 // TurnOnOffPayload structure is generated from "#/components/schemas/turnOnOffPayload".
 type TurnOnOffPayload struct {
 	Command              TurnOnOffPayloadCommand `json:"command,omitempty"` // Whether to turn on or off the light.
-	// Date and time when the message was sent.
+	// Date and time when the message was sent (updated).
 	// Format: date-time.
 	SentAt               *time.Time              `json:"sentAt,omitempty"`
 	AdditionalProperties map[string]interface{}  `json:"-"`                 // All unmatched properties.
@@ -148,7 +148,7 @@ func (t TurnOnOffPayload) MarshalJSON() ([]byte, error) {
 // DimLightPayload structure is generated from "#/components/schemas/dimLightPayload".
 type DimLightPayload struct {
 	Percentage           uint8                  `json:"percentage,omitempty"` // Percentage to which the light should be dimmed to.
-	// Date and time when the message was sent.
+	// Date and time when the message was sent (updated).
 	// Format: date-time.
 	SentAt               *time.Time             `json:"sentAt,omitempty"`
 	AdditionalProperties map[string]interface{} `json:"-"`                    // All unmatched properties.
