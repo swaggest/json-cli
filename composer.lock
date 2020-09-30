@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ccfa3f113954f99d3811544c28a167af",
+    "content-hash": "2f09100df58c112d0fedc1c2bf39d0c8",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -248,16 +248,16 @@
         },
         {
             "name": "swaggest/go-code-builder",
-            "version": "v0.4.39",
+            "version": "v0.4.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/go-code-builder.git",
-                "reference": "8650ed4bf931d15aaed3e851fec6c2305a05e2fa"
+                "reference": "c5c6000494760f562f0703bc8f7408997b702f53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/8650ed4bf931d15aaed3e851fec6c2305a05e2fa",
-                "reference": "8650ed4bf931d15aaed3e851fec6c2305a05e2fa",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/c5c6000494760f562f0703bc8f7408997b702f53",
+                "reference": "c5c6000494760f562f0703bc8f7408997b702f53",
                 "shasum": ""
             },
             "require": {
@@ -294,7 +294,7 @@
             "keywords": [
                 "library"
             ],
-            "time": "2020-09-08T21:29:30+00:00"
+            "time": "2020-09-30T06:06:56+00:00"
         },
         {
             "name": "swaggest/json-diff",
@@ -536,16 +536,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.44",
+            "version": "v3.4.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "4152e36b0f305c2a57aa0233dee56ec27bca4f06"
+                "reference": "ec3c2ac4d881a4684c1f0317d2107f1a4152bad9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/4152e36b0f305c2a57aa0233dee56ec27bca4f06",
-                "reference": "4152e36b0f305c2a57aa0233dee56ec27bca4f06",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/ec3c2ac4d881a4684c1f0317d2107f1a4152bad9",
+                "reference": "ec3c2ac4d881a4684c1f0317d2107f1a4152bad9",
                 "shasum": ""
             },
             "require": {
@@ -591,7 +591,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2020-08-26T06:32:27+00:00"
+            "time": "2020-09-18T15:58:55+00:00"
         }
     ],
     "packages-dev": [

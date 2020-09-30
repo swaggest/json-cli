@@ -66,6 +66,10 @@ class GenGoTest extends \PHPUnit_Framework_TestCase
         $d->defPtr = ['#/components/schemas'];
         $d->packageName = "message";
         $d->enableDefaultAdditionalProperties = true;
+        $d->patches = [
+            __DIR__ . '/../assets/streetlights-patch.json',
+            __DIR__ . '/../assets/streetlights-merge-patch.json',
+        ];
 
         $d->setResponse(new Response());
         ob_start();

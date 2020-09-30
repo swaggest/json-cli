@@ -2,6 +2,14 @@
 
 namespace Swaggest\JsonCli;
 
+use Swaggest\JsonCli\JsonSchema\ResolverMux;
+use Swaggest\JsonDiff\Exception;
+use Swaggest\JsonDiff\JsonMergePatch;
+use Swaggest\JsonDiff\JsonPatch;
+use Swaggest\JsonSchema\Context;
+use Swaggest\JsonSchema\RemoteRef\BasicFetcher;
+use Swaggest\JsonSchema\RemoteRef\Preloaded;
+use Swaggest\JsonSchema\Schema;
 use Symfony\Component\Yaml\Yaml;
 use Yaoi\Command;
 use Yaoi\Io\Response;
@@ -80,5 +88,77 @@ abstract class Base extends Command
         } else {
             echo $result;
         }
+    }
+
+
+    /** @var string */
+    public $schema;
+    /** @var string[] */
+    public $defPtr = ['#/definitions'];
+    /** @var string[] */
+    public $ptrInSchema;
+    /** @var string[] */
+    public $patches = [];
+
+    /**
+     * @param Command\Definition $definition
+     * @param static|mixed $options
+     */
+    protected static function setupGenOptions(Command\Definition $definition, $options)
+    {
+        $options->schema = Command\Option::create()
+            ->setDescription('Path to JSON schema file')->setIsUnnamed()->setIsRequired();
+
+        $options->ptrInSchema = Command\Option::create()->setType()->setIsVariadic()
+            ->setDescription('JSON pointers to structure in in root schema, default #');
+
+        $options->defPtr = Command\Option::create()->setType()->setIsVariadic()
+            ->setDescription('Definitions pointers to strip from symbol names, default #/definitions');
+
+        $options->patches = Command\Option::create()->setType()->setIsVariadic()
+            ->setDescription('JSON patches to apply to schema file before processing, merge patches are also supported');
+    }
+
+    protected function loadSchema(&$skipRoot, &$baseName)
+    {
+        $dataValue = Base::readJsonOrYaml($this->schema, $this->response);
+        if (!$dataValue) {
+            $this->response->error('Unable to find schema in ' . $this->schema);
+            die(1);
+        }
+
+        if (!empty($this->patches)) {
+            foreach ($this->patches as $patchPath) {
+                $patch = Base::readJsonOrYaml($patchPath, $this->response);
+                if (is_array($patch)) {
+                    $jp = JsonPatch::import($patch);
+                    try {
+                        $jp->apply($dataValue);
+                    } catch (Exception $e) {
+                        throw new ExitCode($e->getMessage(), 1);
+                    }
+                }  else {
+                    JsonMergePatch::apply($dataValue, $patch);
+                }
+            }
+        }
+
+        $resolver = new ResolverMux();
+
+        $data = $dataValue;
+        if (!empty($this->ptrInSchema)) {
+            $baseName = basename($this->schema);
+            $skipRoot = true;
+            $preloaded = new Preloaded();
+            $preloaded->setSchemaData($baseName, $dataValue);
+            $resolver->resolvers[] = $preloaded;
+            $data = new \stdClass();
+            foreach ($this->ptrInSchema as $i => $ptr) {
+                $data->oneOf[$i] = (object)[Schema::PROP_REF => $baseName . $ptr];
+            }
+        }
+
+        $resolver->resolvers[] = new BasicFetcher();
+        return Schema::import($data, new Context($resolver));
     }
 }

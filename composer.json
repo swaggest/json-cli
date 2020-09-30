@@ -11,12 +11,12 @@
   ],
   "require": {
     "ext-json": "*",
-    "swaggest/json-diff": "^3.5.0",
+    "swaggest/json-diff": "^3.8.1",
     "php-yaoi/php-yaoi": "^1",
     "symfony/yaml": "^3",
     "salsify/json-streaming-parser": "^7.0",
     "swaggest/json-schema": "^0.12.21",
-    "swaggest/go-code-builder": "^0.4.38",
+    "swaggest/go-code-builder": "^0.4.40",
     "swaggest/php-code-builder": "^0.2.8",
     "swaggest/code-builder": "^0.3.2",
     "swaggest/json-schema-maker": "^0.3.4"

@@ -1,0 +1,1 @@
+[{"value":"Date and time when the message was sent.","op":"test","path":"/components/schemas/sentAt/description"},{"value":"Date and time when the message was sent (updated).","op":"replace","path":"/components/schemas/sentAt/description"}]
