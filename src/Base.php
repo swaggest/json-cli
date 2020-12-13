@@ -2,6 +2,7 @@
 
 namespace Swaggest\JsonCli;
 
+use Swaggest\JsonCli\Json\LoadFile;
 use Swaggest\JsonCli\JsonSchema\ResolverMux;
 use Swaggest\JsonDiff\Exception;
 use Swaggest\JsonDiff\JsonMergePatch;
@@ -16,6 +17,8 @@ use Yaoi\Io\Response;
 
 abstract class Base extends Command
 {
+    use LoadFile;
+
     public $pretty;
     public $toYaml;
     public $toSerialized;
@@ -102,8 +105,6 @@ abstract class Base extends Command
     public $defPtr = ['#/definitions'];
     /** @var string[] */
     public $ptrInSchema;
-    /** @var string[] */
-    public $patches = [];
 
     /**
      * @param Command\Definition $definition
@@ -120,8 +121,7 @@ abstract class Base extends Command
         $options->defPtr = Command\Option::create()->setType()->setIsVariadic()
             ->setDescription('Definitions pointers to strip from symbol names, default #/definitions');
 
-        $options->patches = Command\Option::create()->setType()->setIsVariadic()
-            ->setDescription('JSON patches to apply to schema file before processing, merge patches are also supported');
+        static::setupLoadFileOptions($options);
     }
 
     /**
@@ -135,31 +135,11 @@ abstract class Base extends Command
      */
     protected function loadSchema(&$skipRoot, &$baseName)
     {
-        $dataValue = Base::readJsonOrYaml($this->schema, $this->response);
-        if (!$dataValue) {
-            $this->response->error('Unable to find schema in ' . $this->schema);
-            die(1);
-        }
-
-        if (!empty($this->patches)) {
-            foreach ($this->patches as $patchPath) {
-                $patch = Base::readJsonOrYaml($patchPath, $this->response);
-                if (is_array($patch)) {
-                    $jp = JsonPatch::import($patch);
-                    try {
-                        $jp->apply($dataValue);
-                    } catch (Exception $e) {
-                        throw new ExitCode($e->getMessage(), 1);
-                    }
-                }  else {
-                    JsonMergePatch::apply($dataValue, $patch);
-                }
-            }
-        }
-
         $resolver = new ResolverMux();
 
+        $dataValue = $this->loadFile();
         $data = $dataValue;
+        
         if (!empty($this->ptrInSchema)) {
             $baseName = basename($this->schema);
             $skipRoot = true;

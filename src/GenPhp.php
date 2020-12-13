@@ -2,10 +2,7 @@
 
 namespace Swaggest\JsonCli;
 
-use Swaggest\JsonCli\JsonSchema\ResolverMux;
-use Swaggest\JsonSchema\Context;
-use Swaggest\JsonSchema\RemoteRef\BasicFetcher;
-use Swaggest\JsonSchema\RemoteRef\Preloaded;
+use Swaggest\JsonCli\GenPhp\BuilderOptions;
 use Swaggest\JsonSchema\Schema;
 use Swaggest\PhpCodeBuilder\App\PhpApp;
 use Swaggest\PhpCodeBuilder\JsonSchema\ClassHookCallback;
@@ -16,24 +13,14 @@ use Yaoi\Command;
 
 class GenPhp extends Base
 {
+    use BuilderOptions;
+
     /** @var string */
     public $ns;
     /** @var string */
     public $nsPath;
     /** @var string */
     public $rootName = 'Structure';
-    /** @var bool */
-    public $setters = false;
-    /** @var bool */
-    public $getters = false;
-    /** @var bool */
-    public $noEnumConst = false;
-
-    /** @var bool */
-    public $declarePropertyDefaults = false;
-
-    /** @var bool */
-    public $buildAdditionalPropertiesAccessors = false;
 
     /**
      * @param Command\Definition $definition
@@ -55,18 +42,8 @@ class GenPhp extends Base
         $options->rootName = Command\Option::create()->setType()
             ->setDescription('Go root struct name, default "Structure", only used for # pointer');
 
-        $options->setters = Command\Option::create()->setDescription('Build setters');
-        $options->getters = Command\Option::create()->setDescription('Build getters');
-        $options->noEnumConst = Command\Option::create()
-            ->setDescription('Do not create constants for enum/const values');
-
-        $options->declarePropertyDefaults = Command\Option::create()
-            ->setDescription('Use default values to initialize properties');
-
-        $options->buildAdditionalPropertiesAccessors = Command\Option::create()
-            ->setDescription('Build accessors for additionalProperties');
-
-         Base::setupGenOptions($definition, $options);
+        static::setupBuilderOptions($options);
+        Base::setupGenOptions($definition, $options);
     }
 
 
@@ -88,12 +65,7 @@ class GenPhp extends Base
             $app->setNamespaceRoot($appNs, '.');
 
             $builder = new PhpBuilder();
-            $builder->buildSetters = $this->setters;
-            $builder->buildGetters = $this->getters;
-
-            $builder->makeEnumConstants = !$this->noEnumConst;
-            $builder->declarePropertyDefaults = $this->declarePropertyDefaults;
-            $builder->buildAdditionalPropertyMethodsOnTrue = $this->buildAdditionalPropertiesAccessors;
+            $this->setupBuilder($builder);
 
             $builder->classCreatedHook = new ClassHookCallback(function (PhpClass $class, $path, $schema)
             use ($app, $appNs, $skipRoot, $baseName) {
