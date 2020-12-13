@@ -23,4 +23,4 @@ test:
 	@php -derror_reporting="E_ALL & ~E_DEPRECATED" vendor/bin/phpunit
 
 test-coverage:
-	@php -derror_reporting="E_ALL & ~E_DEPRECATED" -dzend_extension=xdebug.so vendor/bin/phpunit --coverage-text
+	@php -derror_reporting="E_ALL & ~E_DEPRECATED" -dzend_extension=xdebug.so -dxdebug.mode=coverage vendor/bin/phpunit --coverage-text
