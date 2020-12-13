@@ -106,6 +106,10 @@ class PositionResolver implements Listener
     private $currentLine;
     private $currentChar;
 
+    /**
+     * @param int $line
+     * @param int $char
+     */
     public function filePosition($line, $char)
     {
         $this->currentLine = $line;

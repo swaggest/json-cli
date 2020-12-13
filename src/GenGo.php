@@ -42,7 +42,7 @@ class GenGo extends Base
     /** @var bool */
     public $withTests = false;
 
-    /** @var array */
+    /** @var array<string, string> */
     public $renames = [];
 
     /** @var bool */
