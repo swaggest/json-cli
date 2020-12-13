@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.2] - 2020-12-13
+
+### Changed
+- Internal refactoring of CLI options.
+
 ## [1.8.1] - 2020-12-13
 
 ### Added
@@ -150,6 +155,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Local file resolver in references.
 
+[1.8.2]: https://github.com/swaggest/json-cli/compare/v1.8.1...v1.8.2
 [1.8.1]: https://github.com/swaggest/json-cli/compare/v1.8.0...v1.8.1
 [1.8.0]: https://github.com/swaggest/json-cli/compare/v1.7.13...v1.8.0
 [1.7.13]: https://github.com/swaggest/json-cli/compare/v1.7.12...v1.7.13
