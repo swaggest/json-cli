@@ -1,3 +1,4 @@
 parameters:
 	ignoreErrors:
-		#- '#Access to an undefined property static\(Swaggest\\JsonSchema\\JsonSchema\)\|Swaggest\\JsonSchema\\Constraint\\Properties::#'
+	    - '#^Method .+ has no return typehint specified\.$#'
+	    - '#^Property .+ has no typehint specified\.$#'

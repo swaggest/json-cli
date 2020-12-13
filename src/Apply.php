@@ -10,9 +10,13 @@ use Yaoi\Command\Definition;
 
 class Apply extends Base
 {
+    /** @var string */
     public $patchPath;
+    /** @var string */
     public $basePath;
+    /** @var bool */
     public $tolerateErrors;
+    /** @var bool */
     public $merge;
 
     /**

@@ -38,6 +38,11 @@ abstract class Base extends Command
 
     protected $out;
 
+    /**
+     * @param string $path
+     * @return mixed
+     * @throws ExitCode
+     */
     protected function readData($path)
     {
         return self::readJsonOrYaml($path, $this->response);
@@ -119,6 +124,15 @@ abstract class Base extends Command
             ->setDescription('JSON patches to apply to schema file before processing, merge patches are also supported');
     }
 
+    /**
+     * @param bool $skipRoot
+     * @param string $baseName
+     * @return \Swaggest\JsonSchema\SchemaContract
+     * @throws Exception
+     * @throws ExitCode
+     * @throws \Swaggest\JsonSchema\Exception
+     * @throws \Swaggest\JsonSchema\InvalidValue
+     */
     protected function loadSchema(&$skipRoot, &$baseName)
     {
         $dataValue = Base::readJsonOrYaml($this->schema, $this->response);
