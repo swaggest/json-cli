@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f23c550d2dab5417b8483f4c4e982c0d",
+    "content-hash": "8bd692078b5339bff497bb42ab5f05ed",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -463,16 +463,16 @@
         },
         {
             "name": "swaggest/php-code-builder",
-            "version": "v0.2.28",
+            "version": "v0.2.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-code-builder.git",
-                "reference": "df29f1bae6def0224cbec38da8bf5814c5b6791c"
+                "reference": "d6b8fe8553d848ac900921d5c9180cde8ebab0c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/df29f1bae6def0224cbec38da8bf5814c5b6791c",
-                "reference": "df29f1bae6def0224cbec38da8bf5814c5b6791c",
+                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/d6b8fe8553d848ac900921d5c9180cde8ebab0c5",
+                "reference": "d6b8fe8553d848ac900921d5c9180cde8ebab0c5",
                 "shasum": ""
             },
             "require": {
@@ -508,9 +508,9 @@
             ],
             "support": {
                 "issues": "https://github.com/swaggest/php-code-builder/issues",
-                "source": "https://github.com/swaggest/php-code-builder/tree/v0.2.28"
+                "source": "https://github.com/swaggest/php-code-builder/tree/v0.2.29"
             },
-            "time": "2020-09-22T07:35:17+00:00"
+            "time": "2021-04-06T22:53:02+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -1983,12 +1983,12 @@
             "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
@@ -2026,8 +2026,8 @@
                 "validate"
             ],
             "support": {
-                "issues": "https://github.com/webmozart/assert/issues",
-                "source": "https://github.com/webmozart/assert/tree/master"
+                "issues": "https://github.com/webmozarts/assert/issues",
+                "source": "https://github.com/webmozarts/assert/tree/1.9.1"
             },
             "time": "2020-07-08T17:02:28+00:00"
         }

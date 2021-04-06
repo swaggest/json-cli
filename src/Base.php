@@ -5,8 +5,6 @@ namespace Swaggest\JsonCli;
 use Swaggest\JsonCli\Json\LoadFile;
 use Swaggest\JsonCli\JsonSchema\ResolverMux;
 use Swaggest\JsonDiff\Exception;
-use Swaggest\JsonDiff\JsonMergePatch;
-use Swaggest\JsonDiff\JsonPatch;
 use Swaggest\JsonSchema\Context;
 use Swaggest\JsonSchema\RemoteRef\BasicFetcher;
 use Swaggest\JsonSchema\RemoteRef\Preloaded;
@@ -116,7 +114,7 @@ abstract class Base extends Command
             ->setDescription('Path to JSON schema file')->setIsUnnamed()->setIsRequired();
 
         $options->ptrInSchema = Command\Option::create()->setType()->setIsVariadic()
-            ->setDescription('JSON pointers to structure in in root schema, default #');
+            ->setDescription('JSON pointers to structure in root schema, default #');
 
         $options->defPtr = Command\Option::create()->setType()->setIsVariadic()
             ->setDescription('Definitions pointers to strip from symbol names, default #/definitions');
@@ -139,7 +137,7 @@ abstract class Base extends Command
 
         $dataValue = $this->loadFile();
         $data = $dataValue;
-        
+
         if (!empty($this->ptrInSchema)) {
             $baseName = basename($this->schema);
             $skipRoot = true;
@@ -147,6 +145,12 @@ abstract class Base extends Command
             $preloaded->setSchemaData($baseName, $dataValue);
             $resolver->resolvers[] = $preloaded;
             $data = new \stdClass();
+
+            foreach ($this->defPtr as $defPtr) {
+                $this->defPtr[] = $baseName . $defPtr;
+            }
+            $this->defPtr[] = $baseName;
+
             foreach ($this->ptrInSchema as $i => $ptr) {
                 $data->oneOf[$i] = (object)[Schema::PROP_REF => $baseName . $ptr];
             }
