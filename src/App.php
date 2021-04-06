@@ -7,7 +7,7 @@ use Yaoi\Command\Definition;
 
 class App extends Command\Application
 {
-    public static $ver = 'v1.8.3';
+    public static $ver = 'v1.8.4';
 
     public $diff;
     public $apply;
@@ -45,6 +45,7 @@ class App extends Command\Application
         $commandDefinitions->validateSchema = ValidateSchema::definition();
         $commandDefinitions->genGo = GenGo::definition();
         $commandDefinitions->genPhp = GenPhp::definition();
+        $commandDefinitions->genJSDoc = GenJSDoc::definition();
         $commandDefinitions->buildSchema = BuildSchema::definition();
     }
 }
