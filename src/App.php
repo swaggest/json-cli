@@ -21,6 +21,7 @@ class App extends Command\Application
     public $validateSchema;
     public $genGo;
     public $genPhp;
+    public $genJSDoc;
     public $buildSchema;
 
     /**

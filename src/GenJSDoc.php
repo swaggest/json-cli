@@ -50,7 +50,6 @@ class GenJSDoc extends Base
                 echo $jb->file;
             }
         } catch (\Exception $e) {
-            throw $e;
             $this->response->error($e->getMessage());
             throw new ExitCode('', 1);
         }
