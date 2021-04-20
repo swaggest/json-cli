@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bd692078b5339bff497bb42ab5f05ed",
+    "content-hash": "44459dc72118125a03711709f6939aa8",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -267,16 +267,16 @@
         },
         {
             "name": "swaggest/go-code-builder",
-            "version": "v0.4.42",
+            "version": "v0.4.43",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/go-code-builder.git",
-                "reference": "0eb5c3b0f544e7a06a657acd8be5079d9a86ce69"
+                "reference": "b6026637ff43ca58577646ad63ff9e3deb9b468a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/0eb5c3b0f544e7a06a657acd8be5079d9a86ce69",
-                "reference": "0eb5c3b0f544e7a06a657acd8be5079d9a86ce69",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/b6026637ff43ca58577646ad63ff9e3deb9b468a",
+                "reference": "b6026637ff43ca58577646ad63ff9e3deb9b468a",
                 "shasum": ""
             },
             "require": {
@@ -315,9 +315,9 @@
             ],
             "support": {
                 "issues": "https://github.com/swaggest/go-code-builder/issues",
-                "source": "https://github.com/swaggest/go-code-builder/tree/v0.4.42"
+                "source": "https://github.com/swaggest/go-code-builder/tree/v0.4.43"
             },
-            "time": "2020-12-13T10:52:17+00:00"
+            "time": "2021-04-20T20:34:03+00:00"
         },
         {
             "name": "swaggest/json-diff",
@@ -463,16 +463,16 @@
         },
         {
             "name": "swaggest/php-code-builder",
-            "version": "v0.2.29",
+            "version": "v0.2.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-code-builder.git",
-                "reference": "d6b8fe8553d848ac900921d5c9180cde8ebab0c5"
+                "reference": "8ccd3390c8ff40e2a6c26b0c468ee4f2c2643d24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/d6b8fe8553d848ac900921d5c9180cde8ebab0c5",
-                "reference": "d6b8fe8553d848ac900921d5c9180cde8ebab0c5",
+                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/8ccd3390c8ff40e2a6c26b0c468ee4f2c2643d24",
+                "reference": "8ccd3390c8ff40e2a6c26b0c468ee4f2c2643d24",
                 "shasum": ""
             },
             "require": {
@@ -508,9 +508,9 @@
             ],
             "support": {
                 "issues": "https://github.com/swaggest/php-code-builder/issues",
-                "source": "https://github.com/swaggest/php-code-builder/tree/v0.2.29"
+                "source": "https://github.com/swaggest/php-code-builder/tree/v0.2.31"
             },
-            "time": "2021-04-06T22:53:02+00:00"
+            "time": "2021-04-12T19:47:58+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
