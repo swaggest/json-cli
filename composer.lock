@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "44459dc72118125a03711709f6939aa8",
+    "content-hash": "80154e01abb50b0877c353408dbe2fde",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -267,16 +267,16 @@
         },
         {
             "name": "swaggest/go-code-builder",
-            "version": "v0.4.43",
+            "version": "v0.4.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/go-code-builder.git",
-                "reference": "b6026637ff43ca58577646ad63ff9e3deb9b468a"
+                "reference": "c88c0a15d5af7cf0c1a9305458241a6d287e80c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/b6026637ff43ca58577646ad63ff9e3deb9b468a",
-                "reference": "b6026637ff43ca58577646ad63ff9e3deb9b468a",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/c88c0a15d5af7cf0c1a9305458241a6d287e80c6",
+                "reference": "c88c0a15d5af7cf0c1a9305458241a6d287e80c6",
                 "shasum": ""
             },
             "require": {
@@ -315,9 +315,9 @@
             ],
             "support": {
                 "issues": "https://github.com/swaggest/go-code-builder/issues",
-                "source": "https://github.com/swaggest/go-code-builder/tree/v0.4.43"
+                "source": "https://github.com/swaggest/go-code-builder/tree/v0.4.44"
             },
-            "time": "2021-04-20T20:34:03+00:00"
+            "time": "2021-04-20T21:34:48+00:00"
         },
         {
             "name": "swaggest/json-diff",
