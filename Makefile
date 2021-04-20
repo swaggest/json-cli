@@ -24,3 +24,6 @@ test:
 
 test-coverage:
 	@php -derror_reporting="E_ALL & ~E_DEPRECATED" -dzend_extension=xdebug.so -dxdebug.mode=coverage vendor/bin/phpunit --coverage-text
+
+build-go:
+	@cd tests/assets/go/ && go build ./...
