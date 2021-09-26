@@ -11,7 +11,7 @@
   ],
   "require": {
     "ext-json": "*",
-    "swaggest/json-diff": "^3.8.1",
+    "swaggest/json-diff": "^3.8.3",
     "php-yaoi/php-yaoi": "^1",
     "symfony/yaml": "^3",
     "salsify/json-streaming-parser": "^7.0",
