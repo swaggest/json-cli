@@ -138,6 +138,8 @@ abstract class Base extends Command
         }
 
         $resolver = new ResolverMux();
+        $preloaded = new Preloaded();
+        $resolver->resolvers[] = $preloaded;
 
         $dataValue = $this->loadFile();
         $data = $dataValue;
@@ -145,9 +147,7 @@ abstract class Base extends Command
         if (!empty($this->ptrInSchema)) {
             $baseName = basename($this->schema);
             $skipRoot = true;
-            $preloaded = new Preloaded();
             $preloaded->setSchemaData($baseName, $dataValue);
-            $resolver->resolvers[] = $preloaded;
             $data = new \stdClass();
 
             foreach ($this->defPtr as $defPtr) {
