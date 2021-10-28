@@ -5,7 +5,7 @@
       "example": "abc"
     },
     "bar": {
-      "enum": ["baz", "quux"]
+      "enum": ["quux"]
     }
   }
 }
