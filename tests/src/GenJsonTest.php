@@ -12,14 +12,14 @@ class GenJsonTest extends \PHPUnit_Framework_TestCase
     {
         $d = new GenJson();
         $d->schema = __DIR__ . '/../../tests/assets/sample-schema2.json';
-        $d->randSeed = 10;
+        $d->randSeed = 100;
         $d->setResponse(new Response());
         ob_start();
         $d->performAction();
         $res = ob_get_clean();
 
         $this->assertSame(
-            '{"foo":"abc","bar":"baz"}',
+            '{"foo":"abc","bar":"quux"}',
             rtrim($res)
         );
     }
