@@ -20,7 +20,7 @@ class ResolveTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(
             '2',
-            $res
+            rtrim($res)
         );
     }
 }

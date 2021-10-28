@@ -43,7 +43,11 @@ JSON CLI tool, https://github.com/swaggest/json-cli
 ...
 ```
 
+`json-cli` can load schema from stdin (using `-` as a file path) which can be handy with docker, for example:
 
+```
+cat ./tests/assets/swagger-schema.json | docker run -i --rm swaggest/json-cli json-cli gen-jsdoc -
+```
 
 ### Composer
 
@@ -750,4 +754,45 @@ json-cli gen-jsdoc "https://raw.githubusercontent.com/asyncapi/asyncapi/2.0.0-rc
  * @property {string} sentAt - Date and time when the message was sent.
  */
 
+```
+
+#### <a name="genjson"></a> Generate `JSON` sample from `JSON Schema`.
+
+```
+v1.9.0 json-cli gen-json
+JSON CLI tool, https://github.com/swaggest/json-cli
+Generate JSON sample from JSON schema
+Usage: 
+   json-cli gen-json <schema>
+   schema   Path to JSON schema file, use `-` for STDIN
+
+Options: 
+   --ptr-in-schema <ptrInSchema...>   JSON pointers to structure in root schema, default #
+   --def-ptr <defPtr...>              Definitions pointers to strip from symbol names, default #/definitions
+   --patches <patches...>             JSON patches to apply to schema file before processing, merge patches are also supported
+   --max-nesting <maxNesting>         Max nesting level, default 10
+   --default-additional-properties    Treat non-existent `additionalProperties` as `additionalProperties: true`
+   --rand-seed <randSeed>             Integer random seed for deterministic output
+   --pretty                           Pretty-print result JSON
+   --output <output>                  Path to output result, default STDOUT
+   --to-yaml                          Output in YAML format
+   --to-serialized                    Output in PHP serialized format
+```
+
+```
+echo '{
+  "properties": {
+    "foo": {
+      "type": "string",
+      "example": "abc"
+    },
+    "bar": {
+      "enum": ["baz", "quux"]
+    }
+  }
+}' | ./bin/json-cli gen-json - --rand-seed 10
+```
+
+```
+{"foo":"abc","bar":"baz"}
 ```

@@ -1,0 +1,11 @@
+{
+  "properties": {
+    "foo": {
+      "type": "string",
+      "example": "abc"
+    },
+    "bar": {
+      "enum": ["baz", "quux"]
+    }
+  }
+}

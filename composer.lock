@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "15018ae0ca41d3818203662287ed4cb3",
+    "content-hash": "a53a0dcedf4ea297749aff125acfdcd7",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -406,16 +406,16 @@
         },
         {
             "name": "swaggest/json-schema-maker",
-            "version": "v0.3.6",
+            "version": "v0.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-schema-maker.git",
-                "reference": "7cd5d7f3ea3e5021e4700dea42a0b5b5220cc18b"
+                "reference": "303e60ceff94e84af95c68b4ac3e9e76dcc2ece8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-schema-maker/zipball/7cd5d7f3ea3e5021e4700dea42a0b5b5220cc18b",
-                "reference": "7cd5d7f3ea3e5021e4700dea42a0b5b5220cc18b",
+                "url": "https://api.github.com/repos/swaggest/json-schema-maker/zipball/303e60ceff94e84af95c68b4ac3e9e76dcc2ece8",
+                "reference": "303e60ceff94e84af95c68b4ac3e9e76dcc2ece8",
                 "shasum": ""
             },
             "require": {
@@ -448,7 +448,7 @@
             "keywords": [
                 "json-schema"
             ],
-            "time": "2021-10-27T21:37:02+00:00"
+            "time": "2021-10-28T21:58:11+00:00"
         },
         {
             "name": "swaggest/php-code-builder",
