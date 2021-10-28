@@ -27,6 +27,7 @@ minify, yaml convert, etc....
 * To resolve `JSON Pointer` to file position.
 * To validate JSON data against [`JSON Schema`](http://json-schema.org/).
 * To [generate or update](#buildschema) JSON Schema with instance value(s).
+* To [generate](#genjson) sample JSON value from JSON Schema.
 * To [render](#gengo) `JSON Schema` as [`Go`](http://golang.org/) structure.
 * To [render](#genphp) `JSON Schema` as `PHP` classes.
 * To [render](#genjsdoc) `JSON Schema` as `JSDoc` type definitions.
@@ -42,6 +43,8 @@ JSON CLI tool, https://github.com/swaggest/json-cli
 ...
 ```
 
+
+
 ### Composer
 
 [Install PHP Composer](https://getcomposer.org/doc/00-intro.md)
@@ -55,13 +58,13 @@ composer require swaggest/json-cli
 ### Usage
 
 ```
-v1.3.0 json-cli
+v1.9.0 json-cli
 JSON CLI tool, https://github.com/swaggest/json-cli
-Usage:
+Usage: 
    json-cli <action>
    action   Action name
             Allowed values: diff, apply, rearrange, diff-info, pretty-print, minify, replace, resolve,
-            resolve-pos
+            resolve-pos, validate-schema, gen-go, gen-php, gen-jsdoc, gen-json, build-schema
 ```
 
 Input paths can be .json/.yaml/.yml/.serialized files, file format is detected by file extension:

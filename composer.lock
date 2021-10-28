@@ -360,27 +360,30 @@
         },
         {
             "name": "swaggest/json-schema",
-            "version": "v0.12.38",
+            "version": "v0.12.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-json-schema.git",
-                "reference": "ab7cca149a5822acc5be538dd6c008a348f6cb89"
+                "reference": "193ba39cce1ffa2d55ddd5445315e945a63298a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/ab7cca149a5822acc5be538dd6c008a348f6cb89",
-                "reference": "ab7cca149a5822acc5be538dd6c008a348f6cb89",
+                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/193ba39cce1ffa2d55ddd5445315e945a63298a2",
+                "reference": "193ba39cce1ffa2d55ddd5445315e945a63298a2",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "ext-mbstring": "*",
                 "php": ">=5.4",
                 "phplang/scope-exit": "^1.0",
-                "swaggest/json-diff": "^3.8.2"
+                "swaggest/json-diff": "^3.8.2",
+                "symfony/polyfill-mbstring": "^1.19"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.8.23"
+            },
+            "suggest": {
+                "ext-mbstring": "For better performance"
             },
             "type": "library",
             "autoload": {
@@ -399,20 +402,20 @@
                 }
             ],
             "description": "High definition PHP structures with JSON-schema based validation",
-            "time": "2021-09-17T13:54:01+00:00"
+            "time": "2021-10-15T18:12:27+00:00"
         },
         {
             "name": "swaggest/json-schema-maker",
-            "version": "v0.3.5",
+            "version": "v0.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-schema-maker.git",
-                "reference": "46b3f8b55794c9f5cd987cfe6671ffd39c68da66"
+                "reference": "7cd5d7f3ea3e5021e4700dea42a0b5b5220cc18b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-schema-maker/zipball/46b3f8b55794c9f5cd987cfe6671ffd39c68da66",
-                "reference": "46b3f8b55794c9f5cd987cfe6671ffd39c68da66",
+                "url": "https://api.github.com/repos/swaggest/json-schema-maker/zipball/7cd5d7f3ea3e5021e4700dea42a0b5b5220cc18b",
+                "reference": "7cd5d7f3ea3e5021e4700dea42a0b5b5220cc18b",
                 "shasum": ""
             },
             "require": {
@@ -445,11 +448,7 @@
             "keywords": [
                 "json-schema"
             ],
-            "support": {
-                "issues": "https://github.com/swaggest/json-schema-maker/issues",
-                "source": "https://github.com/swaggest/json-schema-maker/tree/master"
-            },
-            "time": "2020-09-08T19:48:57+00:00"
+            "time": "2021-10-27T21:37:02+00:00"
         },
         {
             "name": "swaggest/php-code-builder",
@@ -565,6 +564,83 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-ctype/tree/v1.19.0"
             },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-10-23T09:01:57+00:00"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.19.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "b5f7b932ee6fa802fc792eabd77c4c88084517ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/b5f7b932ee6fa802fc792eabd77c4c88084517ce",
+                "reference": "b5f7b932ee6fa802fc792eabd77c4c88084517ce",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.19-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
