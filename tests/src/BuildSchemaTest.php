@@ -21,7 +21,7 @@ class BuildSchemaTest extends TestCase
         $d->performAction();
         $res = ob_get_clean();
 
-        $this->assertEquals(file_get_contents(__DIR__ . '/../assets/original-schema.json'), $res);
+        $this->assertEquals(file_get_contents(__DIR__ . '/../assets/original-schema.json'), trim($res));
     }
 
 

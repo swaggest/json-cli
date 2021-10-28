@@ -45,7 +45,7 @@ class DiffMergeTest extends TestCase
         $res = ob_get_clean();
         $this->assertSame(
             file_get_contents(__DIR__ . '/../../tests/assets/merge-patch.json'),
-            str_replace("\r", '', $res)
+            str_replace("\r", '', rtrim($res))
         );
     }
 }

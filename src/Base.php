@@ -92,7 +92,7 @@ abstract class Base extends Command
         if ($this->output) {
             file_put_contents($this->output, $result);
         } else {
-            echo $result;
+            echo $result, "\n";
         }
     }
 
@@ -111,7 +111,7 @@ abstract class Base extends Command
     protected static function setupGenOptions(Command\Definition $definition, $options)
     {
         $options->schema = Command\Option::create()
-            ->setDescription('Path to JSON schema file')->setIsUnnamed()->setIsRequired();
+            ->setDescription('Path to JSON schema file, use `-` for STDIN')->setIsUnnamed()->setIsRequired();
 
         $options->ptrInSchema = Command\Option::create()->setType()->setIsVariadic()
             ->setDescription('JSON pointers to structure in root schema, default #');
@@ -133,7 +133,13 @@ abstract class Base extends Command
      */
     protected function loadSchema(&$skipRoot, &$baseName)
     {
+        if ($this->schema === '-') {
+            $this->schema = 'php://stdin';
+        }
+
         $resolver = new ResolverMux();
+        $preloaded = new Preloaded();
+        $resolver->resolvers[] = $preloaded;
 
         $dataValue = $this->loadFile();
         $data = $dataValue;
@@ -141,9 +147,7 @@ abstract class Base extends Command
         if (!empty($this->ptrInSchema)) {
             $baseName = basename($this->schema);
             $skipRoot = true;
-            $preloaded = new Preloaded();
             $preloaded->setSchemaData($baseName, $dataValue);
-            $resolver->resolvers[] = $preloaded;
             $data = new \stdClass();
 
             foreach ($this->defPtr as $defPtr) {
