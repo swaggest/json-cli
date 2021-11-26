@@ -13,7 +13,7 @@
     "ext-json": "*",
     "swaggest/json-diff": "^3.8.3",
     "php-yaoi/php-yaoi": "^1",
-    "symfony/yaml": "^3 || ^4",
+    "symfony/yaml": "^3 || ^4 || ^5",
     "salsify/json-streaming-parser": "^7.0",
     "swaggest/json-schema": "^0.12.37",
     "swaggest/go-code-builder": "0.4.47",
