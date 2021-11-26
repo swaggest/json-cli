@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a53a0dcedf4ea297749aff125acfdcd7",
+    "content-hash": "6d4dc37ae86440f9ffa5d55a559c67e1",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
