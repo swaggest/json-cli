@@ -2,10 +2,11 @@
 
 namespace Swaggest\JsonCli\FilePosition;
 
-use JsonStreamingParser\Listener;
+use JsonStreamingParser\Listener\ListenerInterface;
+use JsonStreamingParser\Listener\PositionAwareInterface;
 use Swaggest\JsonDiff\JsonPointer;
 
-class PositionResolver implements Listener
+class PositionResolver implements ListenerInterface, PositionAwareInterface
 {
     /** @var string[] map of pointer to file positions */
     public $resolved;
@@ -18,15 +19,15 @@ class PositionResolver implements Listener
         $this->pathState->path = '';
     }
 
-    public function startDocument()
+    public function startDocument(): void
     {
     }
 
-    public function endDocument()
+    public function endDocument(): void
     {
     }
 
-    public function startObject()
+    public function startObject(): void
     {
         $path = $this->pathState->path;
         if ($this->pathState->isArray) {
@@ -41,7 +42,7 @@ class PositionResolver implements Listener
         $this->pathState = $pathState;
     }
 
-    public function endObject()
+    public function endObject(): void
     {
         $this->pathState = array_pop($this->stack);
         if ($this->pathState->isKey) {
@@ -50,7 +51,7 @@ class PositionResolver implements Listener
     }
 
 
-    public function startArray()
+    public function startArray(): void
     {
         $path = $this->pathState->path;
         if ($this->pathState->isArray) {
@@ -66,7 +67,7 @@ class PositionResolver implements Listener
         $this->pathState = $pathState;
     }
 
-    public function endArray()
+    public function endArray(): void
     {
         $this->pathState = array_pop($this->stack);
         if ($this->pathState->isKey) {
@@ -74,7 +75,7 @@ class PositionResolver implements Listener
         }
     }
 
-    public function key($key)
+    public function key($key): void
     {
         $path = $this->pathState->path . '/' . JsonPointer::escapeSegment($key);
 
@@ -99,22 +100,16 @@ class PositionResolver implements Listener
         }
     }
 
-    public function whitespace($whitespace)
+    public function whitespace($whitespace): void
     {
     }
 
     private $currentLine;
     private $currentChar;
 
-    /**
-     * @param int $line
-     * @param int $char
-     */
-    public function filePosition($line, $char)
+    public function setFilePosition(int $line, int $char): void
     {
         $this->currentLine = $line;
         $this->currentChar = $char;
     }
-
-
 }
