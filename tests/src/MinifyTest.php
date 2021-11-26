@@ -19,7 +19,7 @@ class MinifyTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(
             file_get_contents(__DIR__ . '/../../tests/assets/original-minified.json'),
-            $res
+            rtrim($res)
         );
     }
 }

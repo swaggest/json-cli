@@ -24,7 +24,7 @@ class CliTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
         $this->assertSame(
             file_get_contents(__DIR__ . '/../../tests/assets/rearranged.json'),
-            str_replace("\r", '', $res)
+            str_replace("\r", '', trim($res))
         );
 
     }
@@ -42,7 +42,7 @@ class CliTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
         $this->assertSame(
             file_get_contents(__DIR__ . '/../../tests/assets/patch.json'),
-            str_replace("\r", '', $res)
+            str_replace("\r", '', trim($res))
         );
     }
 
@@ -59,7 +59,7 @@ class CliTest extends \PHPUnit_Framework_TestCase
         $res = ob_get_clean();
         $this->assertSame(
             file_get_contents(__DIR__ . '/../../tests/assets/rearranged.json'),
-            str_replace("\r", '', $res)
+            str_replace("\r", '', rtrim($res))
         );
     }
 
@@ -142,7 +142,7 @@ class CliTest extends \PHPUnit_Framework_TestCase
     }
 }
 JSON
-            , str_replace("\r", '', $res));
+            , str_replace("\r", '', rtrim($res)));
     }
 
 
