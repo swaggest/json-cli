@@ -1,5 +1,9 @@
 PHPSTAN_VERSION ?= 0.12.60
 
+docker-phar:
+	@test -f $$HOME/.cache/composer/phar-composer.phar || (mkdir -p $$HOME/.cache/composer/ && curl https://github.com/clue/phar-composer/releases/download/v1.2.0/phar-composer-1.2.0.phar -sLo $$HOME/.cache/composer/phar-composer.phar)
+	@composer install --no-dev;rm -rf vendor/salsify/json-streaming-parser/tests;rm -f vendor/salsify/json-streaming-parser/phpunit;rm -rf tests/;rm ./json-cli;rm ./json-cli.tar.gz;docker run -v $(shell pwd):/code -v $$HOME/.cache/composer/phar-composer.phar:/phar-composer.phar -w /code --rm composer:1.10 php -d phar.readonly=off /phar-composer.phar build;mv ./json-cli.phar ./json-cli;chmod +x ./json-cli;tar -zcvf ./json-cli.tar.gz ./json-cli;git reset --hard;composer install
+
 phar:
 	@test -f $$HOME/.cache/composer/phar-composer.phar || (mkdir -p $$HOME/.cache/composer/ && wget https://github.com/clue/phar-composer/releases/download/v1.2.0/phar-composer-1.2.0.phar -O $$HOME/.cache/composer/phar-composer.phar)
 	@composer install --no-dev;rm -rf vendor/salsify/json-streaming-parser/tests;rm -f vendor/salsify/json-streaming-parser/phpunit;rm -rf tests/;rm ./json-cli;rm ./json-cli.tar.gz;php -d phar.readonly=off $$HOME/.cache/composer/phar-composer.phar build;mv ./json-cli.phar ./json-cli;chmod +x ./json-cli;tar -zcvf ./json-cli.tar.gz ./json-cli;git reset --hard;composer install
