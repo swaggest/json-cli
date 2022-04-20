@@ -7,7 +7,7 @@ use Yaoi\Command\Definition;
 
 class App extends Command\Application
 {
-    public static $ver = 'v1.9.0';
+    public static $ver = 'v1.9.1';
 
     public $diff;
     public $apply;
