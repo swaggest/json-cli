@@ -40,7 +40,7 @@ class CliTest extends \PHPUnit_Framework_TestCase
         ob_start();
         $d->performAction();
         $res = ob_get_clean();
-        $this->assertSame(
+        $this->assertJsonStringEqualsJsonString(
             file_get_contents(__DIR__ . '/../../tests/assets/patch.json'),
             str_replace("\r", '', trim($res))
         );
