@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc03bcc02b0890a304602278da7586df",
+    "content-hash": "cd728febd6af031ef0d87e8508d225e8",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -216,16 +216,16 @@
         },
         {
             "name": "swaggest/code-builder",
-            "version": "v0.3.4",
+            "version": "v0.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/code-builder.git",
-                "reference": "bf5d8c2866ae1b3079d7899244eab070ebbe9fb8"
+                "reference": "0d6d8cb57f1774c4ea4a55829faac50b7b1d310a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/code-builder/zipball/bf5d8c2866ae1b3079d7899244eab070ebbe9fb8",
-                "reference": "bf5d8c2866ae1b3079d7899244eab070ebbe9fb8",
+                "url": "https://api.github.com/repos/swaggest/code-builder/zipball/0d6d8cb57f1774c4ea4a55829faac50b7b1d310a",
+                "reference": "0d6d8cb57f1774c4ea4a55829faac50b7b1d310a",
                 "shasum": ""
             },
             "require": {
@@ -261,22 +261,22 @@
             ],
             "support": {
                 "issues": "https://github.com/swaggest/code-builder/issues",
-                "source": "https://github.com/swaggest/code-builder/tree/v0.3.4"
+                "source": "https://github.com/swaggest/code-builder/tree/v0.3.5"
             },
-            "time": "2021-04-23T07:27:29+00:00"
+            "time": "2022-04-28T20:38:04+00:00"
         },
         {
             "name": "swaggest/go-code-builder",
-            "version": "v0.4.48",
+            "version": "v0.4.51",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/go-code-builder.git",
-                "reference": "b3e41b0859797899a13eaf1f43e3cd6070baf1b4"
+                "reference": "6c65decec29528d81f886eb59593a67d4f7c4ddf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/b3e41b0859797899a13eaf1f43e3cd6070baf1b4",
-                "reference": "b3e41b0859797899a13eaf1f43e3cd6070baf1b4",
+                "url": "https://api.github.com/repos/swaggest/go-code-builder/zipball/6c65decec29528d81f886eb59593a67d4f7c4ddf",
+                "reference": "6c65decec29528d81f886eb59593a67d4f7c4ddf",
                 "shasum": ""
             },
             "require": {
@@ -288,7 +288,7 @@
                 "swaggest/json-schema-maker": "^0.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.8.36",
+                "phperf/phpunit": "4.8.37",
                 "victorjonsson/markdowndocs": "^1.3"
             },
             "type": "library",
@@ -315,29 +315,29 @@
             ],
             "support": {
                 "issues": "https://github.com/swaggest/go-code-builder/issues",
-                "source": "https://github.com/swaggest/go-code-builder/tree/v0.4.48"
+                "source": "https://github.com/swaggest/go-code-builder/tree/v0.4.51"
             },
-            "time": "2022-01-02T16:17:23+00:00"
+            "time": "2022-09-15T08:12:33+00:00"
         },
         {
             "name": "swaggest/json-diff",
-            "version": "v3.8.3",
+            "version": "v3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-diff.git",
-                "reference": "bb3e3b4e9d842bb2e48f31ea568d0459968d1d42"
+                "reference": "ff3a7921e9f1aa096067eb541fcfd0e7611c558c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/bb3e3b4e9d842bb2e48f31ea568d0459968d1d42",
-                "reference": "bb3e3b4e9d842bb2e48f31ea568d0459968d1d42",
+                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/ff3a7921e9f1aa096067eb541fcfd0e7611c558c",
+                "reference": "ff3a7921e9f1aa096067eb541fcfd0e7611c558c",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.23"
+                "phperf/phpunit": "4.8.37"
             },
             "type": "library",
             "autoload": {
@@ -358,22 +358,22 @@
             "description": "JSON diff/rearrange/patch/pointer library for PHP",
             "support": {
                 "issues": "https://github.com/swaggest/json-diff/issues",
-                "source": "https://github.com/swaggest/json-diff/tree/v3.8.3"
+                "source": "https://github.com/swaggest/json-diff/tree/v3.9.0"
             },
-            "time": "2021-09-25T22:09:03+00:00"
+            "time": "2022-08-29T15:04:08+00:00"
         },
         {
             "name": "swaggest/json-schema",
-            "version": "v0.12.39",
+            "version": "v0.12.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-json-schema.git",
-                "reference": "193ba39cce1ffa2d55ddd5445315e945a63298a2"
+                "reference": "1bb97901314f828774dd8c5b21bff889ce0b34bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/193ba39cce1ffa2d55ddd5445315e945a63298a2",
-                "reference": "193ba39cce1ffa2d55ddd5445315e945a63298a2",
+                "url": "https://api.github.com/repos/swaggest/php-json-schema/zipball/1bb97901314f828774dd8c5b21bff889ce0b34bb",
+                "reference": "1bb97901314f828774dd8c5b21bff889ce0b34bb",
                 "shasum": ""
             },
             "require": {
@@ -384,7 +384,7 @@
                 "symfony/polyfill-mbstring": "^1.19"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.23"
+                "phperf/phpunit": "4.8.37"
             },
             "suggest": {
                 "ext-mbstring": "For better performance"
@@ -409,9 +409,9 @@
             "support": {
                 "email": "vearutop@gmail.com",
                 "issues": "https://github.com/swaggest/php-json-schema/issues",
-                "source": "https://github.com/swaggest/php-json-schema/tree/v0.12.39"
+                "source": "https://github.com/swaggest/php-json-schema/tree/v0.12.41"
             },
-            "time": "2021-10-15T18:12:27+00:00"
+            "time": "2022-08-17T11:21:43+00:00"
         },
         {
             "name": "swaggest/json-schema-maker",
@@ -465,16 +465,16 @@
         },
         {
             "name": "swaggest/php-code-builder",
-            "version": "v0.2.35",
+            "version": "v0.2.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-code-builder.git",
-                "reference": "5f0fc27e82aa91c08f4bb8195339eaf65d711410"
+                "reference": "fc0f412529d0cbc969487628a9023154ca2f74f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/5f0fc27e82aa91c08f4bb8195339eaf65d711410",
-                "reference": "5f0fc27e82aa91c08f4bb8195339eaf65d711410",
+                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/fc0f412529d0cbc969487628a9023154ca2f74f0",
+                "reference": "fc0f412529d0cbc969487628a9023154ca2f74f0",
                 "shasum": ""
             },
             "require": {
@@ -484,7 +484,7 @@
                 "swaggest/json-schema": "^0.12.33"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.8.36"
+                "phperf/phpunit": "4.8.37"
             },
             "type": "library",
             "autoload": {
@@ -510,9 +510,9 @@
             ],
             "support": {
                 "issues": "https://github.com/swaggest/php-code-builder/issues",
-                "source": "https://github.com/swaggest/php-code-builder/tree/v0.2.35"
+                "source": "https://github.com/swaggest/php-code-builder/tree/v0.2.37"
             },
-            "time": "2022-01-02T16:09:20+00:00"
+            "time": "2022-09-15T23:10:34+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -1909,5 +1909,5 @@
     "platform-overrides": {
         "php": "5.6.0"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

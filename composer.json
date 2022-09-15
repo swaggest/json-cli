@@ -15,10 +15,10 @@
     "php-yaoi/php-yaoi": "^1",
     "symfony/yaml": "^3",
     "salsify/json-streaming-parser": "^7.0",
-    "swaggest/json-schema": "^0.12.39",
-    "swaggest/go-code-builder": "0.4.48",
-    "swaggest/php-code-builder": "^0.2.35",
-    "swaggest/code-builder": "^0.3.2",
+    "swaggest/json-schema": "^0.12.41",
+    "swaggest/go-code-builder": "0.4.51",
+    "swaggest/php-code-builder": "^0.2.37",
+    "swaggest/code-builder": "^0.3.5",
     "swaggest/json-schema-maker": "^0.3.7"
   },
   "require-dev": {
