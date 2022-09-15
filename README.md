@@ -31,6 +31,7 @@ minify, yaml convert, etc....
 * To [render](#gengo) `JSON Schema` as [`Go`](http://golang.org/) structure.
 * To [render](#genphp) `JSON Schema` as `PHP` classes.
 * To [render](#genjsdoc) `JSON Schema` as `JSDoc` type definitions.
+* To [render](#genmarkdown) `JSON Schema` as `Markdown` documentation.
 
 ## Installation
 
@@ -754,6 +755,68 @@ json-cli gen-jsdoc "https://raw.githubusercontent.com/asyncapi/asyncapi/2.0.0-rc
  * @property {string} sentAt - Date and time when the message was sent.
  */
 
+```
+
+#### <a name="genmarkdown"></a> Generate `Markdown` documentation from `JSON Schema`.
+
+```
+v1.10.0 json-cli gen-markdown
+JSON CLI tool, https://github.com/swaggest/json-cli
+Generate Markdown document from JSON schema
+Usage: 
+   json-cli gen-markdown <schema>
+   schema   Path to JSON schema file, use `-` for STDIN
+   
+Options: 
+   --ptr-in-schema <ptrInSchema...>   JSON pointers to structure in root schema, default #                                    
+   --def-ptr <defPtr...>              Definitions pointers to strip from symbol names, default #/definitions                  
+   --patches <patches...>             JSON patches to apply to schema file before processing, merge patches are also supported   
+```
+
+Example:
+
+```
+json-cli gen-markdown "https://raw.githubusercontent.com/asyncapi/asyncapi/2.0.0-rc1/examples/1.2.0/streetlights.yml" \
+    --ptr-in-schema "#/components/messages/lightMeasured/payload" "#/components/messages/turnOnOff/payload" \
+    --def-ptr "#/components/schemas"
+```
+
+```markdown
+# Types
+
+* [`ComponentsMessagesLightMeasuredPayload`](#componentsmessageslightmeasuredpayload)
+* [`ComponentsMessagesTurnOnOffPayload`](#componentsmessagesturnonoffpayload)
+* [`LightMeasuredPayloadLumens`](#lightmeasuredpayloadlumens)
+
+
+
+
+### <a id="componentsmessageslightmeasuredpayload"></a>ComponentsMessagesLightMeasuredPayload
+
+
+
+|Property|Type                                                                 |Description                             |
+|--------|---------------------------------------------------------------------|----------------------------------------|
+|`lumens`|[`LightMeasuredPayloadLumens`](#lightmeasuredpayloadlumens), `Number`|Light intensity measured in lumens.     |
+|`sentAt`|`String`, Format: `date-time`                                        |Date and time when the message was sent.|
+
+
+### <a id="componentsmessagesturnonoffpayload"></a>ComponentsMessagesTurnOnOffPayload
+
+
+
+|Property |Type                         |Description                             |
+|---------|-----------------------------|----------------------------------------|
+|`command`|`'on'`, <br>`'off'`          |Whether to turn on or off the light.    |
+|`sentAt` |`String`, Format: `date-time`|Date and time when the message was sent.|
+
+
+### <a id="lightmeasuredpayloadlumens"></a>LightMeasuredPayloadLumens
+Light intensity measured in lumens.
+
+|Constraint|Value|
+|----------|-----|
+|minimum   |0    |
 ```
 
 #### <a name="genjson"></a> Generate `JSON` sample from `JSON Schema`.

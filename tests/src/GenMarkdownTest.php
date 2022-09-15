@@ -4,13 +4,14 @@ namespace Swaggest\JsonCli\Tests;
 
 use Swaggest\JsonCli\App;
 use Swaggest\JsonCli\GenJSDoc;
+use Swaggest\JsonCli\GenMarkdown;
 use Yaoi\Cli\Response;
 
-class GenJSDocTest extends \PHPUnit_Framework_TestCase
+class GenMarkdownTest extends \PHPUnit_Framework_TestCase
 {
     public function testSwagger()
     {
-        $d = new GenJSDoc();
+        $d = new GenMarkdown();
         $d->schema = __DIR__ . '/../../tests/assets/swagger-schema.json';
         $d->ptrInSchema = ['#/definitions/info'];
 
@@ -19,9 +20,11 @@ class GenJSDocTest extends \PHPUnit_Framework_TestCase
         $d->performAction();
         $res = ob_get_clean();
 
+//        file_put_contents(__DIR__ . '/../../tests/assets/markdown/swagger/entities.md', $res);
+
         $this->assertSame(
             str_replace('<version>', App::$ver,
-                file_get_contents(__DIR__ . '/../../tests/assets/jsdoc/swagger/entities.js')),
+                file_get_contents(__DIR__ . '/../../tests/assets/markdown/swagger/entities.md')),
             $res
         );
 
@@ -29,7 +32,7 @@ class GenJSDocTest extends \PHPUnit_Framework_TestCase
 
     public function testAsyncAPI()
     {
-        $d = new GenJSDoc();
+        $d = new GenMarkdown();
         $d->schema = __DIR__ . '/../../tests/assets/asyncapi-schema.json';
         $d->defPtr = [
             'http://json-schema.org/draft-04/schema#/definitions',
@@ -42,9 +45,11 @@ class GenJSDocTest extends \PHPUnit_Framework_TestCase
         $d->performAction();
         $res = ob_get_clean();
 
+//        file_put_contents(__DIR__ . '/../../tests/assets/markdown/asyncapi/entities.md', $res);
+
         $this->assertSame(
             str_replace('<version>', App::$ver,
-                file_get_contents(__DIR__ . '/../../tests/assets/jsdoc/asyncapi/entities.js')),
+                file_get_contents(__DIR__ . '/../../tests/assets/markdown/asyncapi/entities.md')),
             $res
         );
 
@@ -52,7 +57,7 @@ class GenJSDocTest extends \PHPUnit_Framework_TestCase
 
     public function testAsyncAPIStreetLights()
     {
-        $d = new GenJSDoc();
+        $d = new GenMarkdown();
         $d->schema = __DIR__ . '/../../tests/assets/streetlights.yml';
         $d->ptrInSchema = [
             '#/components/messages/lightMeasured/payload',
@@ -70,9 +75,11 @@ class GenJSDocTest extends \PHPUnit_Framework_TestCase
         $d->performAction();
         $res = ob_get_clean();
 
+//        file_put_contents(__DIR__ . '/../../tests/assets/markdown/asyncapi-streetlights/entities.md', $res);
+
         $this->assertSame(
             str_replace('<version>', App::$ver,
-                file_get_contents(__DIR__ . '/../../tests/assets/jsdoc/asyncapi-streetlights/entities.js')),
+                file_get_contents(__DIR__ . '/../../tests/assets/markdown/asyncapi-streetlights/entities.md')),
             $res
         );
 

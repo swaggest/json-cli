@@ -3,6 +3,8 @@
 namespace Swaggest\JsonCli\GenGo;
 
 use Swaggest\GoCodeBuilder\JsonSchema\Options;
+use Swaggest\JsonCli\ExitCode;
+use Swaggest\PhpCodeBuilder\Markdown\TypeBuilder;
 use Yaoi\Command\Option;
 
 trait BuilderOptions
@@ -37,6 +39,9 @@ trait BuilderOptions
 
     /** @var string[] */
     public $nameTags = [];
+
+    /** @var string */
+    public $config;
 
     /**
      * @param \stdClass|static $options
@@ -82,14 +87,37 @@ trait BuilderOptions
 
         $options->nameTags = Option::create()->setIsVariadic()->setType()
             ->setDescription('Set additional field tags with property name, example "msgp bson"');
+
+        $options->config = Option::create()->setType()
+            ->setDescription('Path to config JSON file to load options from. Schema:');
+
+        $tb = new TypeBuilder();
+        $tb->getTypeString(Options::schema()->exportSchema());
+        $options->config->description .= "\n" . trim(substr($tb->file, 97)); // Stripping header.
     }
 
     /**
      * @return Options
+     * @throws ExitCode
      */
     protected function makeGoBuilderOptions()
     {
         $options = new Options();
+        if (!empty($this->config)) {
+            $data = file_get_contents($this->config);
+            if (empty($data)) {
+                throw new ExitCode("empty or missing config file", 1);
+            }
+            $json = json_decode($data);
+            if (empty($json)) {
+                throw new ExitCode("invalid json in config file", 1);
+            }
+
+            $options = Options::import($json);
+        }
+
+        $options = $options->jsonSerialize();
+
         $options->hideConstProperties = !$this->showConstProperties;
         $options->trimParentFromPropertyNames = !$this->keepParentInPropertyNames;
         $options->ignoreNullable = $this->ignoreNullable;
