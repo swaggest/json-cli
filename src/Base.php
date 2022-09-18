@@ -9,6 +9,7 @@ use Swaggest\JsonSchema\Context;
 use Swaggest\JsonSchema\RemoteRef\BasicFetcher;
 use Swaggest\JsonSchema\RemoteRef\Preloaded;
 use Swaggest\JsonSchema\Schema;
+use Swaggest\PhpCodeBuilder\Markdown\TypeBuilder;
 use Symfony\Component\Yaml\Yaml;
 use Yaoi\Command;
 use Yaoi\Io\Response;
@@ -21,6 +22,7 @@ abstract class Base extends Command
     public $toYaml;
     public $toSerialized;
     public $output;
+    public $schemaResolver;
 
     /**
      * @param Command\Definition $definition
@@ -32,6 +34,13 @@ abstract class Base extends Command
             ->setDescription('Pretty-print result JSON');
         $options->output = Command\Option::create()->setType()
             ->setDescription('Path to output result, default STDOUT');
+        $options->schemaResolver = Command\Option::create()->setType()
+            ->setDescription('Path to schema resolver JSON file. Schema:');
+        $tb = new TypeBuilder();
+        $tb->getTypeString(SchemaResolver::schema()->exportSchema());
+        $options->schemaResolver->description .= "\n" . trim(substr($tb->file, 77)); // Stripping header.
+
+
         $options->toYaml = Command\Option::create()->setDescription('Output in YAML format');
         $options->toSerialized = Command\Option::create()->setDescription('Output in PHP serialized format');
     }
@@ -119,6 +128,12 @@ abstract class Base extends Command
         $options->defPtr = Command\Option::create()->setType()->setIsVariadic()
             ->setDescription('Definitions pointers to strip from symbol names, default #/definitions');
 
+        $options->schemaResolver = Command\Option::create()->setType()
+            ->setDescription('Path to schema resolver JSON file. Schema:');
+        $tb = new TypeBuilder();
+        $tb->getTypeString(SchemaResolver::schema()->exportSchema());
+        $options->schemaResolver->description .= "\n" . trim(substr($tb->file, 77)); // Stripping header.
+
         static::setupLoadFileOptions($options);
     }
 
@@ -139,6 +154,28 @@ abstract class Base extends Command
 
         $resolver = new ResolverMux();
         $preloaded = new Preloaded();
+
+        if ($this->schemaResolver !== null) {
+            $data = file_get_contents($this->schemaResolver);
+            if (empty($data)) {
+                throw new ExitCode("empty or missing schema resolver file", 1);
+            }
+            $json = json_decode($data);
+            if (empty($json)) {
+                throw new ExitCode("invalid json in schema resolver file", 1);
+            }
+
+            $schemaResolver = SchemaResolver::import($json);
+
+            foreach ($schemaResolver->schemaData as $url => $data) {
+                $preloaded->setSchemaData($url, $data);
+            }
+
+            foreach ($schemaResolver->schemaFiles as $url => $file) {
+                $preloaded->setSchemaFile($url, $file);
+            }
+        }
+
         $resolver->resolvers[] = $preloaded;
 
         $dataValue = $this->loadFile();
