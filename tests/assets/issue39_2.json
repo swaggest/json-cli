@@ -1,0 +1,21 @@
+{
+  "id": "/Test",
+  "anyOf": [
+    {
+      "type": "object",
+      "properties": {
+        "test1": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "test2": {
+          "type": "integer"
+        }
+      }
+    }
+  ]
+}

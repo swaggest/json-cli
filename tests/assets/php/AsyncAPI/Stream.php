@@ -22,7 +22,7 @@ class Stream extends ClassStructure
 {
     const X_PROPERTY_PATTERN = '^x-';
 
-    /** @var StreamFraming */
+    /** @var StreamFramingOneOf0|StreamFramingOneOf1 */
     public $framing;
 
     /** @var Message[]|array */
@@ -44,8 +44,8 @@ class Stream extends ClassStructure
         $x->description = "Any property starting with x- is valid.";
         $x->setFromRef('#/definitions/vendorExtension');
         $properties->framing->setPatternProperty('^x-', $x);
-        $properties->framing->oneOf[0] = StreamFraming::schema();
-        $properties->framing->oneOf[1] = StreamFraming::schema();
+        $properties->framing->oneOf[0] = StreamFramingOneOf0::schema();
+        $properties->framing->oneOf[1] = StreamFramingOneOf1::schema();
         $properties->framing->title = "Stream Framing Object";
         $properties->framing->minProperties = 1;
         $properties->read = Schema::arr();

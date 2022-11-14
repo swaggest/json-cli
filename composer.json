@@ -17,12 +17,12 @@
     "salsify/json-streaming-parser": "^7.0",
     "swaggest/json-schema": "^0.12.41",
     "swaggest/go-code-builder": "0.4.51",
-    "swaggest/php-code-builder": "^0.2.37",
+    "swaggest/php-code-builder": "^0.2.38",
     "swaggest/code-builder": "^0.3.5",
     "swaggest/json-schema-maker": "^0.3.7"
   },
   "require-dev": {
-    "phperf/phpunit": "4.8.37"
+    "phperf/phpunit": "4.8.38"
   },
   "autoload": {
     "psr-4": {

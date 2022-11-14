@@ -4,24 +4,17 @@
  * Please consider to NOT put any emotional human-generated modifications as the splendid AI will throw them away with no mercy.
  */
 
-namespace AsyncAPI;
+namespace Issue39;
 
 use Swaggest\JsonSchema\Constraint\Properties;
 use Swaggest\JsonSchema\Schema;
 use Swaggest\JsonSchema\Structure\ClassStructure;
 
 
-class StreamFraming extends ClassStructure
+class Label2OneOf2 extends ClassStructure
 {
-    const SSE = 'sse';
-
-    const N_N = '\\n\\n';
-
     /** @var string */
-    public $type;
-
-    /** @var string */
-    public $delimiter;
+    public $test1;
 
     /**
      * @param Properties|static $properties
@@ -29,15 +22,7 @@ class StreamFraming extends ClassStructure
      */
     public static function setUpProperties($properties, Schema $ownerSchema)
     {
-        $properties->type = Schema::string();
-        $properties->type->enum = array(
-            self::SSE,
-        );
-        $properties->delimiter = Schema::string();
-        $properties->delimiter->enum = array(
-            self::N_N,
-        );
-        $properties->delimiter->default = "\\n\\n";
-        $ownerSchema->additionalProperties = false;
+        $properties->test1 = Schema::string();
+        $ownerSchema->type = Schema::OBJECT;
     }
 }

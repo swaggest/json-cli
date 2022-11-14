@@ -85,4 +85,41 @@ class GenMarkdownTest extends \PHPUnit_Framework_TestCase
 
     }
 
+
+    public function testIssue39()
+    {
+        $d = new GenMarkdown();
+        $d->schema = __DIR__ . '/../../tests/assets/issue39.json';
+
+        $d->setResponse(new Response());
+        ob_start();
+        $d->performAction();
+        $res = ob_get_clean();
+
+        $this->assertSame(
+            str_replace('<version>', App::$ver,
+                file_get_contents(__DIR__ . '/../../tests/assets/markdown/issue39/entities.md')),
+            $res
+        );
+
+    }
+
+    public function testIssue39_2()
+    {
+        $d = new GenMarkdown();
+        $d->schema = __DIR__ . '/../../tests/assets/issue39_2.json';
+
+        $d->setResponse(new Response());
+        ob_start();
+        $d->performAction();
+        $res = ob_get_clean();
+
+        $this->assertSame(
+            str_replace('<version>', App::$ver,
+                file_get_contents(__DIR__ . '/../../tests/assets/markdown/issue39/entities2.md')),
+            $res
+        );
+
+    }
+
 }

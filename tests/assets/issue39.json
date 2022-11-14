@@ -1,0 +1,58 @@
+{
+  "id": "/Test",
+  "type": "object",
+  "properties": {
+    "label": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "test1": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "test2": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "label2": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "test1": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "test2": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -14,7 +14,7 @@ use Swaggest\JsonSchema\Schema;
 use Swaggest\JsonSchema\Structure\ClassStructure;
 
 
-class Operation extends ClassStructure
+class OperationOneOf1 extends ClassStructure
 {
     const X_PROPERTY_PATTERN = '^x-';
 
