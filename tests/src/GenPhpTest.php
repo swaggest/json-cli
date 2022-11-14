@@ -92,4 +92,50 @@ class GenPhpTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('', $out, "Generated files changed");
     }
 
+    function testIssue39() {
+        $d = new GenPhp();
+        $d->schema = __DIR__ . '/../../tests/assets/issue39.json';
+        $d->ns = 'Issue39';
+        $d->nsPath = __DIR__ . '/../assets/php/Issue39';
+
+        $d->setResponse(new Response());
+        ob_start();
+        try {
+            $d->performAction();
+        } catch (ExitCode $exception) {
+            $res = ob_get_clean();
+            $this->fail($res);
+            return;
+        }
+
+        ob_get_clean();
+
+        exec('git diff ' . $d->nsPath, $out);
+        $out = implode("\n", $out);
+        $this->assertSame('', $out, "Generated files changed");
+    }
+
+    function testIssue39_2() {
+        $d = new GenPhp();
+        $d->schema = __DIR__ . '/../../tests/assets/issue39_2.json';
+        $d->ns = 'Issue39_2';
+        $d->nsPath = __DIR__ . '/../assets/php/Issue39_2';
+
+        $d->setResponse(new Response());
+        ob_start();
+        try {
+            $d->performAction();
+        } catch (ExitCode $exception) {
+            $res = ob_get_clean();
+            $this->fail($res);
+            return;
+        }
+
+        ob_get_clean();
+
+        exec('git diff ' . $d->nsPath, $out);
+        $out = implode("\n", $out);
+        $this->assertSame('', $out, "Generated files changed");
+    }
+
 }

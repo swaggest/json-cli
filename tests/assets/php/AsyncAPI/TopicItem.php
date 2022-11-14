@@ -27,10 +27,10 @@ class TopicItem extends ClassStructure
     /** @var Parameter[]|array */
     public $parameters;
 
-    /** @var Message|Operation */
+    /** @var Message|OperationOneOf1 */
     public $publish;
 
-    /** @var Message|Operation */
+    /** @var Message|OperationOneOf1 */
     public $subscribe;
 
     /** @var bool */
@@ -50,11 +50,11 @@ class TopicItem extends ClassStructure
         $properties->parameters->uniqueItems = true;
         $properties->publish = new Schema();
         $properties->publish->oneOf[0] = Message::schema();
-        $properties->publish->oneOf[1] = Operation::schema();
+        $properties->publish->oneOf[1] = OperationOneOf1::schema();
         $properties->publish->setFromRef('#/definitions/operation');
         $properties->subscribe = new Schema();
         $properties->subscribe->oneOf[0] = Message::schema();
-        $properties->subscribe->oneOf[1] = Operation::schema();
+        $properties->subscribe->oneOf[1] = OperationOneOf1::schema();
         $properties->subscribe->setFromRef('#/definitions/operation');
         $properties->deprecated = Schema::boolean();
         $properties->deprecated->default = false;

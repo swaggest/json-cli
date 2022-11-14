@@ -40,7 +40,7 @@ class GenPhp extends Base
             ->setIsRequired();
 
         $options->rootName = Command\Option::create()->setType()
-            ->setDescription('Go root struct name, default "Structure", only used for # pointer');
+            ->setDescription('Root class name, default "Structure", only used for # pointer');
 
         static::setupBuilderOptions($options);
         Base::setupGenOptions($definition, $options);

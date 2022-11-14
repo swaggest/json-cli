@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd728febd6af031ef0d87e8508d225e8",
+    "content-hash": "b2ae2df3901d2dafef3c1c97e2b23ecb",
     "packages": [
         {
             "name": "php-yaoi/php-yaoi",
@@ -321,16 +321,16 @@
         },
         {
             "name": "swaggest/json-diff",
-            "version": "v3.9.0",
+            "version": "v3.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/json-diff.git",
-                "reference": "ff3a7921e9f1aa096067eb541fcfd0e7611c558c"
+                "reference": "f4e511708060ff7511a3743fab4aa484a062bcfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/ff3a7921e9f1aa096067eb541fcfd0e7611c558c",
-                "reference": "ff3a7921e9f1aa096067eb541fcfd0e7611c558c",
+                "url": "https://api.github.com/repos/swaggest/json-diff/zipball/f4e511708060ff7511a3743fab4aa484a062bcfb",
+                "reference": "f4e511708060ff7511a3743fab4aa484a062bcfb",
                 "shasum": ""
             },
             "require": {
@@ -358,9 +358,9 @@
             "description": "JSON diff/rearrange/patch/pointer library for PHP",
             "support": {
                 "issues": "https://github.com/swaggest/json-diff/issues",
-                "source": "https://github.com/swaggest/json-diff/tree/v3.9.0"
+                "source": "https://github.com/swaggest/json-diff/tree/v3.10.4"
             },
-            "time": "2022-08-29T15:04:08+00:00"
+            "time": "2022-11-09T13:21:05+00:00"
         },
         {
             "name": "swaggest/json-schema",
@@ -465,16 +465,16 @@
         },
         {
             "name": "swaggest/php-code-builder",
-            "version": "v0.2.37",
+            "version": "v0.2.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swaggest/php-code-builder.git",
-                "reference": "fc0f412529d0cbc969487628a9023154ca2f74f0"
+                "reference": "7720eb5ffae2e33937688066ee5aab83476b907a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/fc0f412529d0cbc969487628a9023154ca2f74f0",
-                "reference": "fc0f412529d0cbc969487628a9023154ca2f74f0",
+                "url": "https://api.github.com/repos/swaggest/php-code-builder/zipball/7720eb5ffae2e33937688066ee5aab83476b907a",
+                "reference": "7720eb5ffae2e33937688066ee5aab83476b907a",
                 "shasum": ""
             },
             "require": {
@@ -484,7 +484,7 @@
                 "swaggest/json-schema": "^0.12.33"
             },
             "require-dev": {
-                "phperf/phpunit": "4.8.37"
+                "phperf/phpunit": "4.8.38"
             },
             "type": "library",
             "autoload": {
@@ -510,9 +510,9 @@
             ],
             "support": {
                 "issues": "https://github.com/swaggest/php-code-builder/issues",
-                "source": "https://github.com/swaggest/php-code-builder/tree/v0.2.37"
+                "source": "https://github.com/swaggest/php-code-builder/tree/v0.2.38"
             },
-            "time": "2022-09-15T23:10:34+00:00"
+            "time": "2022-11-14T19:24:11+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -964,16 +964,16 @@
         },
         {
             "name": "phperf/phpunit",
-            "version": "4.8.37",
+            "version": "4.8.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phperf/phpunit.git",
-                "reference": "172e60fa83313e0a5385bb7cfbd390cf6dedf37c"
+                "reference": "34de0591973c2603bae61514070e7861a1966776"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phperf/phpunit/zipball/172e60fa83313e0a5385bb7cfbd390cf6dedf37c",
-                "reference": "172e60fa83313e0a5385bb7cfbd390cf6dedf37c",
+                "url": "https://api.github.com/repos/phperf/phpunit/zipball/34de0591973c2603bae61514070e7861a1966776",
+                "reference": "34de0591973c2603bae61514070e7861a1966776",
                 "shasum": ""
             },
             "require": {
@@ -1039,9 +1039,9 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/phperf/phpunit/tree/4.8.37"
+                "source": "https://github.com/phperf/phpunit/tree/4.8.38"
             },
-            "time": "2022-01-23T22:14:49+00:00"
+            "time": "2022-04-28T19:15:24+00:00"
         },
         {
             "name": "phpspec/prophecy",
